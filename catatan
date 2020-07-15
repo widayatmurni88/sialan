@@ -1,0 +1,4 @@
+cal_days_in_month(CAL_GREGORIAN, 2, 2020); //=> jmlh hari dalam bulan
+date('l', strtotime('2020-07-08'));        //=> nama hari #'l' untuk panjang 'D' untuk pendek
+date('M')                                  //=> untuk bulan dalam angka
+date('Y')                                  //=> untuk tahun

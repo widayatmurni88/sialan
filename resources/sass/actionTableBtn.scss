@@ -1,0 +1,18 @@
+.wrap {
+    position: relative;
+}
+
+.btn-grub {
+    position: absolute;
+    display: inline;
+    float: right;
+    right: 0;
+}
+
+.btn-act {
+    opacity: 0 !important;
+}
+
+.table-act tr:hover .btn-act {
+    opacity: 1 !important;
+}
