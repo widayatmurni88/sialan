@@ -1,5 +1,10 @@
 @extends('baseLayout')
 
+@push('headResource')
+<link rel="stylesheet" href="{{ asset('css/ag-grid-community.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ag-theme-alpine.css') }}">
+@endpush
+
 @section('content')
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog border-danger">
@@ -73,12 +78,18 @@
         </div>
       </div>
     </div>
+
+    <div class="col-md-12">
+      <div id="myGrid" style="height: 150px;width: 600px" class="ag-theme-alpine"></div>
+    </div>
   </div>
 </div>
 
 @endsection
 
 @push('bodyResource')
+<script src="{{ asset('js/ag-grid-community.js') }}"></script>
+<script src="{{ asset('js/table-grid.js') }}"></script>
 <script  type="text/javascript">
   $('#confirm-delete').on('show.bs.modal', function(e) {
     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
