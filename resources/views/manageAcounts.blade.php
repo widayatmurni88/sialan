@@ -1,23 +1,21 @@
 @extends('baseLayout')
 
 @push('headResource')
-<link rel="stylesheet" href="{{ asset('css/ag-grid-community.css') }}">
-<link rel="stylesheet" href="{{ asset('css/ag-theme-alpine.css') }}">
 @endpush
 
 @section('content')
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog border-danger">
-        <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content border-danger">
             <div class="modal-header bg-danger">
-              <h4><b><i class="fa fa-exclamation-circle mr-2"></i> Konfrimasi</b></h4>
+              <h4 class="modal-title"><b><i class="fa fa-exclamation-circle mr-2"></i> Konfrimasi</b></h4>
             </div>
             <div class="modal-body">
-                Apakah anda yakin akan menghapus <span id="record"></span> ?
+                Apakah anda yakin akan menghapus user "<span id="record"></span>" ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary btn-round" data-dismiss="modal"><i class="fa fa-remove mr-2"></i> Batal</button>
-                <a class="btn btn-outline-danger btn-round btn-ok"><i class="fa fa-trash mr-2"></i>Delete</a>
+                <button type="button" class="btn btn-outline-secondary btn-round" data-dismiss="modal"><i class="fa fa-remove mr-2"></i> Tidak</button>
+                <a class="btn btn-outline-danger btn-round btn-ok"><i class="fa fa-trash mr-3"></i>Ya</a>
             </div>
         </div>
     </div>
@@ -67,7 +65,7 @@
                       {{ $item->id}} 
                       <div class="btn-grub">
                         <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                        <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deleteUser', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-whatever=""><i class="fa fa-trash"></i></a>
+                        <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deleteUser', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->name}}"><i class="fa fa-trash"></i></a>
                       </div>
                     </div>
                   </td>
@@ -78,21 +76,17 @@
         </div>
       </div>
     </div>
-
-    <div class="col-md-12">
-      <div id="myGrid" style="height: 150px;width: 600px" class="ag-theme-alpine"></div>
-    </div>
   </div>
 </div>
 
 @endsection
 
 @push('bodyResource')
-<script src="{{ asset('js/ag-grid-community.js') }}"></script>
-<script src="{{ asset('js/table-grid.js') }}"></script>
 <script  type="text/javascript">
   $('#confirm-delete').on('show.bs.modal', function(e) {
     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    var rec = $(e.relatedTarget).data('iden');
+    $(this).find('#record').text(rec);
   });
 </script>
 @endpush
