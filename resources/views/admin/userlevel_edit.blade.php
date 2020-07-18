@@ -33,12 +33,13 @@
             </div>
           @endif
 
-          <form action="{{ route('postTambahLevel', 'Add')}}" method="post">
+          <form action="{{ route('postTambahLevel', 'Edit')}}" method="post">
             {{ csrf_field() }}
+            <input type="text" name="id" id="id">
             <div class="form-group row">
               <label for="level" class="col-md-3 form-label text-right">Lavel User Akses</label>
               <div class="col-md-9">
-                <input type="text" name="level" id="level" class="form-control {{ $errors->has('level') ? 'is-invalid' : ''}}" placeholder="Nama Level Akses" value="{{ old('level')}}">
+                <input type="text" name="level" id="level" class="form-control {{ $errors->has('level') ? 'is-invalid' : ''}}" placeholder="Nama Level Akses" value="{{ old('level') }}">
                 @if ($errors->has('level'))
                   <div class="invalid-feedback">
                     {{ $errors->first('level')}}

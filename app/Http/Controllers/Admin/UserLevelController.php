@@ -13,7 +13,6 @@ class UserLevelController extends Controller
             'level' => UserLevel::All()
         ];
 
-        dd($data['level']);
         return view('admin.userlevel')->with($data);
     }
 
@@ -21,15 +20,24 @@ class UserLevelController extends Controller
         return view('admin.userlevel_add');
     }
 
-    public function postTambahLevel(Request $req){
+    public function postTambahLevel(Request $req, $action){
         $this->validate($req,[
             'level' => 'required'
         ]);
         
         $level = new UserLevel();
         $level->level = $req->level;
-        $level->save();
+        try {
+            if ($action == 'Add'){
+                $level->save();
+            }else{
+                $level->update();
+            }
+            $msg= ['success' => 'Success. klik "Kembali" untuk lihat'];
+        } catch (\Throwable $th) {
+            $msg= ['error' => 'Server Error'];
+        }
 
-        return back()->with(['success' => 'Success. klik "Kembali" untuk lihat']);
+        return back()->with($msg);
     }
 }
