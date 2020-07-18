@@ -5,6 +5,7 @@
 <br>
 <a href="{{ route('menageAcounts')}}">Menejemen Akun</a>
 <br>
+<a href="{{ route('userlevel')}}">user level</a>
 <a href="{{ route('logout')}}">Logout</a>
 
 {{ dd(Auth::user())}}

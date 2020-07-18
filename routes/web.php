@@ -95,3 +95,12 @@ Route::prefix('setupHariLibur')->group(function(){
 Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
     ->middleware('auth')
     ->name('postHariLibur');
+
+//Admin Super
+Route::prefix('Super')->group( function(){
+    Route::prefix('UserLevel')->group( function () {
+        Route::get('/', 'Admin\UserLevelController@index')->middleware('auth')->name('userlevel');
+        Route::get('/Add', 'Admin\UserLevelController@tambahLevel')->middleware('auth')->name('tambahlevel');
+        Route::post('/PostLevel', 'Admin\UserLevelController@postTambahLevel')->middleware('auth')->name('postTambahLevel');
+    });
+});
