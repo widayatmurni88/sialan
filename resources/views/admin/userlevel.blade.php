@@ -38,39 +38,37 @@
             <div class="col-md-12 mt-4">
               <a href="{{ route('tambahlevel')}}" class="btn btn-primary btn-round float-right"><i class="fa fa-plus mr-3"></i>Tambah Level</a>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12 mt-4">
               <div class="table-responsive">
-                <table class="table table-hover table-act table-fixed mt-4">
+                <table class="table table-hover table-act table-fixed">
                   <thead>
                     <tr>
                       <th scope="col" class="col-1">#</th>
-                      <th scope="col" class="col-11">LEVEL</th>
+                      <th scope="col" class="col-11">LEVEL AKSES</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @if ($level = 'null')
-                      <tr>
-                        <td>1</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" align="center">Masih Kosong</td>
-                      </tr>
-                    @else
+                    @if (count($level)>0)
                       @foreach ($level as $item)
-                        <tr>
-                          <th scope="col" class="col-1">#</th>
-                          <td class="col-2">
-                            <div class="wrap">
-                              {{ $item->level}} 
-                              <div class="btn-grub">
-                                <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                                <a href="" class="btn btn-danger btn-sm btn-act" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden=""><i class="fa fa-trash"></i></a>
+                          <tr>
+                            <th scope="row" class="col-1">#</th>
+                            <td class="col-11">
+                              <div class="wrap">
+                                {{ $item->level}} 
+                                <div class="btn-grub">
+                                  <a href ="{{ route('editlevel', $item->id) }}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
+
+                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="" data-toggle="modal" data-target="#confirm-delete" data-whatever="{{ $item->level}}"><i class="fa fa-trash"></i></a>
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                        </tr>
+                            </td>
+                          </tr>
                       @endforeach
+                    @else
+                      <tr>
+                        <th scope="col" class="col-1"></th>
+                        <td class="col-11 text-danger text-center">Data user level tidak ditemukan.</td>
+                      </tr>
                     @endif
                   </tbody>
                 </table>

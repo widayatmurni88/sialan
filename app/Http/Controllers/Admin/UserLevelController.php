@@ -12,7 +12,6 @@ class UserLevelController extends Controller
         $data =[
             'level' => UserLevel::All()
         ];
-
         return view('admin.userlevel')->with($data);
     }
 

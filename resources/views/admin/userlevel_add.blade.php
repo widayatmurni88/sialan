@@ -64,11 +64,5 @@
 @endsection
 
 @push('bodyResource')
-<script  type="text/javascript">
-  $('#confirm-delete').on('show.bs.modal', function(e) {
-    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-    var rec = $(e.relatedTarget).data('iden');
-    $(this).find('#record').text(rec);
-  });
-</script>
+
 @endpush
