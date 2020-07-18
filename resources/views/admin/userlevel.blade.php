@@ -75,7 +75,7 @@
                                 <div class="btn-grub">
                                   <a href ="{{ route('editlevel', $item->id) }}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
 
-                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route ('deleteLevel', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-whatever="{{ $item->level}}"><i class="fa fa-trash"></i></a>
+                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route ('deleteLevel', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->level}}"><i class="fa fa-trash"></i></a>
                                 </div>
                               </div>
                             </td>

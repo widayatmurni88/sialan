@@ -51,10 +51,12 @@ Route::prefix('ForgotPassword')->group(function(){
 });
 
 
-Route::get('/Register', 'RegisterController@index')
-    ->middleware('guest')
-    ->name('register');
-Route::post('/Register', 'RegisterController@postRegister')->name('postregister');
+Route::prefix('Register')->group(function () {
+    Route::get('/', 'RegisterController@index')->middleware('guest')->name('register');
+    Route::post('/PostRegister', 'RegisterController@postRegister')->middleware('guest')->name('postregister');
+});
+
+
 Route::get('/Profile/{id}', 'ProfileController@index')
     ->middleware('auth')
     ->name('profile');

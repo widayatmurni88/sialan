@@ -11,12 +11,35 @@
           </b>
         </div>
         <div class="card-body">
+          @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ $message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
+
+          @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ $message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          @endif
+
           <form class="form-horizontal" action="{{ route('postregister')}}" method="post">
             {{ csrf_field() }}
             <div class="form-group row">
               <label for="nidn" class="control-label col-md-3">NIDN</label>
               <div class="col-md-9">
                 <input type="text" name="nidn" id="nidn" class="form-control {{ $errors->has('nidn') ? 'is-invalid' : '' }}" value="{{ old('nidn')}}" required autofocus>
+                @if ($errors->has('nidn'))
+                  <div class="invalid-feedback">
+                    {{ $errors->first('nidn')}}
+                  </div>
+                @endif
               </div>
             </div>
             

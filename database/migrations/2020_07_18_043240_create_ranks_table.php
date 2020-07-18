@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNidnOnUsersTable extends Migration
+class CreateRanksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddNidnOnUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('nidn',12)->unique('nidn')->after('id');
+        Schema::create('ranks', function (Blueprint $table) {
+            $table->id();
+            $table->string('pangkat');
         });
     }
 
@@ -23,9 +24,8 @@ class AddNidnOnUsersTable extends Migration
      *
      * @return void
      */
-    public function down(){
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('nidn');
-        });
+    public function down()
+    {
+        Schema::dropIfExists('ranks');
     }
 }
