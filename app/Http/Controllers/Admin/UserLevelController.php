@@ -63,4 +63,16 @@ class UserLevelController extends Controller
 
         return back()->with($msg);
     }
+
+    public function deleteLevel($id){
+        try {
+            $level = UserLevel::find($id);
+            $level->delete();
+            $msg = ['success' => 'Data berhasil dihapus.'];
+        } catch (\Throwable $th) {
+            $msg = ['error' => 'Gagal menghapus.'];
+        }
+
+        return back()->with($msg);
+    }
 }

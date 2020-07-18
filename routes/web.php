@@ -104,5 +104,6 @@ Route::prefix('Super')->group( function(){
         Route::get('/Edit/{id}', 'Admin\UserLevelController@EditLevel')->middleware('auth')->name('editlevel');
         Route::post('/PostAdd', 'Admin\UserLevelController@postTambahLevel')->middleware('auth')->name('postTambahLevel');
         Route::put('/PostEdit', 'Admin\UserLevelController@putLevel')->middleware('auth')->name('postEditLevel');
+        Route::get('/Delete/{id}', 'Admin\UserLevelController@deleteLevel')->middleware('auth')->name('deleteLevel');
     });
 });

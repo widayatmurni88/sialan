@@ -39,6 +39,23 @@
               <a href="{{ route('tambahlevel')}}" class="btn btn-primary btn-round float-right"><i class="fa fa-plus mr-3"></i>Tambah Level</a>
             </div>
             <div class="col-md-12 mt-4">
+              @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ $message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
+
+              @if ($message = Session::get('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  {{ $message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
               <div class="table-responsive">
                 <table class="table table-hover table-act table-fixed">
                   <thead>
@@ -58,7 +75,7 @@
                                 <div class="btn-grub">
                                   <a href ="{{ route('editlevel', $item->id) }}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
 
-                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="" data-toggle="modal" data-target="#confirm-delete" data-whatever="{{ $item->level}}"><i class="fa fa-trash"></i></a>
+                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route ('deleteLevel', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-whatever="{{ $item->level}}"><i class="fa fa-trash"></i></a>
                                 </div>
                               </div>
                             </td>
