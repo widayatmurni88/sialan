@@ -73,11 +73,11 @@ Route::prefix('setupHariLibur')->group(function(){
         ->middleware('auth')
         ->name('getHariLiburByTahun');
 
-    Route::any('/{thn}/Add', 'AppSettingsController@addHariLibur')
+    Route::get('/{thn}/Add', 'AppSettingsController@addHariLibur')
         ->middleware('auth')
         ->name('addHariLibur');
 
-    Route::any('/{thn}/Edit/{id}', 'AppSettingsController@editHariLibur')
+    Route::get('/{thn}/Edit/{id}', 'AppSettingsController@editHariLibur')
         ->middleware('auth')
         ->name('editHariLibur');
 
@@ -101,6 +101,8 @@ Route::prefix('Super')->group( function(){
     Route::prefix('UserLevel')->group( function () {
         Route::get('/', 'Admin\UserLevelController@index')->middleware('auth')->name('userlevel');
         Route::get('/Add', 'Admin\UserLevelController@tambahLevel')->middleware('auth')->name('tambahlevel');
-        Route::post('/PostLevel/{action}', 'Admin\UserLevelController@postTambahLevel')->middleware('auth')->name('postTambahLevel');
+        Route::get('/Edit/{id}', 'Admin\UserLevelController@EditLevel')->middleware('auth')->name('editlevel');
+        Route::post('/PostAdd', 'Admin\UserLevelController@postTambahLevel')->middleware('auth')->name('postTambahLevel');
+        Route::put('/PostEdit', 'Admin\UserLevelController@putLevel')->middleware('auth')->name('postEditLevel');
     });
 });

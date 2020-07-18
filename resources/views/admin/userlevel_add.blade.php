@@ -33,7 +33,7 @@
             </div>
           @endif
 
-          <form action="{{ route('postTambahLevel', 'Add')}}" method="post">
+          <form action="{{ route('postTambahLevel')}}" method="post">
             {{ csrf_field() }}
             <div class="form-group row">
               <label for="level" class="col-md-3 form-label text-right">Lavel User Akses</label>

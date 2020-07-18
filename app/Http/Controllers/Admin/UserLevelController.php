@@ -20,19 +20,43 @@ class UserLevelController extends Controller
         return view('admin.userlevel_add');
     }
 
-    public function postTambahLevel(Request $req, $action){
+    public function editLevel($id){
+        $data =[
+            'level' => UserLevel::find($id)
+        ];
+
+        return view('admin.userlevel_edit')->with($data);
+    }
+
+    public function postTambahLevel(Request $req){
         $this->validate($req,[
             'level' => 'required'
         ]);
         
-        $level = new UserLevel();
-        $level->level = $req->level;
         try {
-            if ($action == 'Add'){
-                $level->save();
-            }else{
-                $level->update();
-            }
+            $level = new UserLevel();
+            $level->level = $req->level;
+            $level->save();
+
+            $msg= ['success' => 'Success. klik "Kembali" untuk lihat'];
+        } catch (\Throwable $th) {
+            $msg= ['error' => 'Server Error'];
+        }
+
+        return back()->with($msg);
+    }
+
+    public function putLevel(Request $req){
+        $this->validate($req,[
+            'id' => 'required',
+            'level' => 'required'
+        ]);
+        
+        try {
+            $level = UserLevel::find($req->id);
+            $level->level = $req->level;
+            $level->update();
+
             $msg= ['success' => 'Success. klik "Kembali" untuk lihat'];
         } catch (\Throwable $th) {
             $msg= ['error' => 'Server Error'];
