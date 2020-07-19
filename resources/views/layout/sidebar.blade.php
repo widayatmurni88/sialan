@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="" class="nav-link active">
+            <a href="" class="nav-link {{ ($menu == 'dasboard') ? 'active' : ''}}">
               <i class="nav-icon fa fa-tachometer"></i>
               <p>Dashboard</p>
             </a>
@@ -45,7 +45,7 @@
           </li>
           <li class="nav-header">PROFIL AKUN</li>
           <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
+            <a href="{{ route('profile', '123')}}" class="nav-link {{ ($menu == 'profil') ? 'active' : '' }}">
               <i class="nav-icon fa fa-user-circle"></i>
               <p>Profil</p>
             </a>

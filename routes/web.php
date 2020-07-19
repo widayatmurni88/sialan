@@ -62,7 +62,7 @@ Route::prefix('Register')->group(function () {
 });
 
 
-Route::get('/Profile/{id}', 'ProfileController@index')
+Route::get('/Profile/{nid}', 'ProfileController@index')
     ->middleware('auth')
     ->name('profile');
 Route::get('/Home', 'HomeController@index')
