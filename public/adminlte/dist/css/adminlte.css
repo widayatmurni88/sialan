@@ -11560,12 +11560,12 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 .text-sm .main-header .nav-link > .fa,
-.text-sm .main-header .nav-link > .fas,
+.text-sm .main-header .nav-link > .fa,
 .text-sm .main-header .nav-link > .far,
 .text-sm .main-header .nav-link > .fab,
 .text-sm .main-header .nav-link > .glyphicon,
 .text-sm .main-header .nav-link > .ion, .main-header.text-sm .nav-link > .fa,
-.main-header.text-sm .nav-link > .fas,
+.main-header.text-sm .nav-link > .fa,
 .main-header.text-sm .nav-link > .far,
 .main-header.text-sm .nav-link > .fab,
 .main-header.text-sm .nav-link > .glyphicon,
@@ -11886,7 +11886,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
   width: 1.6rem;
 }
 
-.nav-sidebar > .nav-item .nav-icon.fa, .nav-sidebar > .nav-item .nav-icon.fas, .nav-sidebar > .nav-item .nav-icon.far, .nav-sidebar > .nav-item .nav-icon.fab, .nav-sidebar > .nav-item .nav-icon.glyphicon, .nav-sidebar > .nav-item .nav-icon.ion {
+.nav-sidebar > .nav-item .nav-icon.fa, .nav-sidebar > .nav-item .nav-icon.fa, .nav-sidebar > .nav-item .nav-icon.far, .nav-sidebar > .nav-item .nav-icon.fab, .nav-sidebar > .nav-item .nav-icon.glyphicon, .nav-sidebar > .nav-item .nav-icon.ion {
   font-size: 1.1rem;
 }
 
@@ -13895,13 +13895,13 @@ body.text-sm .control-sidebar {
   border-radius: 0;
 }
 
-.form-control-feedback.fa, .form-control-feedback.fas, .form-control-feedback.far, .form-control-feedback.fab, .form-control-feedback.glyphicon, .form-control-feedback.ion {
+.form-control-feedback.fa, .form-control-feedback.fa, .form-control-feedback.far, .form-control-feedback.fab, .form-control-feedback.glyphicon, .form-control-feedback.ion {
   line-height: calc(2.25rem + 2px);
 }
 
-.input-lg + .form-control-feedback.fa, .input-lg + .form-control-feedback.fas, .input-lg + .form-control-feedback.far, .input-lg + .form-control-feedback.fab, .input-lg + .form-control-feedback.glyphicon, .input-lg + .form-control-feedback.ion,
+.input-lg + .form-control-feedback.fa, .input-lg + .form-control-feedback.fa, .input-lg + .form-control-feedback.far, .input-lg + .form-control-feedback.fab, .input-lg + .form-control-feedback.glyphicon, .input-lg + .form-control-feedback.ion,
 .input-group-lg + .form-control-feedback.fa,
-.input-group-lg + .form-control-feedback.fas,
+.input-group-lg + .form-control-feedback.fa,
 .input-group-lg + .form-control-feedback.far,
 .input-group-lg + .form-control-feedback.fab,
 .input-group-lg + .form-control-feedback.glyphicon,
@@ -13909,13 +13909,13 @@ body.text-sm .control-sidebar {
   line-height: calc(2.875rem + 2px);
 }
 
-.form-group-lg .form-control + .form-control-feedback.fa, .form-group-lg .form-control + .form-control-feedback.fas, .form-group-lg .form-control + .form-control-feedback.far, .form-group-lg .form-control + .form-control-feedback.fab, .form-group-lg .form-control + .form-control-feedback.glyphicon, .form-group-lg .form-control + .form-control-feedback.ion {
+.form-group-lg .form-control + .form-control-feedback.fa, .form-group-lg .form-control + .form-control-feedback.fa, .form-group-lg .form-control + .form-control-feedback.far, .form-group-lg .form-control + .form-control-feedback.fab, .form-group-lg .form-control + .form-control-feedback.glyphicon, .form-group-lg .form-control + .form-control-feedback.ion {
   line-height: calc(2.875rem + 2px);
 }
 
-.input-sm + .form-control-feedback.fa, .input-sm + .form-control-feedback.fas, .input-sm + .form-control-feedback.far, .input-sm + .form-control-feedback.fab, .input-sm + .form-control-feedback.glyphicon, .input-sm + .form-control-feedback.ion,
+.input-sm + .form-control-feedback.fa, .input-sm + .form-control-feedback.fa, .input-sm + .form-control-feedback.far, .input-sm + .form-control-feedback.fab, .input-sm + .form-control-feedback.glyphicon, .input-sm + .form-control-feedback.ion,
 .input-group-sm + .form-control-feedback.fa,
-.input-group-sm + .form-control-feedback.fas,
+.input-group-sm + .form-control-feedback.fa,
 .input-group-sm + .form-control-feedback.far,
 .input-group-sm + .form-control-feedback.fab,
 .input-group-sm + .form-control-feedback.glyphicon,
@@ -13923,7 +13923,7 @@ body.text-sm .control-sidebar {
   line-height: calc(1.8125rem + 2px);
 }
 
-.form-group-sm .form-control + .form-control-feedback.fa, .form-group-sm .form-control + .form-control-feedback.fas, .form-group-sm .form-control + .form-control-feedback.far, .form-group-sm .form-control + .form-control-feedback.fab, .form-group-sm .form-control + .form-control-feedback.glyphicon, .form-group-sm .form-control + .form-control-feedback.ion {
+.form-group-sm .form-control + .form-control-feedback.fa, .form-group-sm .form-control + .form-control-feedback.fa, .form-group-sm .form-control + .form-control-feedback.far, .form-group-sm .form-control + .form-control-feedback.fab, .form-group-sm .form-control + .form-control-feedback.glyphicon, .form-group-sm .form-control + .form-control-feedback.ion {
   line-height: calc(1.8125rem + 2px);
 }
 
@@ -18131,7 +18131,7 @@ html.maximized-card {
 }
 
 .todo-list > li .tools > .fa,
-.todo-list > li .tools > .fas,
+.todo-list > li .tools > .fa,
 .todo-list > li .tools > .far,
 .todo-list > li .tools > .fab,
 .todo-list > li .tools > .glyphicon,
@@ -18753,7 +18753,7 @@ html.maximized-card {
 }
 
 .btn-app > .fa,
-.btn-app > .fas,
+.btn-app > .fa,
 .btn-app > .far,
 .btn-app > .fab,
 .btn-app > .glyphicon,
@@ -19060,7 +19060,7 @@ html.maximized-card {
 }
 
 .carousel-control > .fa,
-.carousel-control > .fas,
+.carousel-control > .fa,
 .carousel-control > .far,
 .carousel-control > .fab,
 .carousel-control > .glyphicon,
@@ -19164,7 +19164,7 @@ html.maximized-card {
   transition: all 0.3s linear;
 }
 
-.small-box .icon > i.fa, .small-box .icon > i.fas, .small-box .icon > i.far, .small-box .icon > i.fab, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
+.small-box .icon > i.fa, .small-box .icon > i.fa, .small-box .icon > i.far, .small-box .icon > i.fab, .small-box .icon > i.glyphicon, .small-box .icon > i.ion {
   font-size: 70px;
   top: 20px;
 }
@@ -19177,7 +19177,7 @@ html.maximized-card {
   font-size: 95px;
 }
 
-.small-box:hover .icon > i.fa, .small-box:hover .icon > i.fas, .small-box:hover .icon > i.far, .small-box:hover .icon > i.fab, .small-box:hover .icon > i.glyphicon, .small-box:hover .icon > i.ion {
+.small-box:hover .icon > i.fa, .small-box:hover .icon > i.fa, .small-box:hover .icon > i.far, .small-box:hover .icon > i.fab, .small-box:hover .icon > i.glyphicon, .small-box:hover .icon > i.ion {
   font-size: 75px;
 }
 
@@ -19470,7 +19470,7 @@ html.maximized-card {
 }
 
 .timeline > div > .fa,
-.timeline > div > .fas,
+.timeline > div > .fa,
 .timeline > div > .far,
 .timeline > div > .fab,
 .timeline > div > .glyphicon,
@@ -20653,7 +20653,7 @@ html.maximized-card {
 }
 
 .fc-color-picker > li .fa,
-.fc-color-picker > li .fas,
+.fc-color-picker > li .fa,
 .fc-color-picker > li .far,
 .fc-color-picker > li .fab,
 .fc-color-picker > li .glyphicon,
@@ -20664,7 +20664,7 @@ html.maximized-card {
 }
 
 .fc-color-picker > li .fa:hover,
-.fc-color-picker > li .fas:hover,
+.fc-color-picker > li .fa:hover,
 .fc-color-picker > li .far:hover,
 .fc-color-picker > li .fab:hover,
 .fc-color-picker > li .glyphicon:hover,
@@ -27291,25 +27291,25 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .card .overlay > .fa,
-.card .overlay > .fas,
+.card .overlay > .fa,
 .card .overlay > .far,
 .card .overlay > .fab,
 .card .overlay > .glyphicon,
 .card .overlay > .ion,
 .overlay-wrapper .overlay > .fa,
-.overlay-wrapper .overlay > .fas,
+.overlay-wrapper .overlay > .fa,
 .overlay-wrapper .overlay > .far,
 .overlay-wrapper .overlay > .fab,
 .overlay-wrapper .overlay > .glyphicon,
 .overlay-wrapper .overlay > .ion,
 .info-box .overlay > .fa,
-.info-box .overlay > .fas,
+.info-box .overlay > .fa,
 .info-box .overlay > .far,
 .info-box .overlay > .fab,
 .info-box .overlay > .glyphicon,
 .info-box .overlay > .ion,
 .small-box .overlay > .fa,
-.small-box .overlay > .fas,
+.small-box .overlay > .fa,
 .small-box .overlay > .far,
 .small-box .overlay > .fab,
 .small-box .overlay > .glyphicon,
@@ -27325,25 +27325,25 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .card .overlay.dark > .fa,
-.card .overlay.dark > .fas,
+.card .overlay.dark > .fa,
 .card .overlay.dark > .far,
 .card .overlay.dark > .fab,
 .card .overlay.dark > .glyphicon,
 .card .overlay.dark > .ion,
 .overlay-wrapper .overlay.dark > .fa,
-.overlay-wrapper .overlay.dark > .fas,
+.overlay-wrapper .overlay.dark > .fa,
 .overlay-wrapper .overlay.dark > .far,
 .overlay-wrapper .overlay.dark > .fab,
 .overlay-wrapper .overlay.dark > .glyphicon,
 .overlay-wrapper .overlay.dark > .ion,
 .info-box .overlay.dark > .fa,
-.info-box .overlay.dark > .fas,
+.info-box .overlay.dark > .fa,
 .info-box .overlay.dark > .far,
 .info-box .overlay.dark > .fab,
 .info-box .overlay.dark > .glyphicon,
 .info-box .overlay.dark > .ion,
 .small-box .overlay.dark > .fa,
-.small-box .overlay.dark > .fas,
+.small-box .overlay.dark > .fa,
 .small-box .overlay.dark > .far,
 .small-box .overlay.dark > .fab,
 .small-box .overlay.dark > .glyphicon,

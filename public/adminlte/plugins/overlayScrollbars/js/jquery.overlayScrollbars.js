@@ -3945,7 +3945,7 @@
                 }
 
                 /**
-                 * Returns a object which is used for fast access for specific variables.
+                 * Returns a object which is used for fat access for specific variables.
                  * @param isHorizontal True if the horizontal scrollbar vars shall be accessed, false if the vertical scrollbar vars shall be accessed.
                  * @returns {{wh: string, WH: string, lt: string, _wh: string, _lt: string, t: *, h: *, c: {}, s: *}}
                  */

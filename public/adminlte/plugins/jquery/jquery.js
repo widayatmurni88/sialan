@@ -567,7 +567,7 @@ var i,
 	push_native = arr.push,
 	push = arr.push,
 	slice = arr.slice,
-	// Use a stripped-down indexOf as it's faster than native
+	// Use a stripped-down indexOf as it's fater than native
 	// https://jsperf.com/thor-indexof-vs-for/5
 	indexOf = function( list, elem ) {
 		var i = 0,
@@ -7687,7 +7687,7 @@ jQuery.fx.stop = function() {
 
 jQuery.fx.speeds = {
 	slow: 600,
-	fast: 200,
+	fat: 200,
 
 	// Default speed
 	_default: 400

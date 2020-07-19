@@ -18,18 +18,30 @@
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-
   @stack('headResource')
 </head>
-<body>
-  
-  @yield('content')
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    @yield('content')
+    
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 3.0.5
+      </div>
+      <strong>Copyright &copy; 2020-2025 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+      reserved.
+    </footer>
 
-  @stack('bodyResource')
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
   <script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
   <script src="{{asset('adminlte/dist/js/adminlte.min.js')}}"></script>
+  @stack('bodyResource')
 </body>
 </html>
