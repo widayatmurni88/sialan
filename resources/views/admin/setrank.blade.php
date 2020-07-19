@@ -60,7 +60,7 @@
                   <a href="#" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pangkat</a>
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 mt-4">
                   @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       {{ $message }}
@@ -84,7 +84,7 @@
                       <thead>
                         <tr>
                           <th scope="col" class="col-1">#</th>
-                          <th scope="col" class="col-11">LEVEL AKSES</th>
+                          <th scope="col" class="col-11">PANGKAT KEPEGAWAIAN</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -98,7 +98,7 @@
                                     <div class="btn-grub">
                                       <a href ="{{ route('editlevel', $item->id) }}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
 
-                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route ('deleteLevel', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->level}}"><i class="fa fa-trash"></i></a>
+                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route ('deleteLevel', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->pangkat}}"><i class="fa fa-trash"></i></a>
                                     </div>
                                   </div>
                                 </td>
