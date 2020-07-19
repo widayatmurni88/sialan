@@ -16,6 +16,10 @@ class RankController extends Controller
         return view('admin.setrank')->with($data);
     }
 
+    public function tambahPangkat(){
+        return view('admin.setrank_add');
+    }
+
     public function postPangkat(Request $req){
         $this->validate($req,[
             'pangkat' => 'required'

@@ -117,5 +117,6 @@ Route::prefix('Super')->group( function(){
     Route::prefix('Ranks')->group( function () {
         Route::get('/', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
         Route::post('/postRank', 'Admin\RankController@postPangkat')->middleware('auth')->name('postPangkat');
+        Route::get('/Add', 'Admin\RankController@tambahPangkat')->middleware('auth')->name('tambahPangkat');
     });
 });

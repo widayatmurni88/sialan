@@ -57,7 +57,7 @@
                 </div>
                 
                 <div class="col-sm-6">
-                  <a href="#" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pangkat</a>
+                  <a href="{{ route('tambahPangkat')}}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pangkat</a>
                 </div>
 
                 <div class="col-12 mt-4">
