@@ -113,4 +113,8 @@ Route::prefix('Super')->group( function(){
         Route::put('/PostEdit', 'Admin\UserLevelController@putLevel')->middleware('auth')->name('postEditLevel');
         Route::get('/Delete/{id}', 'Admin\UserLevelController@deleteLevel')->middleware('auth')->name('deleteLevel');
     });
+
+    Route::prefix('Ranks')->group( function () {
+        Route::get('/', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
+    });
 });
