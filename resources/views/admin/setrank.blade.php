@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Setting Pangkat</h1>
+          <h1>Pengaturan Pangkat</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -42,7 +42,7 @@
           <!-- Default box -->
           <div class="card card-rimary card-outline">
             <div class="card-header">
-              <h3 class="card-title"><b>Daftar Pangkat</b></h3>
+              <h3 class="card-title"><i class="fa fa-th-list mr-3"></i><b>Daftar Pangkat</b></h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -51,16 +51,24 @@
             </div>
             <div class="card-body">
               <div class="row">
-                
-                <div class="col-sm-6">
-                  cari
+
+                <div class="col-md-4">
+                <form action="{{ route('cariPangkat') }}" method="post" class="form-group">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                      <input type="text" name="cari" id="cari" class="form-control" value="{{ old('cari')}}">
+                      <span class="input-group-append">
+                        <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                  </form>
                 </div>
-                
-                <div class="col-sm-6">
+
+                <div class="col-md-8">
                   <a href="{{ route('tambahPangkat')}}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pangkat</a>
                 </div>
 
-                <div class="col-12 mt-4">
+                <div class="col-12 mt-3">
                   @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       {{ $message }}
@@ -78,7 +86,7 @@
                       </button>
                     </div>
                   @endif
-                  
+
                   <div class="table-responsive">
                     <table class="table table-hover table-act table-fixed">
                       <thead>
@@ -94,11 +102,10 @@
                                 <th scope="row" class="col-1">#</th>
                                 <td class="col-11">
                                   <div class="wrap">
-                                    {{ $item->pangkat}} 
+                                    {{ $item->rank}}
                                     <div class="btn-grub">
-                                      <a href ="{{ route('editlevel', $item->id) }}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-
-                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route ('deleteLevel', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->pangkat}}"><i class="fa fa-trash"></i></a>
+                                      <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
+                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->pangkat}}"><i class="fa fa-trash"></i></a>
                                     </div>
                                   </div>
                                 </td>
@@ -107,7 +114,7 @@
                         @else
                           <tr>
                             <th scope="col" class="col-1"></th>
-                            <td class="col-11 text-danger text-center">Data user level tidak ditemukan.</td>
+                            <td class="col-11 text-danger text-center">Data pangkat tidak ditemukan.</td>
                           </tr>
                         @endif
                       </tbody>
@@ -137,5 +144,5 @@
     var rec = $(e.relatedTarget).data('iden');
     $(this).find('#record').text(rec);
   });
-</script>    
+</script>
 @endpush
