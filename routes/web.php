@@ -115,10 +115,10 @@ Route::prefix('Super')->group( function(){
     });
 
     Route::prefix('Ranks')->group( function () {
-        Route::get('/{cari?}', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
+        Route::get('/', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
+        Route::post('/', 'Admin\RankController@postRankSerach')->middleware('auth')->name('cariPangkat');
         Route::post('/postRank', 'Admin\RankController@postPangkat')->middleware('auth')->name('postPangkat');
         Route::get('/Add', 'Admin\RankController@tambahPangkat')->middleware('auth')->name('tambahPangkat');
-        Route::post('/postRankSerach', 'Admin\RankController@postRankSerach')->middleware('auth')->name('cariPangkat');
 
     });
 });

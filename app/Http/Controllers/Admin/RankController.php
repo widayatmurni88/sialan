@@ -8,15 +8,9 @@ use App\Models\RankUser;
 
 class RankController extends Controller
 {
-    public function index($cari=''){
-        if (trim($cari) == '') {
-          $pangkat = RankUser::select('id as id', 'pangkat as rank')->get();
-        }else{
-          $pangkat = RankUser::select('id as ID', 'pangkat as rank')->where('pangkat', 'like' ,"%$cari%")->get();
-        }
-
+    public function index(){
         $data = [
-            'ranks' => $pangkat
+            'ranks' => RankUser::select('id as id', 'pangkat as rank')->get()
         ];
 
         return view('admin.setrank')->with($data);
@@ -43,6 +37,13 @@ class RankController extends Controller
     }
 
     public function postRankSerach(Request $req){
-      return redirect()->route('setPangkat', $req->cari);
+      if(trim($req->cari)==''){
+        return redirect()->route('setPangkat');
+      }else{
+        $data = [
+          'ranks' => RankUser::select('id as ID', 'pangkat as rank')->where('pangkat', 'like' ,"%$req->cari%")->get()
+        ];
+        return view('admin.setrank')->with($data);
+      }
     }
 }
