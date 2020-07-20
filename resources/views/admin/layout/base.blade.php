@@ -23,7 +23,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
     @yield('content')
-    
+
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 3.0.5

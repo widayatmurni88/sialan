@@ -105,7 +105,7 @@
                                     {{ $item->rank}}
                                     <div class="btn-grub">
                                       <a href ="{{ route('editPangkat', $item->id)}}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->pangkat}}"><i class="fa fa-trash"></i></a>
+                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deletePangkat', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->rank}}"><i class="fa fa-trash"></i></a>
                                     </div>
                                   </div>
                                 </td>
@@ -137,12 +137,12 @@
 
 @endsection
 
-@push('bodyresource')
+@push('bodyResource')
 <script  type="text/javascript">
   $('#confirm-delete').on('show.bs.modal', function(e) {
     $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     var rec = $(e.relatedTarget).data('iden');
     $(this).find('#record').text(rec);
-  });
+   });
 </script>
 @endpush

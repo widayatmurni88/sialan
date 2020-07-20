@@ -30,7 +30,7 @@ class RankController extends Controller
             $pangkat->save();
             $msg = ['success' => 'Data berhasil ditambahkan.'];
         } catch (\Throwable $th) {
-            $msg = ['success' => 'Gagal menambahkan.'];
+            $msg = ['error' => 'Gagal menambahkan.'];
         }
 
         return back()->with($msg);
@@ -65,7 +65,18 @@ class RankController extends Controller
           $pangkat->update();
           $msg = ['success' => 'Data berhasil diupdate.'];
       } catch (\Throwable $th) {
-          $msg = ['success' => 'Gagal melakukan update.'];
+          $msg = ['error' => 'Gagal melakukan update.'];
+      }
+      return back()->with($msg);
+    }
+
+    public function deletePangkat($id){
+      try {
+          $pangkat = RankUser::find($id);
+          $pangkat->delete();
+          $msg = ['success' => 'Data berhasil hihapus.'];
+      } catch (\Throwable $th) {
+          $msg = ['error' => 'Gagal melakukan hapus data.'];
       }
       return back()->with($msg);
     }

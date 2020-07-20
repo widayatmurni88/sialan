@@ -121,5 +121,6 @@ Route::prefix('Super')->group( function(){
         Route::get('/Add', 'Admin\RankController@tambahPangkat')->middleware('auth')->name('tambahPangkat');
         Route::get('/Edit/{id}', 'Admin\RankController@editPangkat')->middleware('auth')->name('editPangkat');
         Route::post('/Edit/PostRank', 'Admin\RankController@postEditPangkat')->middleware('auth')->name('postEditPangkat');
+        Route::get('/Delete/{id}', 'Admin\RankController@deletePangkat')->middleware('auth')->name('deletePangkat');
     });
 });
