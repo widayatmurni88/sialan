@@ -41,9 +41,32 @@ class RankController extends Controller
         return redirect()->route('setPangkat');
       }else{
         $data = [
-          'ranks' => RankUser::select('id as ID', 'pangkat as rank')->where('pangkat', 'like' ,"%$req->cari%")->get()
+          'ranks' => RankUser::select('id as id', 'pangkat as rank')->where('pangkat', 'like' ,"%$req->cari%")->get()
         ];
         return view('admin.setrank')->with($data);
       }
+    }
+
+    public function editPangkat($id){
+      $data = [
+        'ranks' => RankUser::select('id as id', 'pangkat as rank')->where('id', $id)->first()
+      ];
+      return view('admin.setrank_edit')->with($data);
+    }
+
+    public function postEditPangkat(Request $req){
+      $this->validate($req,[
+          'id' => 'required',
+          'pangkat' => 'required'
+      ]);
+      try {
+          $pangkat = RankUser::find($req->id);
+          $pangkat->pangkat = $req->pangkat;
+          $pangkat->update();
+          $msg = ['success' => 'Data berhasil diupdate.'];
+      } catch (\Throwable $th) {
+          $msg = ['success' => 'Gagal melakukan update.'];
+      }
+      return back()->with($msg);
     }
 }

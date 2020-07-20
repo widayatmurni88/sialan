@@ -104,7 +104,7 @@
                                   <div class="wrap">
                                     {{ $item->rank}}
                                     <div class="btn-grub">
-                                      <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
+                                      <a href ="{{ route('editPangkat', $item->id)}}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
                                       <a href="" class="btn btn-danger btn-sm btn-act" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->pangkat}}"><i class="fa fa-trash"></i></a>
                                     </div>
                                   </div>

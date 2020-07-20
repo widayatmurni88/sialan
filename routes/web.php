@@ -119,6 +119,7 @@ Route::prefix('Super')->group( function(){
         Route::post('/', 'Admin\RankController@postRankSerach')->middleware('auth')->name('cariPangkat');
         Route::post('/postRank', 'Admin\RankController@postPangkat')->middleware('auth')->name('postPangkat');
         Route::get('/Add', 'Admin\RankController@tambahPangkat')->middleware('auth')->name('tambahPangkat');
-
+        Route::get('/Edit/{id}', 'Admin\RankController@editPangkat')->middleware('auth')->name('editPangkat');
+        Route::post('/Edit/PostRank', 'Admin\RankController@postEditPangkat')->middleware('auth')->name('postEditPangkat');
     });
 });
