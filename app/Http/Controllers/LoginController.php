@@ -17,31 +17,33 @@ class LoginController extends Controller{
             "Username" => "required",
             "Password"   => "required"
         ]);
-        
-        $credensial = [
-            'email' => $req->Username,
-            'password' => $req->Password
-            ];
-        
-        //check email atau username
-        // if(filter_var($req->Username, FILTER_VALIDATE_EMAIL)){
-        //     $credensial = [
+
+        $user = User::find(2);
+
+        dd(\Auth::login($user));
+        // $credensial = [
         //     'email' => $req->Username,
         //     'password' => $req->Password
         //     ];
+        //
+        // //check email atau username
+        // // if(filter_var($req->Username, FILTER_VALIDATE_EMAIL)){
+        // //     $credensial = [
+        // //     'email' => $req->Username,
+        // //     'password' => $req->Password
+        // //     ];
+        // // }
+        //
+        // if(!\Auth::attempt($credensial, true)){//true for remember login
+        //     \Session::flash('msg', 'Email & Password not match!');
+        //     return redirect()->back();
         // }
-        
-        if(!\Auth::attempt($credensial)){
-            \Session::flash('msg', 'Email & Password not match!');
-            return redirect()->back();
-        }
-
-        return redirect()->route('home');
+        //
+        // return redirect()->route('home');
     }
 
     public function logout(){
         \Auth::logout();
-
         return redirect()->route('login');
     }
 }

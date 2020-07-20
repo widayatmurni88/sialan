@@ -3,6 +3,6 @@
     "editor.wordWrap": "on",
     "editor.fontSize": 14,
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Material Theme High Contrast",
+    "workbench.colorTheme": "Material Theme",
     "workbench.iconTheme": "material-icon-theme"
 }

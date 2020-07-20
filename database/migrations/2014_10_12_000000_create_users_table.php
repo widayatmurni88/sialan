@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('level_id')->index()->default('1');
+            $table->enum('level',['super', 'admin', 'instansi','user'])->default('user');
             $table->foreignId('bio_nid')->index();
             $table->rememberToken();
             $table->timestamps();

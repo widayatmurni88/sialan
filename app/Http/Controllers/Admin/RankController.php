@@ -12,7 +12,6 @@ class RankController extends Controller
         $data = [
             'ranks' => RankUser::select('id as id', 'pangkat as rank')->get()
         ];
-
         return view('admin.setrank')->with($data);
     }
 
@@ -32,7 +31,6 @@ class RankController extends Controller
         } catch (\Throwable $th) {
             $msg = ['error' => 'Gagal menambahkan.'];
         }
-
         return back()->with($msg);
     }
 

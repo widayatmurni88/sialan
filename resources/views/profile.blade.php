@@ -41,7 +41,7 @@
                 <div class="form-group row">
                   <label for="nid" class="col-form-label col-md-3">No Identitas</label>
                   <div class="col-md-9">
-                    <input type="text" name="nid" id="nid" class="form-control" value="{{ $profil_data->id}}">
+                    <input type="text" name="nid" id="nid" class="form-control" value="{{ $profil_data->id }}">
                   </div>
                 </div>
 
@@ -86,12 +86,13 @@
                   <label for="pangkat" class="col-form-label col-md-3">Pangkat</label>
                   <div class="col-md-9">
                     <select name="pangkat" id="pangkat" class="form-control">
-                      <option value="ivb">Pembina Tk.II / IVb</option>
-                      <option value="iva">Pembina Tk.II / IVa</option>
+                      @foreach ($ranks as $rank)
+                        <option value="{{$rank->id}}">{{$rank->rank}}</option>
+                      @endforeach
                     </select>
                   </div>
                 </div>
-                
+
                 <div class="form-group row mt-5">
                   <div class="offset-3 col-md-9">
                     <button type="submit" class="btn btn-success btn-round pull-right"><i class="fa fa-save mr-3"></i>Update</button>
