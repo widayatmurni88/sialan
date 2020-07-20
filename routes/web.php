@@ -105,14 +105,6 @@ Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
 
 //Admin Super
 Route::prefix('Super')->group( function(){
-    Route::prefix('UserLevel')->group( function () {
-        Route::get('/', 'Admin\UserLevelController@index')->middleware('auth')->name('userlevel');
-        Route::get('/Add', 'Admin\UserLevelController@tambahLevel')->middleware('auth')->name('tambahlevel');
-        Route::get('/Edit/{id}', 'Admin\UserLevelController@EditLevel')->middleware('auth')->name('editlevel');
-        Route::post('/PostAdd', 'Admin\UserLevelController@postTambahLevel')->middleware('auth')->name('postTambahLevel');
-        Route::put('/PostEdit', 'Admin\UserLevelController@putLevel')->middleware('auth')->name('postEditLevel');
-        Route::get('/Delete/{id}', 'Admin\UserLevelController@deleteLevel')->middleware('auth')->name('deleteLevel');
-    });
 
     Route::prefix('Ranks')->group( function () {
         Route::get('/', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
