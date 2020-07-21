@@ -57,7 +57,7 @@ Route::prefix('Register')->group(function () {
 });
 
 
-Route::get('/Profile/{nid}', 'ProfileController@index')
+Route::get('/Profile', 'ProfileController@index')
     ->middleware('auth')
     ->name('profile');
 Route::get('/Home', 'HomeController@index')
@@ -67,10 +67,10 @@ Route::get('/Home', 'HomeController@index')
 Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
     ->name('dashboard');
 
-Route::get('/DailyActivity/{id}', 'LaporanHarianController@index')->middleware('auth')
+Route::get('/DailyActivity', 'LaporanHarianController@index')->middleware('auth')
     ->name('lapgiatharian');
 
-Route::get('/Perform/{id}', 'KinerjaController@index')->middleware('auth')
+Route::get('/Perform', 'KinerjaController@index')->middleware('auth')
     ->name('kinerja');
 
 //setting App

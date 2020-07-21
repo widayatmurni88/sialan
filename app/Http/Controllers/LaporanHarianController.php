@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class LaporanHarianController extends Controller
 {
-    public function index($id){
+    public function index(){
         return view('lapkegiatanharian');
     }
 }

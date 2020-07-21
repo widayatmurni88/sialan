@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller{
-    public function index($nid){
+    public function index(){
+        $nid = session()->get('nid');
         $data = [
             'ranks'       => \DB::table('rank_users')->select('id', 'pangkat as rank')->get(),
             'profil_data' => \DB::table('biodatas')
