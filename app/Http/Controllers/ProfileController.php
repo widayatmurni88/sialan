@@ -15,4 +15,8 @@ class ProfileController extends Controller{
 
         return view('profile')->with($data);
     }
+
+    public function updateProfil(Request $req){
+        
+    }
 }

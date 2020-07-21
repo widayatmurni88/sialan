@@ -27,7 +27,7 @@ class AcountsController extends Controller
             $user = User::find($id);
             $bio = Biodata::where('nid',$user->bio_nid);
             $bio->delete();
-            $user->delete();
+            // $user->delete();
             $msg = ['success' => 'User berhasil di hapus'];
         }
 
