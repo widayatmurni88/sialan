@@ -32,11 +32,6 @@ Route::get('/Logout', 'LoginController@logout')
     ->middleware('auth')//cuma bisa diakses kalo dusah punya kredensial
     ->name('logout');
 
-Route::prefix('MenageAcounts')->group(function(){
-    Route::get('/', 'AcountsController@index')->middleware('auth')->name('menageAcounts');
-    Route::get('/Delete/{id}', 'AcountsController@deleteAcount')->middleware('auth')->name('deleteUser');
-});
-
 Route::prefix('ForgotPassword')->group(function(){
     Route::get('/', 'ForgotPassword@index')
         ->middleware('guest')
@@ -106,6 +101,12 @@ Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
 //Admin Super
 Route::prefix('Super')->group( function(){
     Route::get('/', 'Admin\DashboardController@index')->middleware('auth')->name('superDash');
+
+    Route::prefix('MenageAcounts')->group(function(){
+        Route::get('/', 'Admin\AcountsController@index')->middleware('auth')->name('manageAkun');
+        Route::get('/Delete/{id}', 'Admin\AcountsController@deleteAkun')->middleware('auth')->name('deleteAkun');
+    });
+
     Route::prefix('Ranks')->group( function () {
         Route::get('/', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
         Route::post('/', 'Admin\RankController@postRankSerach')->middleware('auth')->name('cariPangkat');

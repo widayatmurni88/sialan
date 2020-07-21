@@ -80,16 +80,11 @@ class LoginController extends Controller{
                     return redirect()->route('superDash');
                     break;
                 
-                //for admin pusat
-                case 'admin':
-                    # code...
-                    break;
-
-                case 'instansi':
-                    # code...
-                    break;
-                
                 case 'user':
+                    /* 
+                    pemisahan antara admin pusat, admin instans dan user di lakukan di side menu 
+                    pake teknik police
+                    */
                     return redirect()->route('home');
                     break;
                 

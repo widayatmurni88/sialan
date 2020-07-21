@@ -25,12 +25,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="" class="nav-link {{ ($menu == 'dashboard') ? 'active' : ''}}">
+          
+               <li class="nav-item">
+            <a href="{{ route('superDash') }}" class="nav-link {{ ($menu == 'dashboard') ? 'active' : ''}}">
               <i class="nav-icon fa fa-tachometer"></i>
               <p>Dashboard</p>
             </a>
           </li>
+          
           <li class="nav-header">APP SETTINGS</li>
           <li class="nav-item">
             <a href="{{ route('setPangkat')}}" class="nav-link {{ ($menu == 'pangkat') ? 'active' : ''}}">
@@ -38,6 +40,15 @@
               <p>Pangkat PNS</p>
             </a>
           </li>
+
+          <li class="nav-header">AKUN MANAJEMEN</li>
+          <li class="nav-item">
+            <a href="{{ route('manageAkun')}}" class="nav-link {{ ($menu == 'manageakun') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-cogs"></i>
+              <p>Manage Akun</p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="{{ route('logout')}}" class="nav-link">
               <i class="nav-icon fa fa-sign-out"></i>

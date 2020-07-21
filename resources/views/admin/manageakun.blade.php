@@ -2,7 +2,7 @@
 
 @section('content')
 @include('admin.layout.nav')
-@include('admin.layout.sidebar', ['menu' => 'dashboard'])
+@include('admin.layout.sidebar', ['menu' => 'manageakun'])
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Dashboard</h1>
+          <h1>Manage Akun</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -23,10 +23,10 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header border-0">
-              <h3 class="card-title">Ini Halaman Dashboard</h3>
+              <h3 class="card-title">Ini Halaman Manage Akun</h3>
             </div>
             <div class="card-body">
-              dashbord
+              Daftar Akun
             </div>
           </div>
         </div>
