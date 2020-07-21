@@ -32,7 +32,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('lapgiatharian')}}" class="nav-link {{ ($menu == 'lapgiatharian') ? 'active' : ''}}">
               <i class="nav-icon fa fa-tasks"></i>
               <p>Lap. Kegitan Harian</p>
             </a>

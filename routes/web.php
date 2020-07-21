@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/themes', function () {
-    return view('dashboard');
-});
-
 Route::get('/', function(){
     return redirect('/Login');
 });
@@ -64,11 +60,11 @@ Route::get('/Home', 'HomeController@index')
     ->middleware('auth')
     ->name('home');
 
-Route::get('/Dashboard', 'DashboardController@index')
-    ->middleware('auth')
+Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
     ->name('dashboard');
 
-
+Route::get('/DailyReport', 'LaporanHarianController@index')->middleware('auth')
+    ->name('lapgiatharian');
 
 //setting App
 Route::prefix('setupHariLibur')->group(function(){
