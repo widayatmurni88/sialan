@@ -20,13 +20,10 @@ class ForgotPassword extends Controller{
     }
 
     public function postForgotPassword(Request $req){
-
         $this->validate($req, [
             'email' => 'required|email|exists:users,email'
         ]);
-
         //TODO: kirim link ke email user
-
         //cek token yang dibuat masih aktif atau tidak -> biar ndak ulang2 buat reset token
         $reset = PasswordReset::select('token')->where('email','=',$req->email, 'and')->where('expired','=', '0')->get();
         if (count($reset)>0){
@@ -49,7 +46,6 @@ class ForgotPassword extends Controller{
         }else{
             $msg=['error' => 'Gagal mengirimkan ke email'];
         }
-
         return back()->with($msg);
     }
 
@@ -73,31 +69,27 @@ class ForgotPassword extends Controller{
 
     public function setNewPassword(Request $req){
         //ambil email dari session baru settpassword baru
-
         $this->validate($req, [
             'password' => 'required|confirmed'
         ]);
 
         $akun = new AcountsController();
         if($akun->setNewPassword($req)){
-            return back()->with(['success' => 'New password has been saved.']);
+            return redirect()->route('forgotPwd')->with(['success' => 'New password has been saved.']);
         }else{
-            return redirect()->route('forgotPwd')->with('error', 'Faild to set new passwor! please request set new password again.'); 
+            return redirect()->route('forgotPwd')->with('error', 'Faild to set new password! please request set new password again.'); 
         }
     }
 
     protected function sendResetToEmail($fieldReset){
         $urlReset = config('app.url').'/ForgotPassword/reset/'.$fieldReset['token'].'?email='.$fieldReset['email'];
-
         try {
             Mail::to($fieldReset['email'])->send(new SentResetPassword($urlReset));
             return true;
         } catch (\Exception $e) {
+            dd($e);
             return false;
         }
-
     }
-
-
 
 }

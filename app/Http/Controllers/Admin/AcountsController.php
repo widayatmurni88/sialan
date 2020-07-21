@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Modals\User;
-use App\Modals\Biodata;
+use App\Models\User;
+use App\Models\Biodata;
 
 class AcountsController extends Controller
 {
@@ -21,13 +21,13 @@ class AcountsController extends Controller
 
     public function deleteAkun($id){
         $curActive = auth()->user();
-        if ($curActive->id = $id){
+        if ($curActive->id == $id){
             $msg = ['error' => 'Forbiden delete'];
         }else{
-            // $user = User::find($id);
-            // $bio = Biodata::find($user->bio_id);
-            // $bio->delete();
-            // $user->delete();
+            $user = User::find($id);
+            $bio = Biodata::where('nid',$user->bio_nid);
+            $bio->delete();
+            $user->delete();
             $msg = ['success' => 'User berhasil di hapus'];
         }
 

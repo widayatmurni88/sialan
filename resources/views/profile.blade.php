@@ -25,7 +25,12 @@
         <div class="col-md-3">
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
-              test
+              <div class="text-center">
+                <img src="{{ asset('imgs/person.png') }}" class="profile-user-img img-fluid img-circle" alt="Profile image">
+                <h3 class="profile-username text-center text-uppercase mt-4">{{ Session::get('name')}}</h3>
+                <p class="text-muted text-center">{{ auth()->user()->email}}</p>
+              </div>
+              <a href="" class="btn btn-primary btn-block btn-sm btn-round">Rubah Akun</a>
             </div>
           </div>
         </div>
@@ -36,33 +41,33 @@
             </div>
             <div class="card-body">
               <!-- form -->
-              <form class="form-horizontal" action="" method="post">
+              <form action="" method="post" class="form-horizontal">
 
                 <div class="form-group row">
                   <label for="nid" class="col-form-label col-md-3">No Identitas</label>
                   <div class="col-md-9">
-                    <input type="text" name="nid" id="nid" class="form-control" value="{{ $profil_data->id }}">
+                    <input type="text" name="nid" id="nid" class="form-control" value="{{ $profil_data->id }}" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="name" class="col-form-label col-md-3">Nama Lengkap</label>
                   <div class="col-md-9">
-                    <input type="text" name="name" id="name" class="form-control" value="{{ $profil_data->name}}">
+                    <input type="text" name="name" id="name" class="form-control" value="{{ $profil_data->name}}" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="tmpt_lahir" class="col-form-label col-md-3">Tempat Lahir</label>
                   <div class="col-md-9">
-                    <input type="text" name="tmpt_lahir" id="tmpt_lahir" class="form-control" value="{{ $profil_data->place_bd}}">
+                    <input type="text" name="tmpt_lahir" id="tmpt_lahir" class="form-control" value="{{ $profil_data->place_bd}}" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="tgl_lahir" class="col-form-label col-md-3">Tanggal Lahir</label>
                   <div class="col-md-9">
-                    <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" value="{{ $profil_data->date_bd}}">
+                    <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" value="{{ $profil_data->date_bd}}" required>
                   </div>
                 </div>
 
@@ -85,7 +90,8 @@
                 <div class="form-group row">
                   <label for="pangkat" class="col-form-label col-md-3">Pangkat</label>
                   <div class="col-md-9">
-                    <select name="pangkat" id="pangkat" class="form-control">
+                    <select name="pangkat" id="pangkat" class="form-control" required>
+                      <option value="">---</option>
                       @foreach ($ranks as $rank)
                         <option value="{{$rank->id}}">{{$rank->rank}}</option>
                       @endforeach

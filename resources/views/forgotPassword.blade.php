@@ -5,7 +5,7 @@
     <div class="col-md-8 mx-auto">
       <div class="card card-primary card-outline">
         <div class="card-header">
-          <span class="card-title"></span><b>Resset Password</b></span>
+          <i class="fa fa-unlock-alt mr-3"></i><span class="card-title"></span><b>Resset Password</b></span>
         </div>
         <div class="card-body">
           <div class="row">
@@ -45,14 +45,15 @@
                 <div class="form-group row mt-3">
                   <label for="email" class="form-label col-md-3 text-md-right">Email</label>
                   <div class="col-md-9">
-                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
+                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
                   </div>
                 </div>
 
                 <div class="form-group row mt-4">
                   <div class="col-md-12 text-center">
                     <a class="btn btn-outline-secondary btn-round" href="{{ route('login')}}"><i class="fa fa-chevron-circle-left mr-3"></i> Kembali</a>
-                    <button type="submit" class="btn btn-primary btn-round"><i class="fa fa-refresh mr-3"></i>Send Request</button>
+                    <button type="submit" class="btn btn-primary btn-round"><i class="fa fa-send mr-3"></i>
+                    Kirimkan</button>
                   </div>
                 </div>
               </form>

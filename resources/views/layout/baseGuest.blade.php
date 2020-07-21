@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Top Navigation</title>
+  <title>App Name | Page</title>
 
   <!--Resource-->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -26,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="{{ config('base_url')}}" class="navbar-brand">
+      <a href="{{ route('login')}}" class="navbar-brand">
         <img src="{{ asset('imgs/logo.png')}}" alt="Logo" class="brand-image">
         <span class="brand-text font-weight-light">APP NAME</span>
       </a>
@@ -40,7 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item">
-          <a href="{{ route('login')}}" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+          <a href="{{ route('login')}}" class="nav-link"><i
               class="fa fa-user mr-2"></i>Login</a>
         </li>
       </ul>

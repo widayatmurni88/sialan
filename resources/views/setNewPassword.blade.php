@@ -1,11 +1,13 @@
 @extends('layout.baseGuest')
 @section('content')
-<div class="container">
+<div class="container pt-4">
   <div class="row">
     <div class="col-md-8 mx-auto">
       <div class="card">
         <div class="card-header">
-          <b class="card-title">Atur Password Baru</b>
+          <h3 class="card-title">
+            <i class="fa fa-lock mr-3"></i><b>Atur Password Baru</b>
+          </h3>
         </div>
         <div class="card-body">
           <div class="row">
@@ -21,7 +23,6 @@
               @endif
 
               <form action="{{ route('setNewPassword') }}" method="post">
-            
                 {{ csrf_field() }}
                 <div class="form-group row">
                   <label for="pwd" class="form-label col-md-3 text-md-right">Password Baru</label>
@@ -43,7 +44,7 @@
                   </div>
                 </div>
 
-                <div class="form-group row mt-5">
+                <div class="form-group row mt-4">
                   <div class="col-md-12 text-center">
                     @if ($message = Session::get('success'))
                       <a href="{{ route('login')}}" class="btn btn-outline-secondary btn-round"><i class="fa fa-chevron-circle-left mr-3"></i>Login</a>
