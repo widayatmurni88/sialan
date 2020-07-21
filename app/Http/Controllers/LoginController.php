@@ -85,7 +85,7 @@ class LoginController extends Controller{
                     pemisahan antara admin pusat, admin instans dan user di lakukan di side menu 
                     pake teknik police
                     */
-                    return redirect()->route('home');
+                    return redirect()->route('dashboard');
                     break;
                 
                 default:

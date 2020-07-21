@@ -62,7 +62,7 @@ Route::get('/Profile/{nid}', 'ProfileController@index')
     ->name('profile');
 Route::get('/Home', 'HomeController@index')
     ->middleware('auth')
-    ->name('home');
+    ->name('dashboard');
 
 
 //setting App

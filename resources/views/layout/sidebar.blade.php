@@ -16,7 +16,7 @@
           <img src="{{asset('imgs/person.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="" class="d-block">Nama Akun</a>
+          <a href="" class="d-block">{{ Session::get('name')}}</a>
         </div>
       </div>
 

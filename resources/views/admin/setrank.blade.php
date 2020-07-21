@@ -37,7 +37,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+          </div>
           <!-- End modal delete dialog-->
           <!-- Default box -->
           <div class="card card-rimary card-outline">
