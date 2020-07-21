@@ -32,13 +32,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('lapgiatharian')}}" class="nav-link {{ ($menu == 'lapgiatharian') ? 'active' : ''}}">
+            <a href="{{ route('lapgiatharian', Session::get('nid'))}}" class="nav-link {{ ($menu == 'lapgiatharian') ? 'active' : ''}}">
               <i class="nav-icon fa fa-tasks"></i>
               <p>Lap. Kegitan Harian</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('kinerja', Session::get('nid'))}}" class="nav-link">
               <i class="nav-icon fa fa-folder-open-o"></i>
               <p>Kinerja</p>
             </a>

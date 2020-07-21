@@ -63,8 +63,11 @@ Route::get('/Home', 'HomeController@index')
 Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
     ->name('dashboard');
 
-Route::get('/DailyReport', 'LaporanHarianController@index')->middleware('auth')
+Route::get('/DailyActivity/{id}', 'LaporanHarianController@index')->middleware('auth')
     ->name('lapgiatharian');
+
+Route::get('/Perform/{id}', 'KinerjaController@index')->middleware('auth')
+    ->name('kinerja');
 
 //setting App
 Route::prefix('setupHariLibur')->group(function(){

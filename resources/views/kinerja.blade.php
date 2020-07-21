@@ -2,7 +2,7 @@
 
 @section('content')
 @include('layout.nav')
-@include('layout.sidebar', ['menu' => 'lapgiatharian'])
+@include('layout.sidebar', ['menu' => 'kinerja'])
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Laporan Kegiatan Harian</h1>
+          <h1>Laporan Kinerja</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -25,7 +25,7 @@
           <!-- Default box -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><b>Kegiatan Hari {{ date('D, d-m-Y', strtotime(now())) }}</b></h3>
+              <h3 class="card-title"><b>Laporan Kinerja</b></h3>
             </div>
             <div class="card-body">
               Start creating your amazing application!
