@@ -1,9 +1,9 @@
-@extends('baseLayout')
+@extends('layout.baseGuest')
 @section('content')
-<div class="container">
+<div class="container pt-4">
   <div class="row">
-    <div class="col-md-10 mx-auto">
-      <div class="card">
+    <div class="col-md-8 mx-auto">
+      <div class="card card-primary card-outline">
         <div class="card-header">
           <span class="card-title"></span><b>Resset Password</b></span>
         </div>
@@ -42,17 +42,17 @@
               
               <form class="form-horizontal" action="{{ route('postForgotPassword') }}" method="post">
                 {{ csrf_field() }}
-                <div class="form-group row mt-5">
+                <div class="form-group row mt-3">
                   <label for="email" class="form-label col-md-3 text-md-right">Email</label>
                   <div class="col-md-9">
                     <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}">
                   </div>
                 </div>
 
-                <div class="form-group row mt-5">
+                <div class="form-group row mt-4">
                   <div class="col-md-12 text-center">
                     <a class="btn btn-outline-secondary btn-round" href="{{ route('login')}}"><i class="fa fa-chevron-circle-left mr-3"></i> Kembali</a>
-                    <button type="submit" class="btn btn-success btn-round"><i class="fa fa-refresh mr-3"></i>Send Request</button>
+                    <button type="submit" class="btn btn-primary btn-round"><i class="fa fa-refresh mr-3"></i>Send Request</button>
                   </div>
                 </div>
               </form>

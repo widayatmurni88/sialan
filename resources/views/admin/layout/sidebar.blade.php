@@ -2,9 +2,9 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-      <img src="{{asset('imgs/logo.jpg')}}"
+      <img src="{{asset('imgs/logo.png')}}"
           alt="Logo"
-          class="brand-image img-circle elevation-3">
+          class="brand-image">
       <span class="brand-text font-weight-light">APP NAME</span>
     </a>
 
@@ -13,7 +13,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('imgs/person.png')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('imgs/person.png')}}" class="img-circle elevation-1" alt="User Image">
         </div>
         <div class="info">
           <a href="" class="d-block">{{ Session::get('name')}}</a>

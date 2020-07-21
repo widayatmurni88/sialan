@@ -28,7 +28,7 @@ class SentResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->from('saya@sialan.co.id')
+        return $this->from('noreply@pbitsolution.co.id')
                     ->view('resetPasswordMail')
                     ->with(['link' => $this->link]);
     }

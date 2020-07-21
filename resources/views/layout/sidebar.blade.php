@@ -2,9 +2,9 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-      <img src="{{asset('imgs/logo.jpg')}}"
+      <img src="{{asset('imgs/logo.png')}}"
            alt="Logo"
-           class="brand-image img-circle elevation-3">
+           class="brand-image">
       <span class="brand-text font-weight-light">APP NAME</span>
     </a>
 

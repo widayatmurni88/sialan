@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/base', function () {
+    return view('layout.baseGuest');
+});
+
 Route::get('/', function(){
     return redirect('/Login');
 });
