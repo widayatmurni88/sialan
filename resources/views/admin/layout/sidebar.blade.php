@@ -3,8 +3,8 @@
     <!-- Brand Logo -->
     <a href="" class="brand-link">
       <img src="{{asset('imgs/logo.jpg')}}"
-           alt="Logo"
-           class="brand-image img-circle elevation-3">
+          alt="Logo"
+          class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">APP NAME</span>
     </a>
 
@@ -16,7 +16,7 @@
           <img src="{{asset('imgs/person.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="" class="d-block">Nama Akun</a>
+          <a href="" class="d-block">{{ Session::get('name')}}</a>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="" class="nav-link {{ ($menu == 'dasboard') ? 'active' : ''}}">
+            <a href="" class="nav-link {{ ($menu == 'dashboard') ? 'active' : ''}}">
               <i class="nav-icon fa fa-tachometer"></i>
               <p>Dashboard</p>
             </a>
@@ -36,6 +36,12 @@
             <a href="{{ route('setPangkat')}}" class="nav-link {{ ($menu == 'pangkat') ? 'active' : ''}}">
               <i class="nav-icon fa fa-cogs"></i>
               <p>Pangkat PNS</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('logout')}}" class="nav-link">
+              <i class="nav-icon fa fa-sign-out"></i>
+              <p>Logout</p>
             </a>
           </li>
         </ul>

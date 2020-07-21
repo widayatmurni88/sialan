@@ -105,7 +105,7 @@ Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
 
 //Admin Super
 Route::prefix('Super')->group( function(){
-
+    Route::get('/', 'Admin\DashboardController@index')->middleware('auth')->name('superDash');
     Route::prefix('Ranks')->group( function () {
         Route::get('/', 'Admin\RankController@index')->middleware('auth')->name('setPangkat');
         Route::post('/', 'Admin\RankController@postRankSerach')->middleware('auth')->name('cariPangkat');
