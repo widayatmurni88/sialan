@@ -85,7 +85,13 @@ class LoginController extends Controller{
                     pemisahan antara admin pusat, admin instans dan user di lakukan di side menu 
                     pake teknik police
                     */
-                    return redirect()->route('dashboard');
+
+                    //cek new user(redirect to update profil) or old
+                    if($userInfo->created_at = $userInfo->updated_at){
+                        return redirect()->route('profile', $userInfo->nid);
+                    }else{
+                        return redirect()->route('dashboard');
+                    }
                     break;
                 
                 default:

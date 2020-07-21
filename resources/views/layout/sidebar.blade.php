@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="" class="nav-link {{ ($menu == 'dasboard') ? 'active' : ''}}">
+            <a href="{{ route('dashboard')}}" class="nav-link {{ ($menu == 'dashboard') ? 'active' : ''}}">
               <i class="nav-icon fa fa-tachometer"></i>
               <p>Dashboard</p>
             </a>
@@ -39,13 +39,22 @@
           </li>
           <li class="nav-item">
             <a href="" class="nav-link">
-              <i class="nav-icon fa fa-file-archive-o"></i>
+              <i class="nav-icon fa fa-folder-open-o"></i>
               <p>Kinerja</p>
             </a>
           </li>
-          <li class="nav-header">PROFIL AKUN</li>
+          <!-- Menu untuk admin-->
+          <li class="nav-header">LAPORAN KNERJA (u/adm)</li>
           <li class="nav-item">
-            <a href="{{ route('profile', '123')}}" class="nav-link {{ ($menu == 'profil') ? 'active' : '' }}">
+            <a href="" class="nav-link">
+              <i class="nav-icon fa fa-file-text"></i>
+              <p>Buat Laporan</p>
+            </a>
+          </li>
+
+          <li class="nav-header">MANAJEMEN AKUN</li>
+          <li class="nav-item">
+            <a href="{{ route('profile', Session::get('nid'))}}" class="nav-link {{ ($menu == 'profil') ? 'active' : '' }}">
               <i class="nav-icon fa fa-user-circle"></i>
               <p>Profil</p>
             </a>
@@ -53,11 +62,11 @@
           <li class="nav-item">
             <a href="../calendar.html" class="nav-link">
               <i class="nav-icon fa fa-cogs"></i>
-              <p>Edit Akun</p>
+              <p>Akun</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{route('logout')}}" class="nav-link">
               <i class="nav-icon fa fa-sign-out"></i>
               <p>Logout</p>
             </a>
