@@ -40,7 +40,7 @@
           </div>
           <!-- End modal delete dialog-->
           <!-- Default box -->
-          <div class="card card-rimary card-outline">
+          <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-th-list mr-3"></i><b>Daftar Pangkat</b></h3>
 

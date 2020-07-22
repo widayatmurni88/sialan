@@ -40,7 +40,7 @@
           </div>
           <!-- End modal delete dialog-->
           <!-- Default box -->
-          <div class="card card-rimary card-outline">
+          <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-th-list mr-3"></i><b>Daftar Instansi</b></h3>
 
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col-md-8">
-                  <a href="" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Instansi</a>
+                  <a href="{{ route ('addinstansi')}}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Instansi</a>
                 </div>
 
                 <div class="col-12 mt-3">

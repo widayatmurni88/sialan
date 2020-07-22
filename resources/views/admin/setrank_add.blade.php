@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-md-12">
           <!-- Default box -->
-          <div class="card card-rimary card-outline">
+          <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title"><b>Tambah Pangkat Kepegawaian</b></h3>
 

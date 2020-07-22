@@ -14,4 +14,8 @@ class InstansiController extends Controller{
 
         return view ('admin.instansi')->with($data);
     }
+
+    public function addInstansi(){
+        return view('admin.instansi_add');
+    }
 }

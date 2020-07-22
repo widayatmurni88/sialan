@@ -2,7 +2,7 @@
 
 @section('content')
 @include('admin.layout.nav')
-@include('admin.layout.sidebar', ['menu' => 'pangkat'])
+@include('admin.layout.sidebar', ['menu' => 'instansi'])
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Pengaturan Pangkat</h1>
+          <h1>Pengaturan Instansi</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -24,17 +24,18 @@
           <!-- Default box -->
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title"><b>Tambah Pangkat Kepegawaian</b></h3>
+              <h3 class="card-title"><i class="fa fa-building mr-3"></i><b>Tambah Instansi</b></h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fa fa-minus"></i></button>
               </div>
             </div>
-            <div class="card-body pb-0">
-              <form action="{{ route ('postEditPangkat')}}" method="post" class="form-horizontal">
+            <div class="card-body">
+              <div class="row">
 
-                @if ($message = Session::get('success'))
+                <div class="col-12 mt-3">
+                  @if ($message = Session::get('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                       {{ $message }}
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -52,30 +53,10 @@
                     </div>
                   @endif
 
-                {{ csrf_field() }}
-
-                <div class="form-group row mt-3 mb-5">
-                  <label for="pangkat" class="col-form-label col-md-3">Pangkat Kepegawaian</label>
-                  <div class="col-md-9">
-                    <input type="hidden" name="id" value="{{ $ranks->id }}">
-                    <input type="text" name="pangkat" id="pangkat" class="form-control {{ $errors->has('pangkat') ? 'is-invalid' : ''}}" placeholder="Pangkat Kepegawaian" value="{{ $ranks->rank}}" autofocus>
-                    @if ($errors->has('pangkat'))
-                      <div class="invalid-feedback">
-                        {{ $errors->first('pangkat')}}
-                      </div>
-                    @endif
-                  </div>
+                  
                 </div>
 
-                <hr>
-                <div class="form-group row mt-3">
-                  <div class="col-12">
-                    <a href="{{ route('setPangkat')}}" class="btn btn-outline-secondary btn-round"><i class="fa fa-chevron-circle-left mr-3"></i>Kembali</a>
-                    <button type="submit" class="btn btn-success btn-round pull-right"><i class="fa fa-save mr-3"></i>Simpan</button>
-                  </div>
-                </div>
-
-              </form>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>
@@ -90,12 +71,5 @@
 
 @endsection
 
-@push('bodyresource')
-<script  type="text/javascript">
-  $('#confirm-delete').on('show.bs.modal', function(e) {
-    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-    var rec = $(e.relatedTarget).data('iden');
-    $(this).find('#record').text(rec);
-  });
-</script>
+@push('bodyResource')
 @endpush

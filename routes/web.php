@@ -138,5 +138,7 @@ Route::prefix('Super')->group( function(){
     Route::prefix('Departement')->group(function () {
         Route::get('/', 'Admin\InstansiController@index')->middleware('auth')
             ->name('instansi');
+        Route::get('/Add', 'Admin\InstansiController@addInstansi')->middleware('auth')
+            ->name('addinstansi');
     });
 });
