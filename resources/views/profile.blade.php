@@ -40,9 +40,20 @@
               <h3 class="card-title"><i class="fa fa-user mr-3"></i>Profile</h3>
             </div>
             <div class="card-body">
-              <!-- form -->
-              <form action="" method="post" class="form-horizontal">
+              @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  @foreach ($errors->all() as $item)
+                    <li>{{ $item }}</li>
+                  @endforeach
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
 
+              <!-- form -->
+              <form action="{{route('updateUserProfil')}}" method="post" class="">
+                {{ csrf_field() }}
                 <div class="form-group row">
                   <label for="nid" class="col-form-label col-md-3">No Identitas</label>
                   <div class="col-md-9">
@@ -76,11 +87,11 @@
                   <div class="col-md-9">
                     <div class="form-group">
                         <div class="custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="laki" name="customRadio" checked>
+                          <input class="custom-control-input" type="radio" id="laki" name="jkel" value="1" checked>
                           <label for="laki" class="custom-control-label font-weight-normal">Laki-Laki</label>
                         </div>
                         <div class="custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="perempuan" name="customRadio">
+                          <input class="custom-control-input" type="radio" id="perempuan" name="jkel" value="0">
                           <label for="perempuan" class="custom-control-label font-weight-normal">Perempuan</label>
                         </div>
                     </div>
@@ -101,7 +112,7 @@
 
                 <div class="form-group row mt-5">
                   <div class="offset-3 col-md-9">
-                    <button type="submit" class="btn btn-success btn-round pull-right"><i class="fa fa-save mr-3"></i>Update</button>
+                    <button type="submit" class="btn btn-success btn-round pull-right"><i class="fa fa-save mr-3"></i>Perbarui</button>
                   </div>
                 </div>
 

@@ -56,12 +56,15 @@ Route::prefix('Register')->group(function () {
     Route::post('/PostRegister', 'RegisterController@postRegister')->middleware('guest')->name('postregister');
 });
 
+Route::prefix('Profile')->group( function (){
+    Route::get('/', 'ProfileController@index')->middleware('auth')
+        ->name('profile');
+        
+    Route::post('/Update', 'ProfileController@updateProfile')->middleware('auth')
+        ->name('updateUserProfil');
+});
 
-Route::get('/Profile', 'ProfileController@index')
-    ->middleware('auth')
-    ->name('profile');
-Route::get('/Home', 'HomeController@index')
-    ->middleware('auth')
+Route::get('/Home', 'HomeController@index')->middleware('auth')
     ->name('home');
 
 Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
@@ -99,8 +102,6 @@ Route::prefix('setupHariLibur')->group(function(){
         ->middleware('auth')
         ->name('deleteLibur');
 });
-
-
 
 Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
     ->middleware('auth')

@@ -8,6 +8,8 @@ use App\Models\Biodata;
 
 class LoginController extends Controller{
 
+    protected $uinfo;
+
     public function GateRoute(){
         //checking user level for UI
         
@@ -66,12 +68,7 @@ class LoginController extends Controller{
             \Session::flash('msg', 'Email & Password not match!');
             return redirect()->back();
         }else{
-            $userInfo = Biodata::where('nid',\Auth::user()->bio_nid)->first();
-            $info = [
-                'nid' => $userInfo->nid,
-                'name' => $userInfo->nama
-            ];
-            \Session::put($info);
+            $this->setSessionData(\Auth::user()->bio_nid, false);
             //$this->GateRoute();
             //return redirect()->route('home');
 
@@ -85,10 +82,9 @@ class LoginController extends Controller{
                     pemisahan antara admin pusat, admin instans dan user di lakukan di side menu 
                     pake teknik police
                     */
-
                     //cek new user(redirect to update profil) or old
-                    if($userInfo->created_at = $userInfo->updated_at){
-                        return redirect()->route('profile', $userInfo->nid);
+                    if($this->uinfo->created_at = $this->uinfo->updated_at){
+                        return redirect()->route('profile');
                     }else{
                         return redirect()->route('dashboard');
                     }
@@ -105,5 +101,18 @@ class LoginController extends Controller{
     public function logout(){
         \Auth::logout();
         return redirect()->route('login');
+    }
+
+    //set Session data tambahan
+    //$UpdateSession => indicate to update session data
+    public function setSessionData($userId, $UpdateSession){
+        $this->uinfo = Biodata::find($userId);
+        if ($UpdateSession) {
+            session()->forget(['nid','name']);    
+        }
+        session()->put([
+            'nid' => $this->uinfo->nid,
+            'name' => $this->uinfo->nama
+        ]);
     }
 }
