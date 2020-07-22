@@ -53,6 +53,31 @@
                     </div>
                   @endif
 
+                  <form action="" method="post" class="form-horizontal">
+
+                    <div class="form-group row">
+                      <label for="nama" class="col-form-label col-3">Nama Instansi</label>
+                      <div class="col-9">
+                        <input type="text" name="name" id="nama" class="form-control" value="{{ old('name')}}" required autofocus>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="alamat" class="col-form-label col-3">Alamat</label>
+                      <div class="col-9">
+                        <textarea name="address" id="alamat" cols="30" rows="2" class="form-control">{{ old('address') }}</textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                      <div class="col-12">
+                        <a href="{{ route('instansi') }}" class="btn btn-outline-secondary btn-round"><i class="fa fa-chevron-circle-left mr-3"></i>Kembali</a>
+                        <button type="submit" class="btn btn-success btn-round pull-right"><i class="fa fa-save mr-3"></i>Simpan</button>
+                      </div>
+                    </div>
+
+                  </form>
+
                   
                 </div>
 
