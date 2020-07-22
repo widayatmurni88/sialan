@@ -87,11 +87,11 @@
                   <div class="col-md-9">
                     <div class="form-group">
                         <div class="custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="laki" name="jkel" value="1" checked>
+                          <input class="custom-control-input" type="radio" id="laki" name="jkel" value="1" {{ $profil_data->kel ? 'checked' : ''}}>
                           <label for="laki" class="custom-control-label font-weight-normal">Laki-Laki</label>
                         </div>
                         <div class="custom-control custom-radio">
-                          <input class="custom-control-input" type="radio" id="perempuan" name="jkel" value="0">
+                          <input class="custom-control-input" type="radio" id="perempuan" name="jkel" value="0" {{ !$profil_data->kel ? 'checked' : ''}}>
                           <label for="perempuan" class="custom-control-label font-weight-normal">Perempuan</label>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                     <select name="pangkat" id="pangkat" class="form-control" required>
                       <option value="">---</option>
                       @foreach ($ranks as $rank)
-                        <option value="{{$rank->id}}">{{$rank->rank}}</option>
+                        <option value="{{$rank->id}}" {{($profil_data->rank == $rank->id) ? 'selected' : ''}}>{{$rank->rank}}</option>
                       @endforeach
                     </select>
                   </div>

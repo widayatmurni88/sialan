@@ -11,7 +11,7 @@ class ProfileController extends Controller{
         $data = [
             'ranks'       => \DB::table('rank_users')->select('id', 'pangkat as rank')->get(),
             'profil_data' => \DB::table('biodatas')
-                                ->select('nid as id', 'nama as name', 'tmpt_lahir as place_bd', 'tgl_lahir as date_bd', 'pangkat_id as rank')
+                                ->select('nid as id', 'nama as name', 'tmpt_lahir as place_bd', 'tgl_lahir as date_bd', 'jkel as kel', 'pangkat_id as rank')
                                 ->where('nid', $nid)->first()
         ];
 
