@@ -111,8 +111,9 @@ class LoginController extends Controller{
             session()->forget(['nid','name']);    
         }
         session()->put([
-            'nid' => $this->uinfo->nid,
-            'name' => $this->uinfo->nama
+            'nid'           => $this->uinfo->nid,
+            'name'          => $this->uinfo->nama,
+            'profil_photo'  => $this->uinfo->profil_img
         ]);
     }
 }

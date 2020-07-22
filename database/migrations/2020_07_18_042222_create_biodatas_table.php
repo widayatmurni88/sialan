@@ -20,6 +20,7 @@ class CreateBiodatasTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->boolean('jkel')->nullable();
             $table->foreignId('pangkat_id')->index()->default(0);
+            $table->string('profil_img')->default('person.png');
             $table->timestamps();
         });
     }

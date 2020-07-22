@@ -62,6 +62,12 @@ Route::prefix('Profile')->group( function (){
         
     Route::post('/Update', 'ProfileController@updateProfile')->middleware('auth')
         ->name('updateUserProfil');
+    
+    Route::get('/Account', 'ProfileController@updateAkun')->middleware('auth')
+        ->name('updateAkun');
+    
+    Route::post('/UpdatePhoto', 'ProfileController@uploadFoto')->middleware('auth')
+        ->name('uploadFoto');
 });
 
 Route::get('/Home', 'HomeController@index')->middleware('auth')

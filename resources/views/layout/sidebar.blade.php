@@ -13,7 +13,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('imgs/person.png')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('imgs/profiles/'.session()->get('profil_photo'))}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="" class="d-block">{{ Session::get('name')}}</a>
@@ -57,12 +57,6 @@
             <a href="{{ route('profile')}}" class="nav-link {{ ($menu == 'profil') ? 'active' : '' }}">
               <i class="nav-icon fa fa-user-circle"></i>
               <p>Profil</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="../calendar.html" class="nav-link">
-              <i class="nav-icon fa fa-cogs"></i>
-              <p>Akun</p>
             </a>
           </li>
           <li class="nav-item">

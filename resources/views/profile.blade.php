@@ -26,18 +26,24 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img src="{{ asset('imgs/person.png') }}" class="profile-user-img img-fluid img-circle" alt="Profile image">
+                <img src="{{ asset('imgs/profiles/'.$profil_data->photo) }}" class="profile-user-img img-fluid" alt="Profile image">
                 <h3 class="profile-username text-center text-uppercase mt-4">{{ Session::get('name')}}</h3>
                 <p class="text-muted text-center">{{ auth()->user()->email}}</p>
               </div>
-              <a href="" class="btn btn-primary btn-block btn-sm btn-round">Rubah Akun</a>
+              <a href="{{ route('updateAkun') }}" class="btn btn-primary btn-block btn-sm btn-round">Rubah Akun</a>
             </div>
           </div>
         </div>
         <div class="col-md-9">
-          <div class="card">
+
+          <!--Card Profil-->
+          <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-user mr-3"></i>Profile</h3>
+              <h3 class="card-title"><i class="fa fa-user mr-3"></i><b>Profile</b></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i></button>
+              </div>
             </div>
             <div class="card-body">
               @if ($errors->any())
@@ -120,6 +126,7 @@
               <!-- end form -->
             </div>
           </div>
+          <!--End Card Profil-->
         </div>
       </div>
     </div>
