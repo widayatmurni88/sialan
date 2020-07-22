@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Instansi extends Model{
     protected $table    = 'instansis';
-    protected $fillable = ['nama_ins'];
+    protected $fillable = ['nama_ins', 'alamat'];
     public $timestamps = false;
 }

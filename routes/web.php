@@ -140,5 +140,11 @@ Route::prefix('Super')->group( function(){
             ->name('instansi');
         Route::get('/Add', 'Admin\InstansiController@addInstansi')->middleware('auth')
             ->name('addinstansi');
+        Route::post('/PostAdd', 'Admin\InstansiController@postAddInstansi')->middleware('auth')
+            ->name('postaddinstansi');
+        Route::get('/Edit/{id}', 'Admin\InstansiController@editInstansi')->middleware('auth')
+            ->name('editinstansi');
+        Route::get('/Delete/{id}', 'Admin\InstansiController@deleteInstansi')->middleware('auth')
+            ->name('deleteinstansi');
     });
 });

@@ -53,7 +53,9 @@
                     </div>
                   @endif
 
-                  <form action="" method="post" class="form-horizontal">
+                  <form action="{{ route('postaddinstansi')}}" method="post" class="form-horizontal">
+
+                    {{ csrf_field() }}
 
                     <div class="form-group row">
                       <label for="nama" class="col-form-label col-3">Nama Instansi</label>

@@ -97,16 +97,20 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {{-- @if (count($ranks)>0)
-                          @foreach ($ranks as $item)
+                        @if (count($instansi)>0)
+                        @php
+                            $i = 1;
+                        @endphp
+                          @foreach ($instansi as $item)
                               <tr>
-                                <th scope="row" class="col-1">#</th>
-                                <td class="col-11">
+                                <th scope="row" class="col-1">{{ $i++}}</th>
+                                <td class="col-5">{{ $item->name }}</td>
+                                <td class="col-6">
                                   <div class="wrap">
-                                    {{ $item->rank}}
+                                    {{ $item->addr}}
                                     <div class="btn-grub">
-                                      <a href ="{{ route('editPangkat', $item->id)}}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deletePangkat', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->rank}}"><i class="fa fa-trash"></i></a>
+                                      <a href ="{{ route('editinstansi', $item->id)}}" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
+                                      <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deleteinstansi', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->name}}"><i class="fa fa-trash"></i></a>
                                     </div>
                                   </div>
                                 </td>
@@ -117,7 +121,7 @@
                             <th scope="col" class="col-1"></th>
                             <td class="col-11 text-danger text-center">Data pangkat tidak ditemukan.</td>
                           </tr>
-                        @endif --}}
+                        @endif
                       </tbody>
                     </table>
                   </div>
