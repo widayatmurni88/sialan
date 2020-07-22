@@ -84,14 +84,14 @@
                 <div class="form-group row">
                   <label for="pwd" class="col-form-label col-md-3">Password</label>
                   <div class="col-md-9">
-                    <input type="password" name="password" id="pwd" class="form-control" value="" required>
+                    <input type="password" name="password" id="pwd" class="form-control" value="" placeholder="Password" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="pwd" class="col-form-label col-md-3">Password Konfirmasi</label>
                   <div class="col-md-9">
-                    <input type="password" name="password_confirmation" id="pwd" class="form-control" value="" required>
+                    <input type="password" name="password_confirmation" id="pwd" class="form-control" value="" placeholder="Konfirmasi Password" required>
                   </div>
                 </div>
 

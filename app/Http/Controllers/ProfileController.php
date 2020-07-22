@@ -85,7 +85,10 @@ class ProfileController extends Controller{
         ]);
         
         $akun = new AcountsController();
+
         if($akun->setNewPassword($req)){
+            $updateSes = new LoginController();
+            $updateSes->setSessionData(session()->get('nid'), true);
             return back()->with(['success' => 'Change has been saved.']);
         }else{
             return abort(500);
