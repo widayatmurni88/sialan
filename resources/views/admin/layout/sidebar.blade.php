@@ -40,6 +40,12 @@
               <p>Pangkat PNS</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('instansi')}}" class="nav-link {{ ($menu == 'instansi') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-cogs"></i>
+              <p>Instansi Kerja</p>
+            </a>
+          </li>
 
           <li class="nav-header">AKUN MANAJEMEN</li>
           <li class="nav-item">

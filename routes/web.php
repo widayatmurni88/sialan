@@ -134,4 +134,9 @@ Route::prefix('Super')->group( function(){
         Route::post('/Edit/PostRank', 'Admin\RankController@postEditPangkat')->middleware('auth')->name('postEditPangkat');
         Route::get('/Delete/{id}', 'Admin\RankController@deletePangkat')->middleware('auth')->name('deletePangkat');
     });
+
+    Route::prefix('Departement')->group(function () {
+        Route::get('/', 'Admin\InstansiController@index')->middleware('auth')
+            ->name('instansi');
+    });
 });
