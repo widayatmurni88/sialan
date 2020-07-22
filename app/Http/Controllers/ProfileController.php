@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\AcountsController;
 use App\Models\Biodata;
 use App\Models\User;
@@ -40,6 +41,7 @@ class ProfileController extends Controller{
         $bio->tgl_lahir     = $req->tgl_lahir;
         $bio->jkel          = $req->jkel;
         $bio->pangkat_id    = $req->pangkat;
+        $bio->updated_at    = Carbon::now();
         $bio->update();
 
         $updateSes = new LoginController();

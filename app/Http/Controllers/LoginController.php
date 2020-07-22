@@ -83,7 +83,7 @@ class LoginController extends Controller{
                     pake teknik police
                     */
                     //cek new user(redirect to update profil) or old
-                    if($this->uinfo->created_at = $this->uinfo->updated_at){
+                    if($this->uinfo->created_at == $this->uinfo->updated_at){
                         return redirect()->route('profile');
                     }else{
                         return redirect()->route('dashboard');
