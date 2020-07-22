@@ -41,7 +41,7 @@
           <!--Card Profil-->
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-user mr-3"></i><b>Akun</b></h3>
+              <h3 class="card-title"><i class="fa fa-user mr-3"></i><b>Perbaharui Akun</b></h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fa fa-minus"></i></button>
@@ -60,13 +60,24 @@
                 </div>
               @endif
 
+              @if ($message = session()->get('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                  {{ $message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
+
               <!-- form -->
-              <form action="" method="post" class="form-horizontal">
+              <form action="{{ route('postChangeAkun')}}" method="post" class="form-horizontal">
+
+                {{ csrf_field() }}
 
                 <div class="form-group row">
                   <label for="email" class="col-form-label col-md-3">Email</label>
                   <div class="col-md-9">
-                    <input type="email" name="email" id="email" class="form-control" value="{{ $email }}" required>
+                    <input type="email" name="email" id="email" class="form-control" value="{{ $email }}" required readonly>
                   </div>
                 </div>
 

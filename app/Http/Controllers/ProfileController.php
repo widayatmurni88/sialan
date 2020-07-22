@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\AcountsController;
 use App\Models\Biodata;
 use App\Models\User;
 //use Image;
@@ -75,5 +76,19 @@ class ProfileController extends Controller{
         // })->save($destinationPath.'/'. $imgName);
 
         return back();
+    }
+
+    public function postChangeAkun(Request $req){
+        $this->validate($req,[
+            'email'     => 'required',
+            'password'  => 'required|confirmed'
+        ]);
+        
+        $akun = new AcountsController();
+        if($akun->setNewPassword($req)){
+            return back()->with(['success' => 'Change has been saved.']);
+        }else{
+            return abort(500);
+        }
     }
 }
