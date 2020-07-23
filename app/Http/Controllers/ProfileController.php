@@ -14,8 +14,9 @@ class ProfileController extends Controller{
         $nid = session()->get('nid');
         $data = [
             'ranks'       => \DB::table('ranks')->select('id', 'pangkat as rank')->get(),
+            'instansi'    => \DB::table('instansis')->select('id', 'nama_ins as name', 'alamat as addr')->get(),
             'profil_data' => \DB::table('biodatas')
-                                ->select('nid as id', 'nama as name', 'tmpt_lahir as place_bd', 'tgl_lahir as date_bd', 'jkel as kel', 'pangkat_id as rank', 'profil_img as photo')
+                                ->select('nid as id', 'nama as name', 'tmpt_lahir as place_bd', 'tgl_lahir as date_bd', 'jkel as kel', 'pangkat_id as rank', 'instansi_id as dep','profil_img as photo')
                                 ->where('nid', $nid)->first()
         ];
 
@@ -28,7 +29,8 @@ class ProfileController extends Controller{
             'name'          => 'required',
             'tmpt_lahir'    => 'required',
             'tgl_lahir'     => 'required',
-            'pangkat'       => 'required'
+            'pangkat'       => 'required',
+            'unit'          => 'required'
 
         ]);
 
@@ -41,6 +43,7 @@ class ProfileController extends Controller{
         $bio->tgl_lahir     = $req->tgl_lahir;
         $bio->jkel          = $req->jkel;
         $bio->pangkat_id    = $req->pangkat;
+        $bio->instansi_id   = $req->unit;
         $bio->updated_at    = Carbon::now();
         $bio->update();
 

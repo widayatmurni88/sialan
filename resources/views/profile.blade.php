@@ -63,21 +63,21 @@
                 <div class="form-group row">
                   <label for="nid" class="col-form-label col-md-3">No Identitas</label>
                   <div class="col-md-9">
-                    <input type="text" name="nid" id="nid" class="form-control" value="{{ $profil_data->id }}" required>
+                    <input type="text" name="nid" id="nid" class="form-control {{ $errors->has('nid') ? 'is-invalid' : ''}}" value="{{ $profil_data->id}}" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="name" class="col-form-label col-md-3">Nama Lengkap</label>
                   <div class="col-md-9">
-                    <input type="text" name="name" id="name" class="form-control" value="{{ $profil_data->name}}" required>
+                    <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $profil_data->name}}" required>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="tmpt_lahir" class="col-form-label col-md-3">Tempat Lahir</label>
                   <div class="col-md-9">
-                    <input type="text" name="tmpt_lahir" id="tmpt_lahir" class="form-control" value="{{ $profil_data->place_bd}}" required>
+                    <input type="text" name="tmpt_lahir" id="tmpt_lahir" class="form-control {{ $errors->has('tmpt_lahir') ? 'is-invalid' : '' }}" value="{{ $profil_data->place_bd }}" required>
                   </div>
                 </div>
 
@@ -111,6 +111,18 @@
                       <option value="">---</option>
                       @foreach ($ranks as $rank)
                         <option value="{{$rank->id}}" {{($profil_data->rank == $rank->id) ? 'selected' : ''}}>{{$rank->rank}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="dep" class="col-form-label col-md-3">Unit Kerja</label>
+                  <div class="col-md-9">
+                    <select name="unit" id="dep" class="form-control" required>
+                      <option value="">---</option>
+                      @foreach ($instansi as $ins)
+                        <option value="{{$ins->id}}" {{($profil_data->dep == $ins->id) ? 'selected' : ''}}>{{$ins->name}}</option>
                       @endforeach
                     </select>
                   </div>
