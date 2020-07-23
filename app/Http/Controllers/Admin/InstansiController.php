@@ -49,6 +49,14 @@ class InstansiController extends Controller{
     }
 
     public function editInstansi($id){
-        # code...
+        $data = [
+            'instansi' => Instansi::where('id',$id)->select('id', 'nama_ins as name', 'alamat as addr')->first()
+        ];
+
+        return view('admin.instansi_edit')->with($data);
+    }
+
+    public function postEditInstansi(Request $req){
+        
     }
 }
