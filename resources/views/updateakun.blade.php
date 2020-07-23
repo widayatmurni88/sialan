@@ -26,12 +26,12 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img src="{{ asset('imgs/profiles/'.$photo) }}" class="profile-user-img img-fluid w-100" alt="Profile image">
+                <img src="{{ asset('imgs/profiles/'.$photo) }}" id="photo_preview" class="profile-user-img img-fluid w-100" alt="Profile image">
               </div>
               <form action="{{ route('uploadFoto')}}" method="post" enctype="multipart/form-data" class="form-horizontal mt-3">
                 {{ csrf_field() }}
                   <input type="file" name="photo" id="photo">
-                  <button type="submit" class="btn btn-sm btn-outline-primary btn-round btn-block mt-3"><i class="fa fa-upload mr-3"></i>Upload</button>
+                  <button type="submit" id="upload" class="btn btn-sm btn-outline-primary btn-round btn-block mt-3" disabled><i class="fa fa-upload mr-3"></i>Upload</button>
               </form>
             </div>
           </div>
@@ -122,5 +122,24 @@
     $(document).ready(function () {
       bsCustomFileInput.init();
     });
+
+    (()=>{
+      let event = document.querySelector('#photo');
+      let photo = document.querySelector('#photo_preview');
+
+      event.addEventListener('change', (e)=>{
+        let files = e.target.files;
+
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function () {
+                photo.src = fr.result;
+            }
+            fr.readAsDataURL(files[0]);
+            document.querySelector('#upload').disabled = false;
+        }
+      });
+    })();
   </script>
 @endpush

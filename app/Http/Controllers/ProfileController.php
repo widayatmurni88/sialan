@@ -70,6 +70,8 @@ class ProfileController extends Controller{
         $bio->profil_img = $imgName;
         $bio->update();
 
+        $updateSes = new LoginController();
+        $updateSes->setSessionData(session()->get('nid'), true);
         //resize image
         // $destinationPath = public_path('imgs/profiles/thumbnail');
         // $img = Image::make($image->path());
