@@ -108,11 +108,13 @@ class LoginController extends Controller{
     public function setSessionData($userId, $UpdateSession){
         $this->uinfo = Biodata::find($userId);
         if ($UpdateSession) {
-            session()->forget(['nid','name']);    
+            session()->forget(['nid','name', 'id_pangkat', 'id_instansi', 'profil_photo']);    
         }
         session()->put([
             'nid'           => $this->uinfo->nid,
             'name'          => $this->uinfo->nama,
+            'id_pangkat'    => $this->uinfo->pangkat_id,
+            'id_instansi'   => $this->uinfo->instasi_id,
             'profil_photo'  => $this->uinfo->profil_img
         ]);
     }

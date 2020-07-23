@@ -79,6 +79,9 @@ Route::get('/Home', 'HomeController@index')->middleware('auth')
 Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
     ->name('dashboard');
 
+Route::post('/Absen', 'AbsenKegiatanController@absensi')->middleware('auth')
+    ->name('absensi');
+
 Route::get('/DailyActivity', 'LaporanHarianController@index')->middleware('auth')
     ->name('lapgiatharian');
 

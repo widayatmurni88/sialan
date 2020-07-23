@@ -15,8 +15,8 @@ class CreateAbsensTable extends Migration
     {
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bio_nid');
-            $table->unsignedBigInteger('pangkat_id');
+            $table->unsignedBigInteger('bio_nid')->nullable();
+            $table->unsignedBigInteger('pangkat_id')->nullable();
             $table->timestamp('tgl_absen');
             $table->foreign('bio_nid')->references('nid')->on('biodatas')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('pangkat_id')->references('id')->on('ranks')->onUpdate('cascade')->onDelete('restrict');

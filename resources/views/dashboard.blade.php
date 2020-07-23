@@ -52,7 +52,13 @@
 
                     <div class="group-item row pt-3">
                       <div class="col-12">
-                        <a href="#" class="btn btn-lg btn-primary btn-block"><i class="fa fa-check-circle-o mr-2"></i> Check In</a>
+                        <form action="{{ route('absensi')}}" method="post" id="fabsen">
+                          {{ csrf_field() }}
+                          <input type="hidden" name="nid" value="{{ session()->get('nid')}}">
+                          <input type="hidden" name="pangkat_id" value="{{ session()->get('id_pangkat')}}">
+                          <input type="hidden" name="instansi_id" value="{{ session()->get('id_instansi')}}">
+                          <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-check-circle-o mr-2"></i> Check In</button>
+                        </form>
                       </div>
                     </div>
 

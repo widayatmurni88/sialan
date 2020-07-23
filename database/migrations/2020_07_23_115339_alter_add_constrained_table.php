@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForignKeyTable extends Migration
+class AlterAddConstrainedTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddForignKeyTable extends Migration
     public function up()
     {
         Schema::table('doc_kegiatans', function (Blueprint $table) {
-            $table->foreign('absen_id')->references('id')->on('absens')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('absen_id')->references('id')->on('absens')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
