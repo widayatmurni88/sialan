@@ -119,7 +119,7 @@
                         @else
                           <tr>
                             <th scope="col" class="col-1"></th>
-                            <td class="col-11 text-danger text-center">Data pangkat tidak ditemukan.</td>
+                            <td class="col-11 text-danger text-center">Data tidak ditemukan.</td>
                           </tr>
                         @endif
                       </tbody>

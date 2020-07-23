@@ -57,6 +57,22 @@ class InstansiController extends Controller{
     }
 
     public function postEditInstansi(Request $req){
-        
+        $this->validate($req,[
+            'id'        => 'required',
+            'name'      => 'required',
+            'address'   => 'required'
+        ]);
+
+        try {
+            $ins            = Instansi::find($req->id);
+            $ins->nama_ins  = $req->name;
+            $ins->alamat    = $req->address;
+            $ins->update();
+            $msg = ['success' => 'Perubahan telah disimpan'];
+        } catch (\Throwable $th) {
+            $msg = ['error' => 'Gagal menyimpan perubahan'];
+        }
+
+        return redirect()->route('instansi')->with($msg);
     }
 }
