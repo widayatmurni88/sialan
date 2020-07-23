@@ -19,9 +19,13 @@ class CreateBiodatasTable extends Migration
             $table->string('tmpt_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->boolean('jkel')->nullable();
-            $table->foreignId('pangkat_id')->index()->default(0);
+            $table->unsignedBigInteger('pangkat_id')->nullable();
+            $table->unsignedBigInteger('instansi_id')->nullable();
             $table->string('profil_img')->default('person.png');
             $table->timestamps();
+
+            $table->foreign('pangkat_id')->references('id')->on('ranks')->onUpdate('cascade')->onDelete('set null');
+            $table->foreign('instansi_id')->references('id')->on('instansis')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

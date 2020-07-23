@@ -13,7 +13,7 @@ class ProfileController extends Controller{
     public function index(){
         $nid = session()->get('nid');
         $data = [
-            'ranks'       => \DB::table('rank_users')->select('id', 'pangkat as rank')->get(),
+            'ranks'       => \DB::table('ranks')->select('id', 'pangkat as rank')->get(),
             'profil_data' => \DB::table('biodatas')
                                 ->select('nid as id', 'nama as name', 'tmpt_lahir as place_bd', 'tgl_lahir as date_bd', 'jkel as kel', 'pangkat_id as rank', 'profil_img as photo')
                                 ->where('nid', $nid)->first()

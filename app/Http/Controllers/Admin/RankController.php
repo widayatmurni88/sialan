@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\RankUser;
+use App\Models\Rank;
 
 class RankController extends Controller
 {
     public function index(){
         $data = [
-            'ranks' => RankUser::select('id as id', 'pangkat as rank')->get()
+            'ranks' => Rank::select('id as id', 'pangkat as rank')->get()
         ];
         return view('admin.setrank')->with($data);
     }
@@ -24,7 +24,7 @@ class RankController extends Controller
             'pangkat' => 'required'
         ]);
         try {
-            $pangkat = new RankUser();
+            $pangkat = new Rank();
             $pangkat->pangkat = $req->pangkat;
             $pangkat->save();
             $msg = ['success' => 'Data berhasil ditambahkan.'];
@@ -39,7 +39,7 @@ class RankController extends Controller
         return redirect()->route('setPangkat');
       }else{
         $data = [
-          'ranks' => RankUser::select('id as id', 'pangkat as rank')->where('pangkat', 'like' ,"%$req->cari%")->get()
+          'ranks' => Rank::select('id as id', 'pangkat as rank')->where('pangkat', 'like' ,"%$req->cari%")->get()
         ];
         return view('admin.setrank')->with($data);
       }
@@ -47,7 +47,7 @@ class RankController extends Controller
 
     public function editPangkat($id){
       $data = [
-        'ranks' => RankUser::select('id as id', 'pangkat as rank')->where('id', $id)->first()
+        'ranks' => Rank::select('id as id', 'pangkat as rank')->where('id', $id)->first()
       ];
       return view('admin.setrank_edit')->with($data);
     }
@@ -58,7 +58,7 @@ class RankController extends Controller
           'pangkat' => 'required'
       ]);
       try {
-          $pangkat = RankUser::find($req->id);
+          $pangkat = Rank::find($req->id);
           $pangkat->pangkat = $req->pangkat;
           $pangkat->update();
           $msg = ['success' => 'Data berhasil diupdate.'];
@@ -70,7 +70,7 @@ class RankController extends Controller
 
     public function deletePangkat($id){
       try {
-          $pangkat = RankUser::find($id);
+          $pangkat = Rank::find($id);
           $pangkat->delete();
           $msg = ['success' => 'Data berhasil hihapus.'];
       } catch (\Throwable $th) {
