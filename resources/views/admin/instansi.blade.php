@@ -53,10 +53,10 @@
               <div class="row">
 
                 <div class="col-md-4">
-                <form action="" method="post" class="form-group">
+                <form action="{{ route('searchinstansi')}}" method="post" class="form-group">
                     {{ csrf_field() }}
                     <div class="input-group">
-                      <input type="text" name="cari" id="cari" class="form-control" value="">
+                      <input type="text" name="cari" id="cari" class="form-control {{ $errors->has('cari') ? 'is-invalid' : ''}}" placeholder="Cari nama instansi" value="">
                       <span class="input-group-append">
                         <button type="submit" class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                       </span>

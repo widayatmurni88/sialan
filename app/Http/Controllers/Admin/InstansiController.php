@@ -75,4 +75,18 @@ class InstansiController extends Controller{
 
         return redirect()->route('instansi')->with($msg);
     }
+
+    public function searchInstansi(Request $req){
+        if (trim($req->cari) == ''){
+            $data = [
+                'instansi' => Instansi::select('id', 'nama_ins as name', 'alamat as addr')->orderBy('id','DESC')->get()
+            ];
+        }else{
+            $data = [
+                'instansi' => Instansi::where('nama_ins', 'like', "%$req->cari%")->select('id', 'nama_ins as name', 'alamat as addr')->orderBy('id','DESC')->get()
+            ];
+        }
+
+        return view('admin.instansi')->with($data);
+    }
 }
