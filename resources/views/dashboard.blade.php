@@ -140,7 +140,7 @@
               </div>
             </div>
             <div class="card-footer">
-                <a href="" class="btn btn-primary btn-round pull-right"><i class="fa plus mr-3"></i>Tambah Kegiatan</a>
+                <a href="{{route('addKegiatanHarian')}}" class="btn btn-primary btn-round pull-right"><i class="fa plus mr-3"></i>Tambah Kegiatan</a>
             </div>
             <!-- /.card-body -->
           </div>

@@ -82,8 +82,13 @@ Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
 Route::post('/Absen', 'AbsenKegiatanController@absensi')->middleware('auth')
     ->name('absensi');
 
-Route::get('/DailyActivity', 'LaporanHarianController@index')->middleware('auth')
-    ->name('lapgiatharian');
+Route::prefix('DailyActivity')->group(function(){
+    Route::get('/Add', 'LaporanHarianController@addKegiatanHarian')->middleware('auth')
+        ->name('addKegiatanHarian');
+    Route::get('/ReportPerMonth', 'LaporanHarianController@index')->middleware('auth')
+        ->name('lapgiatharian');
+});
+
 
 Route::get('/Perform', 'KinerjaController@index')->middleware('auth')
     ->name('kinerja');
