@@ -21,7 +21,7 @@ class CreateAbsensTable extends Migration
             $table->timestamp('tgl_absen');
             $table->foreign('bio_nid')->references('nid')->on('biodatas')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('pangkat_id')->references('id')->on('ranks')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('instansi_id')->references('id')->on('instansi')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('instansi_id')->references('id')->on('instansis')->onDelete('restrict')->onUpdate('cascade');
         });
 
     }

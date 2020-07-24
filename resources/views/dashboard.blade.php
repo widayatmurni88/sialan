@@ -3,6 +3,10 @@
 @section('content')
 @include('layout.nav')
 @include('layout.sidebar', ['menu' => 'dashboard'])
+@push('headResource')
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/toastr/toastr.min.css')}}">
+@endpush
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -35,6 +39,11 @@
                 <h6 class="widget-user-desc">{{ 'Jabatan' }}</h6>
               </div>
               <div class="card-body bg-info pt-0">
+                @if (session()->get('status'))
+                  <div class="callout callout-success text-dark">
+                    <i class="fa fa-check mr-3"></i>{{ session()->get('message') }}
+                  </div>
+                @endif
                 <div class="card mb-0">
                   <div class="card-body text-dark">
                     <div class="row border-bottom pb-3">
@@ -57,7 +66,7 @@
                           <input type="hidden" name="nid" value="{{ session()->get('nid')}}">
                           <input type="hidden" name="pangkat_id" value="{{ session()->get('id_pangkat')}}">
                           <input type="hidden" name="instansi_id" value="{{ session()->get('id_instansi')}}">
-                          <button type="submit" class="btn btn-lg btn-primary btn-block"><i class="fa fa-check-circle-o mr-2"></i> Check In</button>
+                          <button type="submit" id="btn_absen" class="btn btn-lg btn-primary btn-block"><i class="fa fa-check-circle-o mr-2"></i> Check In</button>
                         </form>
                       </div>
                     </div>
@@ -73,15 +82,65 @@
           <!-- Default box -->
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Kegiatan hari ini</h3>
+              <h3 class="card-title"><i class="fa fa-tasks mr-3"></i> Kegiatan hari ini</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fa fa-minus"></i></button>
               </div>
             </div>
-            <div class="card-body">
-              Start creating your amazing application!
+            <div class="card-body pt-0">
+              <div class="row">
+                <div class="col-12">
+
+                  {{-- Modal Delete --}}
+                  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content border-danger">
+                              <div class="modal-header bg-danger">
+                                <h4 class="modal-title"><b><i class="fa fa-exclamation-circle mr-2"></i> Konfrimasi</b></h4>
+                              </div>
+                              <div class="modal-body">
+                                  Apakah anda yakin akan menghapus "<span id="record"></span>" ?
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-outline-secondary btn-round" data-dismiss="modal"><i class="fa fa-remove mr-2"></i> Tidak</button>
+                                  <a class="btn btn-outline-danger btn-round btn-ok"><i class="fa fa-trash mr-3"></i>Ya</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  {{-- End Modal delete --}}
+                  <div class="table-responsive">
+                    <table class="table table-hover table-act table-fixed">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="col-1">NO</th>
+                          <th scope="col" class="col-11">NAMA KEGIATAN</th>
+                        </tr>
+                      </thead>
+                      <tbody style="height: 200px">
+                          <tr>
+                            <th scope="col" class="col-1">#</th>
+                            <td class="col-11">
+                              <div class="wrap">
+                                Nama Kegiatan
+                                <div class="btn-grub">
+                                  <a href ="" class="btn btn-info btn-sm btn-act"><i class="fa fa-eye"></i></a>
+                                  <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
+                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ '#' }}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ 'nama kegiatan' }}"><i class="fa fa-trash"></i></a>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+                <a href="" class="btn btn-primary btn-round pull-right"><i class="fa plus mr-3"></i>Tambah Kegiatan</a>
             </div>
             <!-- /.card-body -->
           </div>
@@ -95,3 +154,25 @@
 <!-- /.content-wrapper -->
 
 @endsection
+
+@push('bodyResource')
+  <!-- Toastr -->
+  <script src="{{ asset('adminlte/plugins/toastr/toastr.min.js') }}"></script>
+  <script>
+  $('#confirm-delete').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    var rec = $(e.relatedTarget).data('iden');
+    $(this).find('#record').text(rec);
+  });
+    const form = document.querySelector('#fabsen');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      toastr.success('Rencana mau pake javascript tapi malas');
+    });
+
+    // absen.addEventListener('click', (e)=>{
+    //   e.preventDefault();
+    //   toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.');
+    // });
+  </script>
+@endpush

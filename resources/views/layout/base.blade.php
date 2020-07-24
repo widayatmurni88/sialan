@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
   <!-- BS Script-->
   <script src="{{ asset('js/bootstrap.js') }}"></script>
-
   <!--adminlte-->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">

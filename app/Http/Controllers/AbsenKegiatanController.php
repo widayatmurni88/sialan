@@ -29,17 +29,33 @@ class AbsenKegiatanController extends Controller
         // }
         
         // try {
-            $absen = new Absen();
-            $absen->bio_nid     = $nid;
-            $absen->pangkat_id  = $pangkat_id;
-            $absen->instansi_id = $ins_id;
-            $absen->tgl_absen   = Carbon::now();
-            $absen->save();
-            $msg = ['success' => 'Absen sukses'];
+            //cek absen
+            if(!$this->cekStatusAbsen($nid)){
+                $absen = new Absen();
+                $absen->bio_nid     = $nid;
+                $absen->pangkat_id  = $pangkat_id;
+                $absen->instansi_id = $ins_id;
+                $absen->tgl_absen   = Carbon::now();
+                $absen->save();
+                $msg = ['status' => TRUE, 'message' => 'Terimakasih sudah absen hari ini'];
+            }else{
+                $msg = ['status' => TRUE, 'message' => 'Sudah absen'];
+            }
+
         // } catch (\Throwable $th) {
         //     $msg = ['error' => 'internal server eror!'];
         // }
 
         return back()->with($msg);
+    }
+
+    private function cekStatusAbsen($id){
+        $abs = Absen::where('bio_nid',$id)->where('tgl_absen', 'like', '%' . date('Y-m-d', strtotime(now())) . '%')->first();
+
+        if($abs == null){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
     }
 }
