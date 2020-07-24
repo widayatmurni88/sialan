@@ -111,6 +111,26 @@
                       </div>
                   </div>
                   {{-- End Modal delete --}}
+
+                  {{-- notif hapus data --}}
+                  @if (session()->get('ksuccess'))
+                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                      {{ session()->get('ksuccess')}}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  @endif
+                  @if (session()->get('kerror'))
+                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                      {{ session()->get('kerror')}}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  @endif
+                  {{-- end notif --}}
+
                   <div class="table-responsive">
                     <table class="table table-hover table-act table-fixed">
                       <thead>
@@ -120,19 +140,29 @@
                         </tr>
                       </thead>
                       <tbody style="height: 200px">
-                          <tr>
-                            <th scope="col" class="col-1">#</th>
-                            <td class="col-11">
-                              <div class="wrap">
-                                Nama Kegiatan
-                                <div class="btn-grub">
-                                  <a href ="" class="btn btn-info btn-sm btn-act"><i class="fa fa-eye"></i></a>
-                                  <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                                  <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ '#' }}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ 'nama kegiatan' }}"><i class="fa fa-trash"></i></a>
+
+                        @if (count($kegiatan) > 0)
+                          @foreach ($kegiatan as $item)
+                            <tr>
+                              <th scope="col" class="col-1">#</th>
+                              <td class="col-11">
+                                <div class="wrap">
+                                  {{$item->title}}
+                                  <div class="btn-grub">
+                                    <a href ="" class="btn btn-info btn-sm btn-act"><i class="fa fa-eye"></i></a>
+                                    <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
+                                    <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deleteKegiatan', $item->id) }}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->title }}"><i class="fa fa-trash"></i></a>
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                          </tr>
+                              </td>
+                            </tr>
+                          @endforeach
+                        @else
+                            <tr>
+                              <th scope="col" class="col-1"></th>
+                              <td class="col-11 text-center text-danger">.: Data masih kosong :.</td>
+                            </tr>
+                        @endif
                       </tbody>
                     </table>
                   </div>
@@ -140,7 +170,7 @@
               </div>
             </div>
             <div class="card-footer">
-                <a href="{{route('addKegiatanHarian')}}" class="btn btn-primary btn-round pull-right"><i class="fa plus mr-3"></i>Tambah Kegiatan</a>
+                <a href="{{route('addKegiatanHarian', $idabsen)}}" class="btn btn-round pull-right {{ ($idabsen == 'null' ) ? 'btn-outline-secondary disabled' : 'btn-primary' }}"><i class="fa fa-plus mr-3"></i>Tambah Kegiatan</a>
             </div>
             <!-- /.card-body -->
           </div>
@@ -159,16 +189,19 @@
   <!-- Toastr -->
   <script src="{{ asset('adminlte/plugins/toastr/toastr.min.js') }}"></script>
   <script>
-  $('#confirm-delete').on('show.bs.modal', function(e) {
-    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-    var rec = $(e.relatedTarget).data('iden');
-    $(this).find('#record').text(rec);
-  });
-    const form = document.querySelector('#fabsen');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      toastr.success('Rencana mau pake javascript tapi malas');
+    //delete modal
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+      $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+      var rec = $(e.relatedTarget).data('iden');
+      $(this).find('#record').text(rec);
     });
+
+    //absen submit
+    // const form = document.querySelector('#fabsen');
+    // form.addEventListener('submit', (e)=>{
+    //   e.preventDefault();
+    //   toastr.success('Rencana mau pake javascript tapi malas');
+    // });
 
     // absen.addEventListener('click', (e)=>{
     //   e.preventDefault();

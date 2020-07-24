@@ -58,4 +58,14 @@ class AbsenKegiatanController extends Controller
             return TRUE;
         }
     }
+
+    public function getIdAbsen($nid){
+        $abs = Absen::where('bio_nid',$nid)->where('tgl_absen', 'like', '%' . date('Y-m-d', strtotime(now())) . '%')->select('id')->first();
+        if($abs == null){
+            $abs = 'null';
+        }else{
+            $abs = $abs->id;
+        }
+        return $abs;
+    }
 }

@@ -15,7 +15,8 @@ class CreateDocKegiatansTable extends Migration
     {
         Schema::create('doc_kegiatans', function (Blueprint $table) {
             $table->id();
-            $table->string('desk_kegiatan');
+            $table->string('title');
+            $table->text('desk')->nullable();
             $table->string('file_link');
             $table->unsignedBigInteger('absen_id');
             $table->timestamps();
