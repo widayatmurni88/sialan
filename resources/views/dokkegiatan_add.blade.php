@@ -3,6 +3,11 @@
 @section('content')
 @include('layout.nav')
 @include('layout.sidebar', ['menu' => 'dashboard'])
+
+@push('headResource')
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
+@endpush
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -50,7 +55,7 @@
                     <div class="form-group row">
                       <label for="desc" class="col-form-label col-3">Deskripsi</label>
                       <div class="col-9">
-                        <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ old('desc')}}</textarea>
+                        <textarea name="desc" id="deskripsi" cols="30" rows="40" class="form-control">{{ old('desc')}}</textarea>
                         <small class="text-danger">Deskripsi kegiatan adalah opsional.</small>
                       </div>
                     </div>
@@ -86,3 +91,13 @@
 <!-- /.content-wrapper -->
 
 @endsection
+
+@push('bodyResource')
+<script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
+  <script>
+  $(function () {
+    //Add text editor
+    $('#deskripsi').summernote()
+  })
+  </script>
+@endpush

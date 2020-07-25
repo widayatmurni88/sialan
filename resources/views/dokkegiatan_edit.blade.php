@@ -5,7 +5,7 @@
 @include('layout.sidebar', ['menu' => 'dashboard'])
 
 @push('headResource')
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
+<link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.css')}}">
 @endpush
 
 <!-- Content Wrapper. Contains page content -->
