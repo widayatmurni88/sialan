@@ -38,7 +38,7 @@
 
               @if (date('Ymd', strtotime($kegiatan->time)) == date('Ymd', strtotime(now())))
                 <div class="mailbox-controls with-border text-center">
-                  <a href="" class="btn btn-sm btn-outline-info"><i class="fa fa-pencil"></i></a>
+                  <a href="{{ route('editkegiatanharian', $kegiatan->id) }}" class="btn btn-sm btn-outline-info"><i class="fa fa-pencil"></i></a>
                   <a href="{{ route('deleteKegiatan',$kegiatan->id)}}" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
                 </div>
               @endif

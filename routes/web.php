@@ -89,6 +89,10 @@ Route::prefix('DailyActivity')->group(function(){
         ->name('postAddKegiatanHarian');
     Route::get('/Preview/{id}', 'LaporanHarianController@previewKegiatan')->middleware('auth')
         ->name('previewkegiatan');
+    Route::get('/Edit/{id}','LaporanHarianController@editKegiatanHarian')->middleware('auth')
+        ->name('editkegiatanharian');
+    Route::post('/PostEdit','LaporanHarianController@postEditKegiatanHarian')->middleware('auth')
+        ->name('posteditkegiatanharian');
     Route::get('/DeleteActivity/{idActivity}', 'LaporanHarianController@deleteKegiatan')->middleware('auth')
         ->name('deleteKegiatan');
     Route::get('/ReportPerMonth', 'LaporanHarianController@index')->middleware('auth')

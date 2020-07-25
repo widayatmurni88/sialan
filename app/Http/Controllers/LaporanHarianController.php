@@ -80,4 +80,15 @@ class LaporanHarianController extends Controller
         ];
         return view('dokkegiatan_preview')->with($data);
     }
+
+    public function editkegiatanharian($idKegiatan){
+        $data = [
+            'kegiatan' => DocKegiatan::where('id', $idKegiatan)->select('id', 'title as ttl', 'desk as desc', 'file_link as file', 'updated_at as time')->first()
+        ];
+        return view('dokkegiatan_edit')->with($data);
+    }
+
+    public function postEditKegiatanHarian(Request $req){
+        dd('post edit kegiatan');
+    }
 }
