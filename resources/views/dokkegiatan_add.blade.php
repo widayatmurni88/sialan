@@ -51,12 +51,14 @@
                       <label for="desc" class="col-form-label col-3">Deskripsi</label>
                       <div class="col-9">
                         <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ old('desc')}}</textarea>
+                        <small class="text-danger">Deskripsi kegiatan adalah opsional.</small>
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-9 offset-3">
-                        <input type="file" name="dokumen" id="dokumen">
+                        <input type="file" name="dokumen" class="w-100" id="dokumen">
+                        <small class="text-danger">File lampiran disini</small>
                       </div>
                     </div>
 

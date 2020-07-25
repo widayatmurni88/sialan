@@ -121,6 +121,7 @@
                       </button>
                     </div>
                   @endif
+
                   @if (session()->get('kerror'))
                     <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
                       {{ session()->get('kerror')}}
@@ -139,7 +140,7 @@
                           <th scope="col" class="col-11">NAMA KEGIATAN</th>
                         </tr>
                       </thead>
-                      <tbody style="height: 200px">
+                      <tbody style="height: 168px">
 
                         @if (count($kegiatan) > 0)
                           @foreach ($kegiatan as $item)
@@ -149,9 +150,9 @@
                                 <div class="wrap">
                                   {{$item->title}}
                                   <div class="btn-grub">
-                                    <a href ="" class="btn btn-info btn-sm btn-act"><i class="fa fa-eye"></i></a>
-                                    <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deleteKegiatan', $item->id) }}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->title }}"><i class="fa fa-trash"></i></a>
+                                    <a href ="{{ route('previewkegiatan', $item->id)}}" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye"></i></a>
+                                    <a href ="" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+                                    <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deleteKegiatan', $item->id) }}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->title }}"><i class="fa fa-trash"></i></a>
                                   </div>
                                 </div>
                               </td>

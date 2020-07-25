@@ -20,7 +20,7 @@ class LaporanHarianController extends Controller
         }else{
             $msg = ['status'=>TRUE, 'idabsen' => $idabsen];
         }
-        return view('dok_kegiatan_add')->with($msg);
+        return view('dokkegiatan_add')->with($msg);
     }
 
     public function postAddKegiatanHarian(Request $req){
@@ -32,19 +32,27 @@ class LaporanHarianController extends Controller
         
 
         //upload move filenya dulu baru simpen ke db
-        $id = date('YmdHis', strtotime(now()));
-        $file = $req->file('dokumen');
-        $fileName = $id.'.'.$file->getClientOriginalExtension();
-        $file->move('docs/',$fileName);
-
-        $docKegiatan = new DocKegiatan();
-        $docKegiatan->id           = $id;
-        $docKegiatan->absen_id     = $req->id_absen;
-        $docKegiatan->title        = $req->title;
-        $docKegiatan->desk         = $req->desc;
-        $docKegiatan->file_link    = $fileName;
-        $docKegiatan->save();
-        return back();
+        try {
+            $id = date('YmdHis', strtotime(now()));
+            $fileName = '';
+            $file = $req->file('dokumen');
+            
+            if($file != null){
+                $fileName = $id.'.'.$file->getClientOriginalExtension();
+                $file->move('docs/',$fileName);
+            }
+    
+            $docKegiatan = new DocKegiatan();
+            $docKegiatan->id           = $id;
+            $docKegiatan->absen_id     = $req->id_absen;
+            $docKegiatan->title        = $req->title;
+            $docKegiatan->desk         = $req->desc;
+            $docKegiatan->file_link    = $fileName;
+            $docKegiatan->save();
+            return back();
+        } catch (\Throwable $th) {
+            return abort(500);
+        }
     }
 
     public function getKegiatan($idAbsen){
@@ -64,5 +72,12 @@ class LaporanHarianController extends Controller
         }
 
         return back()->with($msg);
+    }
+
+    public function previewKegiatan($idKegiatan){
+        $data = [
+            'kegiatan' => DocKegiatan::where('id', $idKegiatan)->select('id', 'title as ttl', 'desk as desc', 'file_link as file', 'updated_at as time')->first()
+        ];
+        return view('dokkegiatan_preview')->with($data);
     }
 }

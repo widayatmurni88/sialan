@@ -17,7 +17,7 @@ class CreateDocKegiatansTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('desk')->nullable();
-            $table->string('file_link');
+            $table->string('file_link')->nullable();
             $table->unsignedBigInteger('absen_id');
             $table->timestamps();
         });

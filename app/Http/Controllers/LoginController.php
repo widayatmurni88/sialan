@@ -64,7 +64,7 @@ class LoginController extends Controller{
         //     ];
         // }
         
-        if(!\Auth::attempt($credensial, true)){//true for remember login
+        if(!\Auth::attempt($credensial, false)){//true for remember login
             \Session::flash('msg', 'Email & Password not match!');
             return redirect()->back();
         }else{
