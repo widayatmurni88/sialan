@@ -89,6 +89,26 @@ class LaporanHarianController extends Controller
     }
 
     public function postEditKegiatanHarian(Request $req){
-        dd('post edit kegiatan');
+        $this->validate($req,[
+            'id'        => 'required',
+            'title'     => 'required',
+            'dokumen'   => 'max:5120'
+        ]);
+        
+        if($req->dokumen != null){
+            $file = $req->file('dokumen');
+            $fileName = $req->id.'.'.$file->getClientOriginalExtension();
+            $file->move('docs/', $fileName);
+        }
+
+        $kegiatan = DocKegiatan::find($req->id);
+        $kegiatan->title = $req->title;
+        $kegiatan->desk  = $req->desc;
+        if($req->dokumen != null){
+            $kegiatan->file_link = $fileName;
+        }
+        $kegiatan->update();
+
+        return redirect()->route('dashboard');
     }
 }

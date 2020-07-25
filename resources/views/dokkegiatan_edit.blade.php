@@ -40,6 +40,12 @@
               <div class="row">
                 <div class="col-12">
 
+                  @if ($errors->any())
+                    @foreach ($errors->all() as $er)
+                      {{ $er }}
+                    @endforeach
+                  @endif
+
                   @if ($kegiatan != null)
 
                     <form action="{{ route('posteditkegiatanharian')}}" method="post" enctype="multipart/form-data">
@@ -47,7 +53,7 @@
                       <div class="form-group row">
                         <label for="title" class="col-form-label col-3">Judul kegiatan</label>
                         <div class="col-9">
-                          <input type="hidden" name="id_absen" value="{{ $kegiatan->id}}">
+                          <input type="hidden" name="id" value="{{ $kegiatan->id}}">
                           <input type="text" name="title" id="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : ''}}" value="{{ $kegiatan->ttl}}" autofocus required>
                         </div>
                       </div>
@@ -103,7 +109,7 @@
   <script>
   $(function () {
     //Add text editor
-    $('#deskripsi').summernote()
+    $('#deskripsi').summernote();
   })
   </script>
 @endpush

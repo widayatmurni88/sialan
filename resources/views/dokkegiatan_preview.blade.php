@@ -44,7 +44,7 @@
               @endif
 
               <div class="mailbox-read-message">
-                {{$kegiatan->desc}}
+                {!! $kegiatan->desc !!}
               </div>
             </div>
             
