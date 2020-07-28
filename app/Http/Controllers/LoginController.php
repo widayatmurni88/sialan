@@ -114,7 +114,7 @@ class LoginController extends Controller{
             'nid'           => $this->uinfo->nid,
             'name'          => $this->uinfo->nama,
             'id_pangkat'    => $this->uinfo->pangkat_id,
-            'id_instansi'   => $this->uinfo->instasi_id,
+            'id_instansi'   => $this->uinfo->instansi_id,
             'profil_photo'  => $this->uinfo->profil_img
         ]);
     }

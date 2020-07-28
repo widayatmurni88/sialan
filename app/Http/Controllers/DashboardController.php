@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\InstansiController;
 
 
 class DashboardController extends Controller
@@ -16,9 +17,13 @@ class DashboardController extends Controller
             $kegiatan = $kegiatan->getKegiatan($idAbsen);
         }
 
+        $instansi = new InstansiController();
+        $instansi = $instansi->getInstansi(session()->get('id_instansi'));
+
         $data = [
             'idabsen' => $idAbsen, 
-            'kegiatan' => $kegiatan
+            'kegiatan' => $kegiatan,
+            'instansi' =>  $instansi
         ];
         return view('dashboard')->with($data);
     }

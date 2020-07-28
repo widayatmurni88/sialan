@@ -48,14 +48,20 @@
                   <div class="card-body text-dark">
                     <div class="row border-bottom pb-3">
                       <div class="col-6"><b>Jadwal Kerja</b></div>
-                      <div class="col-6 text-right">Senin, 20-12-2020</div>
+                      <div class="col-6 text-right">{{ date('D, d-m-Y', strtotime(now())) }}</div>
                     </div>
                     <div class="group-item row pt-3 pb-3">
                       <div class="col-12 text-center"><h3 class="mb-0"><b>08:00 - 16:00</b></h3></div>
                     </div>
                     <div class="group-item row pt-2 pb-2 border-bottom">
                       <div class="col-12">
-                        ALamat Kantor
+                        <div class="clearfix d-flex">
+                          <i class="fa fa-building fa-2x"></i>
+                        </div>
+                        <div class="clearfix d-inline">
+                          <b class="d-block">{{ $instansi->name }}</b>
+                          <small>{{ $instansi->addr }}</small>
+                        </div>
                       </div>
                     </div>
 

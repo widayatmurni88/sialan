@@ -89,4 +89,8 @@ class InstansiController extends Controller{
 
         return view('admin.instansi')->with($data);
     }
+
+    public function getInstansi($idInstansi){
+        return Instansi::where('id', $idInstansi)->select('id', 'nama_ins as name', 'alamat as addr')->first();
+    }
 }
