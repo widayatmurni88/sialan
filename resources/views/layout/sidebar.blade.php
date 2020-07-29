@@ -43,14 +43,16 @@
               <p>Kinerja</p>
             </a>
           </li>
+
           <!-- Menu untuk admin-->
-          <li class="nav-header">LAPORAN KNERJA (u/adm)</li>
+          <li class="nav-header">KINERJA PEGAWAI</li>
           <li class="nav-item">
             <a href="" class="nav-link">
               <i class="nav-icon fa fa-file-text"></i>
-              <p>Buat Laporan</p>
+              <p>Laporan Kinerja</p>
             </a>
           </li>
+          
 
           <li class="nav-header">MANAJEMEN AKUN</li>
           <li class="nav-item">
