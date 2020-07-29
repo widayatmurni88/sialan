@@ -2,7 +2,8 @@
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
     "editor.fontSize": 14,
-    "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Material Theme",
+    "editor.minimap.enabled": true,
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Dark+ Material",
     "workbench.iconTheme": "material-icon-theme"
 }

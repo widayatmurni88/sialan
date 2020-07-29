@@ -111,4 +111,18 @@ class LaporanHarianController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function getAbsenPerUser($nid){
+        $hadir = Absen::where('bio_nid', $nid)->get();
+
+        foreach ($hadir as $d) {
+            $dataHadir [] = [
+                'id'    => $d->id,
+                'title' => 'Hadir',
+                'start' => $d->tgl_absen
+            ];
+        }
+
+        return response()->json($dataHadir);
+    }
 }

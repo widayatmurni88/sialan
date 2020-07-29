@@ -16,8 +16,8 @@
   <!--adminlte-->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  @stack('headResource')
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700">
+@stack('headResource')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
