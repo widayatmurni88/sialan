@@ -113,16 +113,37 @@ class LaporanHarianController extends Controller
     }
 
     public function getAbsenPerUser($nid){
-        $hadir = Absen::where('bio_nid', $nid)->get();
+        $hadir = Absen::select('absens.id as abs_id', 'absens.tgl_absen as tgl', 'doc_kegiatans.id as doc_id')
+                        ->leftJoin('doc_kegiatans', 'absens.id', '=', 'doc_kegiatans.absen_id')
+                        ->where('bio_nid', $nid)
+                        ->groupBy('absens.id')
+                        ->get();
 
         foreach ($hadir as $d) {
-            $dataHadir [] = [
-                'id'    => $d->id,
-                'title' => 'Hadir',
-                'start' => $d->tgl_absen
-            ];
+            if($d->doc_id != null){
+                $dataHadir [] = [
+                    'id'    => $d->abs_id,
+                    'title' => 'Hadir',
+                    'start' => $d->tgl,
+                    'url'   => route('previewlistkegiatan',$d->abs_id)
+                ];
+            }else{
+                $dataHadir [] = [
+                    'id'    => $d->abs_id,
+                    'title' => 'Hadir',
+                    'start' => $d->tgl,
+                ];
+            }
         }
 
         return response()->json($dataHadir);
+    }
+
+    public function previewListKegiatan($idAbsen){
+        $data = [
+            'kegiatan' => $this->getKegiatan($idAbsen)
+        ];
+
+        return view('dokkegiatan_list_preview')->with($data);
     }
 }
