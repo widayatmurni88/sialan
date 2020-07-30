@@ -44,14 +44,19 @@
             </a>
           </li>
 
+          @if ((auth()->user()->level == 'admin') || (auth()->user()->level == 'instansi'))
+              
           <!-- Menu untuk admin-->
           <li class="nav-header">KINERJA PEGAWAI</li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('kinerjapegawai') }}" class="nav-link {{ ($menu == 'kinerja') ? 'active' : ''}}">
               <i class="nav-icon fa fa-file-text"></i>
               <p>Laporan Kinerja</p>
             </a>
           </li>
+          
+          @endif
+          
           
 
           <li class="nav-header">MANAJEMEN AKUN</li>

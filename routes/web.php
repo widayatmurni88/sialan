@@ -102,6 +102,13 @@ Route::prefix('DailyActivity')->group(function(){
     Route::get('/getReportAbsenPerMonth/{nid}', 'LaporanHarianController@getAbsenPerUser')->middleware('auth');
 });
 
+Route::prefix('Report')->group( function(){
+    Route::get('/{data?}', 'LaporanKinerjaController@index')->middleware('auth')->name('kinerjapegawai');
+
+    Route::post('/', 'LaporanKinerjaController@getAbsenPerInstansi')->middleware('auth')
+        ->name('kinerjapegawaiinstansi');
+});
+
 
 Route::get('/Perform', 'KinerjaController@index')->middleware('auth')
     ->name('kinerja');

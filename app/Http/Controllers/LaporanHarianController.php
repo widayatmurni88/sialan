@@ -146,4 +146,5 @@ class LaporanHarianController extends Controller
 
         return view('dokkegiatan_list_preview')->with($data);
     }
+
 }

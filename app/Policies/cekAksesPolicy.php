@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LaporanPolicies
+class cekAksesPolicy
 {
     use HandlesAuthorization;
 
@@ -17,5 +17,9 @@ class LaporanPolicies
     public function __construct()
     {
         //
+    }
+
+    public function veiw(User $user, ){
+        # code...
     }
 }
