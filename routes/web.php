@@ -107,6 +107,9 @@ Route::prefix('Report')->group( function(){
 
     Route::post('/', 'LaporanKinerjaController@getAbsenPerInstansi')->middleware('auth')
         ->name('kinerjapegawaiinstansi');
+    
+    Route::get('/Print/{instansi}/{bulan}/{tahun}', 'LaporanKinerjaController@printLaporan')->middleware('auth')->name('printlaporan');
+
 });
 
 

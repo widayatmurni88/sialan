@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Absen;
 use App\Models\Instansi;
+use PDF;
 
 class LaporanKinerjaController extends Controller
 {
@@ -91,11 +92,29 @@ class LaporanKinerjaController extends Controller
                 $hadir = [];
             }
         } 
+        $instansi = Instansi::select('id','nama_ins')->where('id',$idInstansi)->first();
         return [
             'periode_bln'   => $bulan,
             'periode_thn'   => $tahun,
-            'instansi'  => Instansi::select('nama_ins')->where('id',$idInstansi)->first()->nama_ins,
+            'id_instansi'   => $instansi->id,
+            'instansi'  => $instansi->nama_ins,
             'kehadiran' => $kehadiran
         ];
+    }
+
+    public function printLaporan($idInstansi, $bulan, $tahun){
+
+        $data = $this->getKehadiranPerInstansi($idInstansi, $bulan, $tahun);
+
+
+        $customPaper = array(0,0,850,1300);
+        $pdf = PDF::loadview('printabsen', ['data' => $data])->setPaper($customPaper, 'landscape');
+        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        $pdf->output();
+        $dom_pdf = $pdf->getDomPDF();
+
+        $canvas = $dom_pdf ->get_canvas();
+        $canvas->page_text(1210, 20, "Hal : {PAGE_NUM} / {PAGE_COUNT}", null, 10, array(0, 0, 0));
+        return $pdf->stream();
     }
 }

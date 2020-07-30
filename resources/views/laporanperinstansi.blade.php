@@ -124,7 +124,7 @@
                              
                               @if ($index < count($item['hadir']))
                                 @if (date('Y-m-d', strtotime($item['hadir'][$index][0])) == date('Y-m-d', strtotime($i+1 .'-'.$data['periode_bln'].'-'.$data['periode_thn'])))
-                                  <td><i class="fa fa-check-square-o"></i></td>
+                                  <td>&#10004;</td>
                                   @php
                                     $index++
                                   @endphp
@@ -153,7 +153,7 @@
 
               <div class="row mt-4">
                 <div class="col-12">
-                  <button class="btn btn-primary btn-round pull-right"><i class="fa fa-print mr-3"></i>Cetak</button>
+                  <a href="{{ route('printlaporan', [$data['id_instansi'], $data['periode_bln'], $data['periode_thn']])}}" class="btn btn-primary btn-round pull-right" target="_blank"><i class="fa fa-print mr-3"></i>Cetak</a>
                 </div>
               </div>
 
