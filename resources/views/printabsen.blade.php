@@ -108,6 +108,7 @@
                 @php
                 $index++
                 @endphp
+                
               @else
               <td class="text-center">-</td>
               @endif

@@ -40,8 +40,8 @@
                 <div class="form-group row">
                   <label for="bulan" class="col-form-label col-2 pt-2">Periode</label>
                   <div class="col-sm-3 pt-2">
-                    <select name="bulan" id="bulan" class="form-control">
-                      <option value="0" {{ ($data['periode_bln'] == 0) ? 'selected' : ''}}>---</option>
+                    <select name="bulan" id="bulan" class="form-control {{$errors->has('bulan') ? 'is-invalid' : ''}}">
+                      <option value="" {{ ($data['periode_bln'] == 0) ? 'selected' : ''}}>---</option>
                       <option value="1" {{ ($data['periode_bln'] == 1) ? 'selected' : ''}}>Januari</option>
                       <option value="2" {{ ($data['periode_bln'] == 2) ? 'selected' : ''}}>Februari</option>
                       <option value="3" {{ ($data['periode_bln'] == 3) ? 'selected' : ''}}>Maret</option>
@@ -57,8 +57,8 @@
                     </select>
                   </div>
                   <div class="col-sm-2 pt-2">
-                    <select name="tahun" id="tahun" class="form-control">
-                      <option value="0">---</option>
+                    <select name="tahun" id="tahun" class="form-control {{ $errors->has('tahun') ? 'is-invalid' : ''}}">
+                      <option value="">---</option>
                       <option value="2020" {{ ($data['periode_thn'] == 2020) ? 'selected' : ''}}>2020</option>
                       <option value="2021" {{ ($data['periode_thn'] == 2021) ? 'selected' : ''}}>2021</option>
                       <option value="2022" {{ ($data['periode_thn'] == 2022) ? 'selected' : ''}}>2022</option>

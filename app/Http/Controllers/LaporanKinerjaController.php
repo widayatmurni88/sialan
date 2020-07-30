@@ -24,8 +24,8 @@ class LaporanKinerjaController extends Controller
 
     public function getAbsenPerInstansi(Request $req){
         $this->validate($req, [
-            'bulan' => 'required|numeric',
-            'tahun' => 'required|numeric'
+            'bulan' => 'required',
+            'tahun' => 'required'
         ]);
         
         $data = $this->getKehadiranPerInstansi(
