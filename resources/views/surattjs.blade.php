@@ -41,7 +41,7 @@
 
                       <select name="tahun" id="tahun" class="form-control w-50">
                         @for ($i = 0; $i < 5; $i++)
-                          <option value="{{ $i + 2020 }}">{{ $i + 2020 }}</option>
+                          <option value="{{ $i + 2020 }}" {{ ($periode==($i+2020)) ? 'selected' : '' }}>{{ $i + 2020 }}</option>
                         @endfor
                       </select>
   
@@ -85,21 +85,38 @@
                       </tr>
                     </thead>
                     <tbody style="height: 168px">
+                    
+                    @if ($data != null)
+                      @php
+                      $i=1;
+                      @endphp
+                      @foreach ($data as $item)
                       
-                      <tr>
-                        <th scope="col" class="col-1">#</th>
-                        <td class="col-11">
-                          <div class="wrap">
-                            <div class="btn-grub">
-                              <a href ="" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye"></i></a>
+                        <tr>
+                          <th scope="col" class="col-1">{{ $i++}}</th>
+                          <td class="col-11">
+                            <div class="wrap">
+                              {{ date('F Y', strtotime($item->periode)) }}
+                              <div class="btn-grub">
+                                <a href ="" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye"></i></a>
 
-                              <a href ="" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
-                              
-                              <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden=""><i class="fa fa-trash"></i></a>
+                                <a href ="" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+                                
+                                <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden=""><i class="fa fa-trash"></i></a>
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
+                        </tr>
+
+                      @endforeach
+                    
+                    @else
+
+                      <tr>
+                        <td colspan="2" class="text-center"> .: Data Tidak Ditemukan :.</td>
                       </tr>
+
+                    @endif
 
                     </tbody>
                   </table>
