@@ -49,9 +49,16 @@
           <!-- Menu untuk admin-->
           <li class="nav-header">KINERJA PEGAWAI</li>
           <li class="nav-item">
-            <a href="{{ route('kinerjapegawai') }}" class="nav-link {{ ($menu == 'kinerja') ? 'active' : ''}}">
+            <a href="{{ route('kinerjapegawai') }}" class="nav-link {{ ($menu == 'laporaninstansi') ? 'active' : ''}}">
               <i class="nav-icon fa fa-file-text"></i>
               <p>Laporan Kinerja</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('ttdreference') }}" class="nav-link {{ ($menu == 'ttdreference') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-file-text"></i>
+              <p>Referensi TTD</p>
             </a>
           </li>
           

@@ -15,6 +15,7 @@ class CreateTtdReferencesTable extends Migration
     {
         Schema::create('ttd_references', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 50);
             $table->unsignedBigInteger('instansi_id');
             $table->unsignedBigInteger('bio_nid');
             $table->foreign('instansi_id')->references('id')->on('instansis')->onDelete('cascade')->onUpdate('cascade');

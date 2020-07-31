@@ -110,6 +110,12 @@ Route::prefix('Report')->group( function(){
     
     Route::get('/Print/{instansi}/{bulan}/{tahun}', 'LaporanKinerjaController@printLaporan')->middleware('auth')->name('printlaporan');
 
+    
+});
+
+Route::prefix('Reference')->group( function(){
+    Route::get('/', 'TtdReferenceController@index')->middleware('auth')->name('ttdreference');
+    Route::post('/', 'TtdReferenceController@seveReference')->middleware('auth')->name('simpanreference');
 });
 
 

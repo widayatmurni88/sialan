@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TtdReference extends Model
 {
     protected $table = 'ttd_references';
-    protected $fillable = ['instansi_id', 'bio_nid'];
+    protected $fillable = ['instansi_id', 'bio_nid', 'title'];
     public $timestamps = false;
 
 }

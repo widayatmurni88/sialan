@@ -2,7 +2,7 @@
 
 @section('content')
 @include('layout.nav')
-@include('layout.sidebar', ['menu' => 'kinerja'])
+@include('layout.sidebar', ['menu' => 'laporaninstansi'])
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
