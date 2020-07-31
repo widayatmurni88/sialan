@@ -56,6 +56,13 @@
           </li>
 
           <li class="nav-item">
+            <a href="{{ route('surattjs') }}" class="nav-link {{ ($menu == 'surattjs') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-file-text"></i>
+              <p>Pernyataan Tanggungjawab</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{ route('ttdreference') }}" class="nav-link {{ ($menu == 'ttdreference') ? 'active' : ''}}">
               <i class="nav-icon fa fa-file-text"></i>
               <p>Referensi TTD</p>
