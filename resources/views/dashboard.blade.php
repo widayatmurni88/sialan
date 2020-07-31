@@ -36,7 +36,7 @@
                 </div>
                 <!-- /.widget-user-image -->
                 <h3 class="widget-user-username"><b>{{ session()->get('name') }}</b></h3>
-                <h6 class="widget-user-desc">{{ 'Jabatan' }}</h6>
+                <h6 class="widget-user-desc">{{ session()->get('nid') }}</h6>
               </div>
               <div class="card-body bg-info pt-0">
                 @if (session()->get('status'))

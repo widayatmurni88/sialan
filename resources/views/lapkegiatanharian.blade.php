@@ -20,7 +20,7 @@
             console.log(dataHadir);
           }
         }
-        request.open("GET",'http://localhost:8000/DailyActivity/getReportAbsenPerMonth/123', true);
+        request.open("GET","{{ route('getReportAbsenPerMonth',session()->get('nid'))}}", true);
         request.send();
 
 
@@ -37,7 +37,7 @@
           selectable: true,
           height: 550,
 
-          events : 'http://localhost:8000/DailyActivity/getReportAbsenPerMonth/123',
+          events : "{{ route('getReportAbsenPerMonth',session()->get('nid'))}}",
 
         });
         calendar.render();

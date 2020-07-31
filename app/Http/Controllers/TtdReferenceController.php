@@ -10,9 +10,7 @@ class TtdReferenceController extends Controller{
 
     public function index(){
         $idInstansi = session()->get('id_instansi');
-        $kepala = TtdReference::select('bio_nid as id')
-                                ->where('instansi_id', $idInstansi)
-                                ->first();
+        $kepala = $this->cekReference($idInstansi);
 
         return $this->showView($kepala->id, $idInstansi);
     }
@@ -23,6 +21,12 @@ class TtdReferenceController extends Controller{
             'persons' => $this->getReferencePersonInstansi($idInstansi)
         ];
         return view('ttdreference')->with($data);
+    }
+
+    public function cekReference($idInstansi){
+        return TtdReference::select('bio_nid as id')
+            ->where('instansi_id', $idInstansi)
+            ->first();
     }
 
     public function getReference($nid){

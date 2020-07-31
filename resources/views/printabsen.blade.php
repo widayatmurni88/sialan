@@ -128,10 +128,10 @@
 
   <div class="wrap-box">
     <div class="box">
-      Kepala Kantor Instansi
+      {{$kepala->title}}
       <br><br><br><br><br>
-      Nama Kepala Kantor, SpJP KS PTKAI <br>
-      Penata Tk.II / IIIb NIP:123456789123456789
+      {{ $kepala->name}} <br>
+      {{ $kepala->pangkat.' NIP '. $kepala->id}}
     </div>
   </div>
   

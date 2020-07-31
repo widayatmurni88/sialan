@@ -37,12 +37,12 @@
               <p>Lap. Kegitan Harian</p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ route('kinerja')}}" class="nav-link">
               <i class="nav-icon fa fa-folder-open-o"></i>
               <p>Kinerja</p>
             </a>
-          </li>
+          </li> --}}
 
           @if ((auth()->user()->level == 'admin') || (auth()->user()->level == 'instansi'))
               

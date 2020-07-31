@@ -59,7 +59,6 @@ class LaporanKinerjaController extends Controller
                         ->orderBy('absens.bio_nid', 'ASC')
                         ->orderBy('absens.tgl_absen', 'ASC')
                         ->get();
-
         
         $person = Absen::select('absens.bio_nid as nid', 
                                 'ranks.pangkat as pangkat', 
@@ -69,6 +68,7 @@ class LaporanKinerjaController extends Controller
                         ->where('absens.instansi_id', $idInstansi)
                         ->whereMonth('absens.tgl_absen', '=', $bulan)
                         ->whereYear('absens.tgl_absen', '=', $tahun)
+                        ->orderBy('absens.pangkat_id', 'ASC')
                         ->orderBy('absens.bio_nid', 'ASC')
                         ->orderBy('absens.tgl_absen', 'ASC')
                         ->groupBy('absens.bio_nid')
@@ -103,12 +103,17 @@ class LaporanKinerjaController extends Controller
     }
 
     public function printLaporan($idInstansi, $bulan, $tahun){
-
-        $data = $this->getKehadiranPerInstansi($idInstansi, $bulan, $tahun);
+        $ref = new TtdReferenceController();
+        $person = $ref->cekReference(session()->get('id_instansi'));
+        
+        $data = [
+                'data'      => $this->getKehadiranPerInstansi($idInstansi, $bulan, $tahun),
+                'kepala'    => $ref->getReference($person->id)
+            ];
 
 
         $customPaper = array(0,0,850,1300);
-        $pdf = PDF::loadview('printabsen', ['data' => $data])->setPaper($customPaper, 'landscape');
+        $pdf = PDF::loadview('printabsen', $data)->setPaper($customPaper, 'landscape');
         $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         $pdf->output();
         $dom_pdf = $pdf->getDomPDF();

@@ -99,7 +99,7 @@ Route::prefix('DailyActivity')->group(function(){
         ->name('deleteKegiatan');
     Route::get('/ReportPerMonth', 'LaporanHarianController@index')->middleware('auth')
         ->name('lapgiatharian');
-    Route::get('/getReportAbsenPerMonth/{nid}', 'LaporanHarianController@getAbsenPerUser')->middleware('auth');
+    Route::get('/getReportAbsenPerMonth/{nid}', 'LaporanHarianController@getAbsenPerUser')->middleware('auth')->name('getReportAbsenPerMonth');
 });
 
 Route::prefix('Report')->group( function(){
