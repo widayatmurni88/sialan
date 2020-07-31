@@ -5,15 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Surattj;
 
-class PernyataanTanggungJawabController extends Controller
-{
+class PernyataanTanggungJawabController extends Controller{
+
     public function index(){
         $thn=date('Y', strtotime(now()));
-        $idInstansi = session()->get('id_instansi');
+        
         $data = [
             'periode' => $thn,
-            'data'    => $this->getPernyataanPerInstansiPerTahun($thn, $idInstansi)
+            'data'    => $this->getPernyataanPerInstansiPerTahun($thn, session()->get('id_instansi'))
         ];
+        return view('surattjs')->with($data);
+    }
+
+    public function getPernyataanByTahun(Request $req){
+        $this->validate($req, ['tahun' => 'required']);
+        $data = [
+            'periode' => $req->tahun,
+            'data'    => $this->getPernyataanPerInstansiPerTahun($req->tahun, session()->get('id_instansi'))
+        ];
+
         return view('surattjs')->with($data);
     }
 
@@ -25,4 +35,6 @@ class PernyataanTanggungJawabController extends Controller
                         ->orderBy('periode', 'ASC')
                         ->get();
     }
+
+
 }

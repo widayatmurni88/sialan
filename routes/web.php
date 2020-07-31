@@ -113,6 +113,9 @@ Route::prefix('Report')->group( function(){
 
 Route::prefix('Pernyataan')->group(function () {
     Route::get('/','PernyataanTanggungJawabController@index')->middleware('auth')->name('surattjs');
+
+    Route::post('/','PernyataanTanggungJawabController@getPernyataanByTahun')->middleware('auth')->name('getPernyataanByTahun');
+
 });
 
 Route::prefix('Reference')->group( function(){

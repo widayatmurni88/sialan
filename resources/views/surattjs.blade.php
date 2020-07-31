@@ -33,13 +33,13 @@
 
                 <div class="col-md-4">
 
-                  <form action="" method="post">
+                  <form action="{{ route('getPernyataanByTahun')}}" method="post">
 
                     {{ csrf_field() }}
                     
                     <div class="form-inline">
 
-                      <select name="tahun" id="tahun" class="form-control w-50">
+                      <select name="tahun" id="tahun" class="form-control w-50 {{ $errors->has('tahun') ? 'is-invalid' : ''}}">
                         @for ($i = 0; $i < 5; $i++)
                           <option value="{{ $i + 2020 }}" {{ ($periode==($i+2020)) ? 'selected' : '' }}>{{ $i + 2020 }}</option>
                         @endfor
@@ -86,7 +86,7 @@
                     </thead>
                     <tbody style="height: 168px">
                     
-                    @if ($data != null)
+                    @if (count($data)>0)
                       @php
                       $i=1;
                       @endphp
@@ -113,7 +113,7 @@
                     @else
 
                       <tr>
-                        <td colspan="2" class="text-center"> .: Data Tidak Ditemukan :.</td>
+                        <td colspan="2" class="col-12 text-danger text-center"> .: Data Tidak Ditemukan :.</td>
                       </tr>
 
                     @endif
