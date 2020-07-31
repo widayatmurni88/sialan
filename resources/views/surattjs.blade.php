@@ -29,6 +29,84 @@
             </div>
             <div class="card-body">
               
+              <div class="row">
+
+                <div class="col-md-4">
+
+                  <form action="" method="post">
+
+                    {{ csrf_field() }}
+                    
+                    <div class="form-inline">
+
+                      <select name="tahun" id="tahun" class="form-control w-50">
+                        @for ($i = 0; $i < 5; $i++)
+                          <option value="{{ $i + 2020 }}">{{ $i + 2020 }}</option>
+                        @endfor
+                      </select>
+  
+                      <button type="submit" class="btn btn-outline-secondary btn-round"><i class="fa fa-search"></i></button>
+
+                    </div>
+
+                  </form>
+  
+                </div>
+  
+                <div class="col-md-8">
+                  <a href="" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pernyataan</a>
+                </div>
+
+                {{-- Modal Delete --}}
+                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content border-danger">
+                            <div class="modal-header bg-danger">
+                              <h4 class="modal-title"><b><i class="fa fa-exclamation-circle mr-2"></i> Konfrimasi</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                Apakah anda yakin akan menghapus "<span id="record"></span>" ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-round" data-dismiss="modal"><i class="fa fa-remove mr-2"></i> Tidak</button>
+                                <a class="btn btn-outline-danger btn-round btn-ok"><i class="fa fa-trash mr-3"></i>Ya</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- End Modal delete --}}
+
+                <div class="table-responsive mt-4">
+                  <table class="table table-hover table-act table-fixed">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="col-1">NO</th>
+                        <th scope="col" class="col-11">PERNYATAAN UNTUK PERIODE</th>
+                      </tr>
+                    </thead>
+                    <tbody style="height: 168px">
+                      
+                      <tr>
+                        <th scope="col" class="col-1">#</th>
+                        <td class="col-11">
+                          <div class="wrap">
+                            <div class="btn-grub">
+                              <a href ="" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye"></i></a>
+
+                              <a href ="" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+                              
+                              <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="" data-toggle="modal" data-target="#confirm-delete" data-iden=""><i class="fa fa-trash"></i></a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+
             </div>
             <!-- /.card-body -->
           </div>
