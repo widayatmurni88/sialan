@@ -109,8 +109,10 @@ Route::prefix('Report')->group( function(){
         ->name('kinerjapegawaiinstansi');
     
     Route::get('/Print/{instansi}/{bulan}/{tahun}', 'LaporanKinerjaController@printLaporan')->middleware('auth')->name('printlaporan');
+});
 
-    
+Route::prefix('Pernyataan')->group(function () {
+    Route::get('/','PernyataanTanggungJawabController@index')->middleware('auth')->name('surattjs');
 });
 
 Route::prefix('Reference')->group( function(){
@@ -121,6 +123,7 @@ Route::prefix('Reference')->group( function(){
 
 Route::get('/Perform', 'KinerjaController@index')->middleware('auth')
     ->name('kinerja');
+
 
 //setting App
 Route::prefix('setupHariLibur')->group(function(){
