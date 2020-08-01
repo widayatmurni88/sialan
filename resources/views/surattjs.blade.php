@@ -120,7 +120,7 @@
                                 <div class="btn-grub">
                                   <a href ="" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye"></i></a>
   
-                                  <a href ="" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+                                  <a href ="{{ route('editPernyataan', [date('Y', strtotime($item->periode)), $item->id]) }}" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
                                   
                                   <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deletePernyataan', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ date('F Y', strtotime($item->periode)) }}"><i class="fa fa-trash"></i></a>
                                 </div>

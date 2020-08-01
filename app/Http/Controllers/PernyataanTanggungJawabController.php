@@ -17,14 +17,19 @@ class PernyataanTanggungJawabController extends Controller{
         return view('surattjs')->with($data);
     }
 
-    public function getPernyataanByTahun(Request $req){
-        $this->validate($req, ['tahun' => 'required']);
+    public function getPernyataanBy($tahun){
         $data = [
-            'periode' => $req->tahun,
-            'data'    => $this->getPernyataanPerInstansiPerTahun($req->tahun, session()->get('id_instansi'))
+            'periode' => $tahun,
+            'data'    => $this->getPernyataanPerInstansiPerTahun($tahun, session()->get('id_instansi'))
         ];
 
         return view('surattjs')->with($data);
+    }
+
+    public function getPernyataanByTahun(Request $req){
+        $this->validate($req, ['tahun' => 'required']);
+
+        return $this->getPernyataanBy($req->tahun);
     }
 
 
@@ -77,7 +82,6 @@ class PernyataanTanggungJawabController extends Controller{
             return abort(500);
         }
 
-
     }
 
     public function deletePernyataan($id){
@@ -94,6 +98,15 @@ class PernyataanTanggungJawabController extends Controller{
             $msg = ['error' => 'Gagal menghapus data'];
         }
         return back()->with($msg);
+    }
+
+    public function editPernyataan($tahun, $id){
+        $pernyataan = Surattj::find($id);
+        $data = [
+            'periode' => $tahun,
+            'data'    => Surattj::find($id)
+        ];
+        return view('surattjs_edit')->with($data);
     }
 
 }
