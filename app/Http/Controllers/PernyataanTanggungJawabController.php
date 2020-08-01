@@ -85,8 +85,8 @@ class PernyataanTanggungJawabController extends Controller{
         $pernyataan = Surattj::find($id);
         $fileName = $pernyataan->file_link;
         try {
-            if(\File::exists(public_path('docs/pernyataan').$fileName)){
-                \File::delete(public_path('docs/pernyataan').$fileName);
+            if(\File::exists(public_path('docs/pernyataan/').$fileName)){
+                \File::delete(public_path('docs/pernyataan/').$fileName);
             }
             $pernyataan->delete();
             $msg = ['success' => 'Data dihapus'];
