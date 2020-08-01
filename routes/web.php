@@ -116,6 +116,12 @@ Route::prefix('Pernyataan')->group(function () {
 
     Route::post('/','PernyataanTanggungJawabController@getPernyataanByTahun')->middleware('auth')->name('getPernyataanByTahun');
 
+    Route::get('/Add','PernyataanTanggungJawabController@showFormTambahPernyataan')->middleware('auth')->name('showFormTambahPernyataan');
+
+    Route::post('/Add','PernyataanTanggungJawabController@postPernyataan')->middleware('auth')->name('postPernyataan');
+
+    Route::get('/Delete/{id}', 'PernyataanTanggungJawabController@deletePernyataan')->middleware('auth')->name('deletePernyataan');
+
 });
 
 Route::prefix('Reference')->group( function(){

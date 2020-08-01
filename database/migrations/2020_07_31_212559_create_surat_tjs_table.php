@@ -18,6 +18,7 @@ class CreateSuratTjsTable extends Migration
             $table->unsignedBigInteger('bio_nid');
             $table->unsignedBigInteger('instansi_id');
             $table->date('periode');
+            $table->string('file_link');
             $table->timestamps();
 
             $table->foreign('bio_nid')->references('nid')->on('biodatas');

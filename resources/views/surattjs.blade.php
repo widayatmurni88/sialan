@@ -54,7 +54,7 @@
                 </div>
   
                 <div class="col-md-8">
-                  <a href="" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pernyataan</a>
+                  <a href="{{ route('showFormTambahPernyataan') }}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pernyataan</a>
                 </div>
 
                 {{-- Modal Delete --}}
@@ -84,7 +84,7 @@
                         <th scope="col" class="col-11">PERNYATAAN UNTUK PERIODE</th>
                       </tr>
                     </thead>
-                    <tbody style="height: 168px">
+                    <tbody style="height: 300px">
                     
                     @if (count($data)>0)
                       @php
