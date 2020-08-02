@@ -173,7 +173,6 @@ Route::prefix('setupHariLibur')->group(function(){
 Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
     ->middleware('auth')
     ->name('postHariLibur');
-
 //Admin Super
 Route::prefix('Super')->group( function(){
     Route::get('/', 'Admin\DashboardController@index')->middleware('auth')->name('superDash');
@@ -181,6 +180,8 @@ Route::prefix('Super')->group( function(){
     Route::prefix('MenageAcounts')->group(function(){
         Route::get('/', 'Admin\AcountsController@index')->middleware('auth')->name('manageAkun');
         Route::get('/Delete/{id}', 'Admin\AcountsController@deleteAkun')->middleware('auth')->name('deleteAkun');
+        Route::get('/EditAccount/{id}', 'Admin\AcountsController@getEditAkun')->middleware('auth')->name('getEditAkun');
+        Route::post('/updateLevel', 'Admin\AcountsController@updateLevel')->middleware('auth')->name('updatelevel');
     });
 
     Route::prefix('Ranks')->group( function () {

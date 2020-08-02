@@ -83,7 +83,7 @@
               </div>
 
               <div class="table-responsive mt-4">
-                  <table class="table table-hover table-act table-fixed">
+                  <table class="table table-hover table-md table-act table-fixed">
                     <thead>
                       <tr>
                         <th scope="col" class="col-1">#</th>
@@ -102,8 +102,8 @@
                             <div class="wrap">
                               {{ $item->lvl}} 
                               <div class="btn-grub">
-                                <a href ="" class="btn btn-primary btn-sm btn-act btn_edit"><i class="fa fa-pencil"></i></a>
-                                <a href="" class="btn btn-danger btn-sm btn-act" data-href="{{ route('deleteAkun', $item->akun_id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->name}}"><i class="fa fa-trash"></i></a>
+                                <a href ="{{ route('getEditAkun', $item->akun_id)}}" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+                                <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deleteAkun', $item->akun_id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->name}}"><i class="fa fa-trash"></i></a>
                               </div>
                             </div>
                           </td>

@@ -11,9 +11,13 @@ class AcountsController extends Controller
 {
     public function index(){
         $data = [
-            'acounts' => \DB::table('users')
+            'acounts' => User::select('users.id as akun_id', 
+                                      'users.email as email', 
+                                      'users.level as lvl', 
+                                      'users.bio_nid as nid', 
+                                      'bio.nama as name')
                             ->leftJoin('biodatas as bio', 'bio.nid', '=', 'users.bio_nid')
-                            ->select('users.id as akun_id', 'users.email as email', 'users.level as lvl', 'users.bio_nid as nid', 'bio.nama as name')
+                            ->orderBy('users.level', 'ASC')
                             ->get()
         ];
         return view('admin.manageakun')->with($data);
@@ -32,5 +36,29 @@ class AcountsController extends Controller
         }
 
         return back()->with($msg);
+    }
+
+    public function getEditAkun($id){
+        try {
+            $data =[
+                'akun' => User::find($id)
+            ];
+        } catch (\Throwable $th) {
+            $data = ['error' => 'Server Error'];
+        }
+
+        return view('admin.manageakun_edit')->with($data);
+    }
+
+    public function updateLevel(Request $req){
+        $req->validate([
+            'level' => 'required'
+        ]);
+
+        $user = User::find($req->id);
+        $user->level = $req->level;
+        $user->update();
+
+        return back()->with(['success'=>'Update Success']);
     }
 }
