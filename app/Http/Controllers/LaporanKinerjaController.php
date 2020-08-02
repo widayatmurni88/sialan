@@ -61,19 +61,20 @@ class LaporanKinerjaController extends Controller
                         ->orderBy('absens.tgl_absen', 'ASC')
                         ->get();
         
-        $person = Absen::select('absens.bio_nid as nid', 
-                                'ranks.pangkat as pangkat', 
-                                'biodatas.nama as nama')
-                        ->join('ranks', 'ranks.id', '=', 'absens.pangkat_id')
-                        ->leftJoin('biodatas', 'biodatas.nid', '=', 'absens.bio_nid')
-                        ->where('absens.instansi_id', $idInstansi)
-                        ->whereMonth('absens.tgl_absen', '=', $bulan)
-                        ->whereYear('absens.tgl_absen', '=', $tahun)
-                        ->orderBy('absens.pangkat_id', 'ASC')
-                        ->orderBy('absens.bio_nid', 'ASC')
-                        ->orderBy('absens.tgl_absen', 'ASC')
-                        ->groupBy('absens.bio_nid')
-                        ->get();
+        
+        // $person = Absen::select('absens.bio_nid as nid', 
+        //                         'ranks.pangkat as pangkat', 
+        //                         'biodatas.nama as nama')
+        //                 ->join('ranks', 'ranks.id', '=', 'absens.pangkat_id')
+        //                 ->leftJoin('biodatas', 'biodatas.nid', '=', 'absens.bio_nid')
+        //                 ->where('absens.instansi_id', $idInstansi)
+        //                 ->whereMonth('absens.tgl_absen', '=', $bulan)
+        //                 ->whereYear('absens.tgl_absen', '=', $tahun)
+        //                 ->orderBy('absens.pangkat_id', 'ASC')
+        //                 ->orderBy('absens.bio_nid', 'ASC')
+        //                 ->orderBy('absens.tgl_absen', 'ASC')
+        //                 ->groupBy('absens.bio_nid')
+        //                 ->get();
 
         $allPerson = Biodata::select('biodatas.nid as nid',
                                      'ranks.pangkat as pangkat',
