@@ -33,7 +33,7 @@ class PernyataanTanggungJawabController extends Controller{
     }
 
     public function getPernyataanPerInstansiPerTahun($periodeTahun, $instansi){
-        return Surattj::select('id', 'periode')
+        return Surattj::select('id', 'periode', 'file_link as link')
                         ->where('periode', 'like', "%$periodeTahun%")
                         ->where('instansi_id', $instansi)
                         ->orderBy('periode', 'ASC')

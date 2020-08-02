@@ -118,7 +118,7 @@
                               <div class="wrap">
                                 {{ date('F Y', strtotime($item->periode)) }}
                                 <div class="btn-grub">
-                                  <a href ="" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye"></i></a>
+                                  <a href ="{{ asset('docs/pernyataan/'.$item->link) }}" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye" target="_blank"></i></a>
   
                                   <a href ="{{ route('editPernyataan', [date('Y', strtotime($item->periode)), $item->id]) }}" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
                                   

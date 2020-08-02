@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Absen;
 use App\Models\Instansi;
+use App\Models\Biodata;
 use PDF;
 
 class LaporanKinerjaController extends Controller
@@ -74,8 +75,18 @@ class LaporanKinerjaController extends Controller
                         ->groupBy('absens.bio_nid')
                         ->get();
 
-        if($person != null){
-            foreach ($person as $p) {
+        $allPerson = Biodata::select('biodatas.nid as nid',
+                                     'ranks.pangkat as pangkat',
+                                     'biodatas.nama as nama')
+                            ->join('ranks', 'ranks.id', '=', 'biodatas.pangkat_id')
+                            ->where('biodatas.instansi_id', $idInstansi)
+                            ->orderBy('biodatas.pangkat_id', 'ASC')
+                            ->orderBy('biodatas.nid', 'ASC')
+                            ->get();
+
+
+        if($allPerson != null){
+            foreach ($allPerson as $p) {
                 if($absen != null){
                     foreach ($absen as $ab) {
                         if($p->nid == $ab->nid){
