@@ -50,7 +50,6 @@ Route::prefix('ForgotPassword')->group(function(){
         ->name('setNewPassword');
 });
 
-
 Route::prefix('Register')->group(function () {
     Route::get('/', 'RegisterController@index')->middleware('guest')->name('register');
     Route::post('/PostRegister', 'RegisterController@postRegister')->middleware('guest')->name('postregister');
@@ -103,10 +102,14 @@ Route::prefix('DailyActivity')->group(function(){
 });
 
 Route::prefix('Report')->group( function(){
-    Route::get('/{data?}', 'LaporanKinerjaController@index')->middleware('auth')->name('kinerjapegawai');
 
-    Route::post('/', 'LaporanKinerjaController@getAbsenPerInstansi')->middleware('auth')
-        ->name('kinerjapegawaiinstansi');
+    Route::post('/KinerjaInstansi', 'LaporanKinerjaController@getAbsenPerInstansi')->middleware('auth')
+    ->name('kinerjapegawaiinstansi');
+
+    Route::post('/Kinerja', 'LaporanKinerjaController@getAbsen')->middleware('auth')
+    ->name('kinerjapegawaiall');
+
+    Route::get('/{data?}', 'LaporanKinerjaController@index')->middleware('auth')->name('kinerjapegawai');
     
     Route::get('/Print/{instansi}/{bulan}/{tahun}', 'LaporanKinerjaController@printLaporan')->middleware('auth')->name('printlaporan');
 });

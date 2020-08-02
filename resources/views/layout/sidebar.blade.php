@@ -48,10 +48,31 @@
               
           <!-- Menu untuk admin-->
           <li class="nav-header">KINERJA PEGAWAI</li>
+
+          @if (auth()->user()->level == 'admin')
+
+          <li class="nav-item">
+            <a href="{{ route('kinerjapegawai') }}" class="nav-link {{ ($menu == 'laporankehadiran') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-file-text"></i>
+              <p>Laporan Absen</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('surattjs') }}" class="nav-link {{ ($menu == 'surattjs') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-file-text"></i>
+              <p>Pertanggungjawaban</p>
+            </a>
+          </li>
+
+          @endif
+
+          @if(auth()->user()->level == 'instansi')
+          
           <li class="nav-item">
             <a href="{{ route('kinerjapegawai') }}" class="nav-link {{ ($menu == 'laporaninstansi') ? 'active' : ''}}">
               <i class="nav-icon fa fa-file-text"></i>
-              <p>Laporan Kinerja</p>
+              <p>Laporan Absen Instansi</p>
             </a>
           </li>
 
@@ -68,11 +89,11 @@
               <p>Referensi TTD</p>
             </a>
           </li>
+
+          @endif
           
           @endif
           
-          
-
           <li class="nav-header">MANAJEMEN AKUN</li>
           <li class="nav-item">
             <a href="{{ route('profile')}}" class="nav-link {{ ($menu == 'profil') ? 'active' : '' }}">

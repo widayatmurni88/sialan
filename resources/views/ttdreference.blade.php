@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="col-md-6">
-                  <div class="card">
+                  <div class="card bg-secondary">
                     <div class="card-body text-center">
                       @if ($kepala != null)
                         {{$kepala->title}}
