@@ -70,7 +70,7 @@
 
                           <select name="tahun" id="tahun" class="form-control {{ $errors->has('tahun') ? 'is-invalid' : ''}}" required>
                             @for ($i = 0; $i < 4; $i++)
-                              <option value="{{ $i+2020}}">{{ $i+2020}}</option>
+                              <option value="{{ $i+2020}}" {{ ($i+2020 == $periode) ? 'selected' : '' }}>{{ $i+2020}}</option>
                             @endfor 
                           </select>
                         </div>
@@ -96,7 +96,7 @@
 
                     <div class="form-group row">
                       <div class="col-12">
-                        <a href="{{ route('surattjs') }}" class="btn btn-outline-secondary btn-round"><i class="fa fa-chevron-circle-left mr-3"></i>Kembali</a>
+                        <a href="{{ route('getPernyataanBy', $periode) }}" class="btn btn-outline-secondary btn-round"><i class="fa fa-chevron-circle-left mr-3"></i>Kembali</a>
                         <button type="submit" class="btn btn-success btn-round float-right"><i class="fa fa-save mr-3"></i>Simpan</button>
                       </div>
                     </div>

@@ -53,7 +53,16 @@
                   </div>
                   @endif
 
-                  <form action="" method="post" enctype="multipart/form-data">
+                  @if (Session::get('error'))
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ Session::get('error') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  @endif
+
+                  <form action="{{ route('postEditData')}}" method="post" enctype="multipart/form-data">
 
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
@@ -83,7 +92,7 @@
                       <div class="col-md-9 offset-3">
                         <div class="input-group">
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input"  name="surattjs" id="surattjs" required>
+                            <input type="file" class="custom-file-input"  name="surattjs" id="surattjs">
                             <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                           </div>
                         </div>

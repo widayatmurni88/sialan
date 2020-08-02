@@ -32,7 +32,6 @@ class PernyataanTanggungJawabController extends Controller{
         return $this->getPernyataanBy($req->tahun);
     }
 
-
     public function getPernyataanPerInstansiPerTahun($periodeTahun, $instansi){
         return Surattj::select('id', 'periode')
                         ->where('periode', 'like', "%$periodeTahun%")
@@ -41,16 +40,16 @@ class PernyataanTanggungJawabController extends Controller{
                         ->get();
     }
 
-
-    public function showFormTambahPernyataan(){
-        return view('surattjs_add');
+    public function showFormTambahPernyataan($tahun){
+        $data = ['periode' => $tahun];
+        return view('surattjs_add')->with($data);
     }
 
     public function postPernyataan(Request $req){
         $this->validate($req, [
             'bulan'     => 'required|numeric',
             'tahun'     => 'required|numeric',
-            'surattjs'  => 'required|mimes:jpg,jpeg,png,pdf'
+            'surattjs'  => 'required|mimes:jpg,jpeg,png'
         ]);
 
         //upload filen
@@ -107,6 +106,47 @@ class PernyataanTanggungJawabController extends Controller{
             'data'    => Surattj::find($id)
         ];
         return view('surattjs_edit')->with($data);
+    }
+
+    public function postEditData(Request $req){
+        $this->validate($req, [
+            'id'    => 'required',
+            'bulan' => 'required',
+            'tahun' => 'required'
+        ]);
+
+        if ($req->file('surattjs')!=null)  {
+            $this->validate($req,[
+                'surattjs' => 'required|mimes:jpg,jpeg,png'
+            ]);
+        }
+
+        try {
+            $pernyataan = Surattj::find($req->id);
+            $pernyataan->periode        = date('Y-m-d', strtotime($req->tahun .'-'.$req->bulan . '-01'));
+
+            if ($req->file('surattjs')!=null){
+                $id = $pernyataan->file_link;
+                $file = $req->file('surattjs');
+                $fileName = $id.'.'.$file->getClientOriginalExtension();
+                $path = public_path('docs/pernyataan');
+                if(!\File::isDirectory($path)) {
+                    \File::makeDirectory($path, 0775, true, true);
+                }
+                $file->move($path,$fileName);
+            }
+
+            $pernyataan->update();
+
+            $msg = ['success' => 'Berhasil diupdate'];
+
+            return back()->with($msg);
+        } catch (\Throwable $th) {
+            $msg = ['error' => 'Gagal diupdate'];
+
+            return back()->with($msg);
+        }
+
     }
 
 }

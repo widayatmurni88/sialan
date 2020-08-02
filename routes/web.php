@@ -116,16 +116,18 @@ Route::prefix('Pernyataan')->group(function () {
 
     Route::post('/','PernyataanTanggungJawabController@getPernyataanByTahun')->middleware('auth')->name('getPernyataanByTahun');
 
-    Route::get('/{tahun}','PernyataanTanggungJawabController@getPernyataanBy')->middleware('auth')->name('getPernyataanBy');
-
-    Route::get('/Add','PernyataanTanggungJawabController@showFormTambahPernyataan')->middleware('auth')->name('showFormTambahPernyataan');
-
+    
+    Route::get('/Add/{tahun}','PernyataanTanggungJawabController@showFormTambahPernyataan')->middleware('auth')->name('showFormTambahPernyataan');
+    
     Route::post('/Add','PernyataanTanggungJawabController@postPernyataan')->middleware('auth')->name('postPernyataan');
-
+    
     Route::get('/Delete/{id}', 'PernyataanTanggungJawabController@deletePernyataan')->middleware('auth')->name('deletePernyataan');
-
+    
     Route::get('/Edit/{tahun}/{id}', 'PernyataanTanggungJawabController@editPernyataan')->middleware('auth')->name('editPernyataan');
-
+    
+    Route::put('/EditPernyataan', 'PernyataanTanggungJawabController@postEditData')->middleware('auth')->name('postEditData');
+    
+    Route::get('/{tahun}','PernyataanTanggungJawabController@getPernyataanBy')->where('tahun', '[0-9]+')->middleware('auth')->name('getPernyataanBy');
 });
 
 Route::prefix('Reference')->group( function(){

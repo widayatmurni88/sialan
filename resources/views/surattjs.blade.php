@@ -54,7 +54,7 @@
                 </div>
   
                 <div class="col-md-8">
-                  <a href="{{ route('showFormTambahPernyataan') }}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pernyataan</a>
+                  <a href="{{ route('showFormTambahPernyataan', $periode) }}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pernyataan</a>
                 </div>
 
                 {{-- Modal Delete --}}
