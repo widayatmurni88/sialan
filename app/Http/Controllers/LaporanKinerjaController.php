@@ -268,13 +268,14 @@ class LaporanKinerjaController extends Controller
 
 
         $customPaper = array(0,0,850,1300);
-        $pdf = PDF::loadview('printabsen', $data)->setPaper($customPaper, 'landscape');
-        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        $pdf = PDF::loadview('printabsen', $data)->setPaper('A4', 'landscape');
+        $pdf->setOptions(['dpi' => 120,'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         $pdf->output();
         $dom_pdf = $pdf->getDomPDF();
 
         $canvas = $dom_pdf ->get_canvas();
-        $canvas->page_text(1210, 20, "Hal : {PAGE_NUM} / {PAGE_COUNT}", null, 10, array(0, 0, 0));
+        $canvas->page_text(790, 10, "Hal : {PAGE_NUM} / {PAGE_COUNT}", null, 7, array(0, 0, 0));
+
         return $pdf->stream();
     }
 }

@@ -126,14 +126,23 @@ class PernyataanTanggungJawabController extends Controller{
             $pernyataan->periode        = date('Y-m-d', strtotime($req->tahun .'-'.$req->bulan . '-01'));
 
             if ($req->file('surattjs')!=null){
-                $id = $pernyataan->file_link;
+                $name = date('YmdHis', strtotime(now()));
                 $file = $req->file('surattjs');
-                $fileName = $id.'.'.$file->getClientOriginalExtension();
+                $fileName = $name.'.'.$file->getClientOriginalExtension();
                 $path = public_path('docs/pernyataan');
                 if(!\File::isDirectory($path)) {
                     \File::makeDirectory($path, 0775, true, true);
                 }
+
+                $oldFile_path = $path.'/'.$pernyataan->file_link;
+
+                if(\File::exists($oldFile_path)){
+                    \File::delete($oldFile_path);
+                }
+
                 $file->move($path,$fileName);
+                
+                $pernyataan->file_link = $fileName;
             }
 
             $pernyataan->update();

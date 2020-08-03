@@ -37,15 +37,19 @@
 
                     {{ csrf_field() }}
                     
-                    <div class="form-inline">
+                    <div class="form-group row">
 
-                      <select name="tahun" id="tahun" class="form-control w-50 {{ $errors->has('tahun') ? 'is-invalid' : ''}}">
-                        @for ($i = 0; $i < 5; $i++)
-                          <option value="{{ $i + 2020 }}" {{ ($periode==($i+2020)) ? 'selected' : '' }}>{{ $i + 2020 }}</option>
-                        @endfor
-                      </select>
-  
-                      <button type="submit" class="btn btn-outline-secondary btn-round"><i class="fa fa-search"></i></button>
+                      <div class="col-lg-6 col-sm-10">
+                        <select name="tahun" id="tahun" class="form-control {{ $errors->has('tahun') ? 'is-invalid' : ''}}">
+                          @for ($i = 0; $i < 5; $i++)
+                            <option value="{{ $i + 2020 }}" {{ ($periode==($i+2020)) ? 'selected' : '' }}>{{ $i + 2020 }}</option>
+                          @endfor
+                        </select>
+                      </div>
+                      
+                      <div class="col-sm-2">
+                        <button type="submit" class="btn btn-outline-secondary btn-round"><i class="fa fa-search"></i></button>
+                      </div>
 
                     </div>
 

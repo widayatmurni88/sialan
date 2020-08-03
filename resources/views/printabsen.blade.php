@@ -6,8 +6,14 @@
   <title>PRINT</title>
   <!--Resource-->
   <style>
+    *{
+      margin:8px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+    }
     body{
-      font-family:Arial, Helvetica, sans-serif
+      font-family:Arial, Helvetica, sans-serif;
+      font-size: .7rem;
     }
     table{
       width: 100%;
@@ -18,29 +24,36 @@
       border: 1px solid black;
     }
     th, td{
-      padding: 5px 10px;
+      width: 15px;
     }
     .text-center{
       text-align: center; 
     }
     .tgl{
-      width: 40px;
     }
     .wrap-box {
-        padding-top: 80px;
+        padding-top: 40px;
         position: relative;
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 0.8rem;
       } 
 
     .box {
         position: absolute;
-        top: 40px;
-        right: 100px;
-        width: 800px;
-        height: 300px;
+        top: 10px;
+        right: 0;
+        width: 400px;
+        height: 30px;
         text-align: center;
       }
+
+    .page-break {
+      page-break-after: always;
+      margin: -8px;
+      overflow: hidden;
+    } 
+    
+
   </style>
   
 </head>
@@ -58,10 +71,10 @@
   <table>
     <thead>
       <tr>
-        <th rowspan="2" class="text-center" style="width: 60px">NO</th>
+        <th rowspan="2" class="text-center" style="width: 20px">NO</th>
         <th rowspan="2" class="text-center">NAMA <br> PANGKAT/GOL <br> NIP</th>
         <th colspan="{{ $jmlHari }}" class="text-center">TANGGAL</th>
-        <th rowspan="2" class="text-center" style="width: 80px">JML <br> HADIR</th>
+        <th rowspan="2" class="text-center" style="width: 20px">JML <br> HADIR</th>
       </tr>
       <tr>
         @for ($i = 0; $i < $jmlHari; $i++)
@@ -133,6 +146,10 @@
       {{ $kepala->name}} <br>
       {{ $kepala->pangkat.' NIP '. $kepala->id}}
     </div>
+  </div>
+
+  <div class="page-break">
+    <img src="{{ public_path('docs/pernyataan/20200803081008.jpg')}}" style="width:100%">
   </div>
   
 </body>
