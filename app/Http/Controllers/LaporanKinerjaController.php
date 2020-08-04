@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Absen;
 use App\Models\Instansi;
 use App\Models\Biodata;
+use App\Models\Surattj;
 use PDF;
 
 class LaporanKinerjaController extends Controller
@@ -95,7 +96,9 @@ class LaporanKinerjaController extends Controller
                                 'biodatas.nama as nama')
                         ->join('ranks', 'ranks.id', '=', 'absens.pangkat_id')
                         ->leftJoin('biodatas', 'biodatas.nid', '=', 'absens.bio_nid')
+                        ->join('users', 'users.bio_nid', '=', 'absens.bio_nid')
                         ->where('absens.instansi_id', $idInstansi)
+                        ->where('users.level', 'user')
                         ->whereMonth('absens.tgl_absen', '=', $bulan)
                         ->whereYear('absens.tgl_absen', '=', $tahun)
                         ->orderBy('absens.bio_nid', 'ASC')
@@ -121,11 +124,17 @@ class LaporanKinerjaController extends Controller
                                      'ranks.pangkat as pangkat',
                                      'biodatas.nama as nama')
                             ->join('ranks', 'ranks.id', '=', 'biodatas.pangkat_id')
+                            ->join('users', 'users.bio_nid', '=', 'biodatas.nid')
                             ->where('biodatas.instansi_id', $idInstansi)
+                            ->where('users.level','user')
                             ->orderBy('biodatas.pangkat_id', 'ASC')
                             ->orderBy('biodatas.nid', 'ASC')
                             ->get();
-
+        
+        $surattj = Surattj::select('file_link as surat')
+                                ->where('periode' , 'like', "%$tahun-$bulan%")
+                                ->where('instansi_id', $idInstansi)
+                                ->first();
 
         if($allPerson != null){
             foreach ($allPerson as $p) {
@@ -144,14 +153,20 @@ class LaporanKinerjaController extends Controller
                 ];
                 $hadir = [];
             }
-        } 
+        }
+
+        if ($surattj!=null){
+            $surattj=$surattj->surat;
+        }
+
         $instansi = Instansi::select('id','nama_ins')->where('id',$idInstansi)->first();
         return [
             'periode_bln'   => $bulan,
             'periode_thn'   => $tahun,
             'id_instansi'   => $instansi->id,
-            'instansi'  => $instansi->nama_ins,
-            'kehadiran' => $kehadiran
+            'instansi'      => $instansi->nama_ins,
+            'surattj'       => $surattj,
+            'kehadiran'     => $kehadiran
         ];
     }
 

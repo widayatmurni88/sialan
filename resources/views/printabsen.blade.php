@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PRINT</title>
+  <title>Absen</title>
   <!--Resource-->
   <style>
     *{
@@ -148,9 +148,11 @@
     </div>
   </div>
 
+  @if ($data['surattj']!=null)
   <div class="page-break">
-    <img src="{{ public_path('docs/pernyataan/20200803081008.jpg')}}" style="width:100%">
+    <img src="{{ public_path('docs/pernyataan/'.$data['surattj'])}}" style="">
   </div>
+  @endif
   
 </body>
 </html>

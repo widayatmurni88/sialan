@@ -3,7 +3,6 @@
 /public/imgs/profiles
 /public/storage
 /storage/*.key
-/vendor
 .vscode
 .env.backup
 .phpunit.result.cache
