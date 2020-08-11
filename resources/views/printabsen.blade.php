@@ -148,11 +148,11 @@
     </div>
   </div>
 
-  @if ($data['surattj']!=null)
+  {{-- @if ($data['surattj']!=null)
   <div class="page-break">
     <img src="{{ public_path('docs/pernyataan/'.$data['surattj'])}}" style="">
   </div>
-  @endif
+  @endif --}}
   
 </body>
 </html>

@@ -160,7 +160,12 @@
 
               <div class="row mt-4">
                 <div class="col-12">
-                  {{-- <a href="{{ route('printlaporan', [$absen['id_instansi'], $absen['periode_bln'], $absen['periode_thn']])}}" class="btn btn-primary btn-round pull-right" target="_blank"><i class="fa fa-print mr-3"></i>Cetak</a> --}}
+                  <a href= "
+                  @if ($curinstansi != null)
+                    {{ route('printlaporan', [$curinstansi, $absen['periode_bln'], $absen['periode_thn']]) }}
+                  @endif
+                  "
+                  class="btn btn-primary btn-round pull-right" target="_blank"><i class="fa fa-print mr-3"></i>Cetak</a>
                 </div>
               </div>
 

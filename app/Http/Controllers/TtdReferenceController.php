@@ -12,14 +12,20 @@ class TtdReferenceController extends Controller{
         $idInstansi = session()->get('id_instansi');
         $kepala = $this->cekReference($idInstansi);
 
-        return $this->showView($kepala->id, $idInstansi);
+        if ($kepala != null){
+            $kepela= $kepala->id;
+        }
+
+        return $this->showView($kepala, $idInstansi);
     }
 
     protected function showView($nid, $idInstansi){
+
         $data = [
-            'kepala' => $this->getReference($nid),
+            'kepala' => $this->getReferenceInstansi($idInstansi),
             'persons' => $this->getReferencePersonInstansi($idInstansi)
         ];
+        
         return view('ttdreference')->with($data);
     }
 
@@ -29,8 +35,18 @@ class TtdReferenceController extends Controller{
             ->first();
     }
 
-    public function getReference($nid){
+    public function getReferenceInstansi($idInstansi){
+        return TtdReference::select('ttd_references.title', 
+                             'biodatas.nid as id', 
+                             'biodatas.nama as name', 
+                             'ranks.pangkat as pangkat')
+                        ->leftJoin('biodatas', 'biodatas.nid', '=', 'ttd_references.bio_nid')
+                        ->join('ranks', 'ranks.id', '=', 'biodatas.pangkat_id')
+                        ->where('ttd_references.instansi_id', $idInstansi)
+                        ->first();
+    }
 
+    public function getReference($nid){
         return TtdReference::select('ttd_references.title', 
                              'biodatas.nid as id', 
                              'biodatas.nama as name', 

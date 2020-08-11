@@ -4,17 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Surattj;
+use App\Models\Instansi;
 
 class PernyataanTanggungJawabController extends Controller{
 
     public function index(){
         $thn=date('Y', strtotime(now()));
         
+        if(auth()->user()->level == 'admin'){
+            return $this->showPernyataanByAdmin($thn, null);
+        }else{
+
+            $data = [
+                'periode' => $thn,
+                'data'    => $this->getPernyataanPerInstansiPerTahun($thn, session()->get('id_instansi'))
+            ];
+            return view('surattjs')->with($data);
+
+        }
+
+    }
+
+    public function showPernyataanByAdmin($thn, $idInstansi){
+
+        $pernyataan = null;
+        if($idInstansi !=null){
+            $pernyataan = $this->getPernyataanPerInstansiPerTahun($thn, $idInstansi);
+        }
+
         $data = [
             'periode' => $thn,
-            'data'    => $this->getPernyataanPerInstansiPerTahun($thn, session()->get('id_instansi'))
+            'instansi'=> Instansi::All(),
+            'cur_instansi' => $idInstansi,
+            'data'    => $pernyataan
         ];
-        return view('surattjs')->with($data);
+
+        return view('surattjs_admin_pusat')->with($data);
+    }
+
+    public function getPernyataanPernyaanPerInstansi(Request $req){
+        $this->validate($req, [
+            'tahun' => 'required',
+            'instansi' => 'required'
+        ]);
+
+        return $this->showPernyataanByAdmin($req->tahun, $req->instansi);
     }
 
     public function getPernyataanBy($tahun){

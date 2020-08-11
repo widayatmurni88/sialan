@@ -20,7 +20,7 @@ class LaporanKinerjaController extends Controller
                 'periode_thn' => date('Y', strtotime(now())),
                 'kehadiran' => null
             ];
-            return $this->laporanAllInstansi(0, $data);
+            return $this->laporanAllInstansi(null, $data);
         }else{
             return $this->laporanPerInstansi($data);
         }
@@ -42,7 +42,7 @@ class LaporanKinerjaController extends Controller
             $data = $this->getKehadiranPerInstansi(
                         session()->get('id_instansi'),
                         date('m', strtotime(now())),
-                        date('Y', strtotime(now())),
+                        date('Y', strtotime(now()))
                     );
         }
         return view('laporanperinstansi')->with('data', $data);
@@ -274,7 +274,8 @@ class LaporanKinerjaController extends Controller
 
     public function printLaporan($idInstansi, $bulan, $tahun){
         $ref = new TtdReferenceController();
-        $person = $ref->cekReference(session()->get('id_instansi'));
+        $person = $ref->cekReference($idInstansi);
+
         
         $data = [
                 'data'      => $this->getKehadiranPerInstansi($idInstansi, $bulan, $tahun),
@@ -291,6 +292,13 @@ class LaporanKinerjaController extends Controller
         $canvas = $dom_pdf ->get_canvas();
         $canvas->page_text(790, 10, "Hal : {PAGE_NUM} / {PAGE_COUNT}", null, 7, array(0, 0, 0));
 
+        return $pdf->stream();
+    }
+
+    public function printSurattj($file){
+
+        $pdf = PDF::loadview('printsurattj', ['file' => $file])->setPaper('A4', 'landscape');
+        $pdf->setOptions(['dpi' => 120,'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         return $pdf->stream();
     }
 }

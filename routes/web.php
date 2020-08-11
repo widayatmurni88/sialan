@@ -112,6 +112,8 @@ Route::prefix('Report')->group( function(){
     Route::get('/{data?}', 'LaporanKinerjaController@index')->middleware('auth')->name('kinerjapegawai');
     
     Route::get('/Print/{instansi}/{bulan}/{tahun}', 'LaporanKinerjaController@printLaporan')->middleware('auth')->name('printlaporan');
+
+    Route::get('/Printst/{file}','LaporanKinerjaController@printSurattj')->middleware('auth')->name('printSurattj');
 });
 
 Route::prefix('Pernyataan')->group(function () {
@@ -119,7 +121,6 @@ Route::prefix('Pernyataan')->group(function () {
 
     Route::post('/','PernyataanTanggungJawabController@getPernyataanByTahun')->middleware('auth')->name('getPernyataanByTahun');
 
-    
     Route::get('/Add/{tahun}','PernyataanTanggungJawabController@showFormTambahPernyataan')->middleware('auth')->name('showFormTambahPernyataan');
     
     Route::post('/Add','PernyataanTanggungJawabController@postPernyataan')->middleware('auth')->name('postPernyataan');
@@ -129,6 +130,8 @@ Route::prefix('Pernyataan')->group(function () {
     Route::get('/Edit/{tahun}/{id}', 'PernyataanTanggungJawabController@editPernyataan')->middleware('auth')->name('editPernyataan');
     
     Route::put('/EditPernyataan', 'PernyataanTanggungJawabController@postEditData')->middleware('auth')->name('postEditData');
+
+    Route::post('/PernyataanPerInstasi', 'PernyataanTanggungJawabController@getPernyataanPernyaanPerInstansi')->middleware('auth')->name('getPernyataanPernyaanPerInstansi');
     
     Route::get('/{tahun}','PernyataanTanggungJawabController@getPernyataanBy')->where('tahun', '[0-9]+')->middleware('auth')->name('getPernyataanBy');
 });

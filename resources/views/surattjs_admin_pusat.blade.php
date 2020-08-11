@@ -31,19 +31,28 @@
               
               <div class="row">
 
-                <div class="col-md-4">
+                <div class="col-md-12">
 
-                  <form action="{{ route('getPernyataanByTahun')}}" method="post">
+                  <form action="{{ route('getPernyataanPernyaanPerInstansi')}}" method="post">
 
                     {{ csrf_field() }}
                     
                     <div class="form-group row">
 
-                      <div class="col-lg-6 col-sm-10">
+                      <div class="col-lg-3 col-sm-10">
                         <select name="tahun" id="tahun" class="form-control {{ $errors->has('tahun') ? 'is-invalid' : ''}}">
                           @for ($i = 0; $i < 5; $i++)
                             <option value="{{ $i + 2020 }}" {{ ($periode==($i+2020)) ? 'selected' : '' }}>{{ $i + 2020 }}</option>
                           @endfor
+                        </select>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <select name="instansi" id="isntansi" class="form-control {{ $errors->has('tahun') ? 'is-invalid' : ''}}">
+                          <option value="">---</option>
+                          @foreach ($instansi as $item)
+                              <option value="{{ $item->id }}" {{ ($cur_instansi == $item->id) ? 'selected' : ''}}>{{ $item->nama_ins }}</option>
+                          @endforeach
                         </select>
                       </div>
                       
@@ -56,29 +65,6 @@
                   </form>
   
                 </div>
-  
-                <div class="col-md-8">
-                  <a href="{{ route('showFormTambahPernyataan', $periode) }}" class="btn btn-primary btn-round pull-right"><i class="fa fa-plus mr-3"></i>Tambah Pernyataan</a>
-                </div>
-
-                {{-- Modal Delete --}}
-                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content border-danger">
-                            <div class="modal-header bg-danger">
-                              <h4 class="modal-title"><b><i class="fa fa-exclamation-circle mr-2"></i> Konfrimasi</b></h4>
-                            </div>
-                            <div class="modal-body">
-                                Apakah anda yakin akan menghapus "<span id="record"></span>" ?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary btn-round" data-dismiss="modal"><i class="fa fa-remove mr-2"></i> Tidak</button>
-                                <a class="btn btn-outline-danger btn-round btn-ok"><i class="fa fa-trash mr-3"></i>Ya</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- End Modal delete --}}
 
                 <div class="col-12">
 
@@ -110,6 +96,8 @@
                       </thead>
                       <tbody style="height: 300px">
                       
+                      @if ($data != null)
+
                       @if (count($data)>0)
                         @php
                         $i=1;
@@ -122,13 +110,14 @@
                               <div class="wrap">
                                 {{ date('F Y', strtotime($item->periode)) }}
                                 <div class="btn-grub">
+                                  <a href ="{{ asset('docs/pernyataan/'.$item->link) }}" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye" target="_blank"></i></a>
+
                                   <a href ="{{ route('printSurattj', $item->link) }}" class="btn btn-success btn-sm btn-act rounded-circle"><i class="fa fa-print" target="_blank"></i></a>
 
-                                  <a href ="{{ asset('docs/pernyataan/'.$item->link) }}" class="btn btn-info btn-sm btn-act rounded-circle"><i class="fa fa-eye" target="_blank"></i></a>
   
-                                  <a href ="{{ route('editPernyataan', [date('Y', strtotime($item->periode)), $item->id]) }}" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+                                  {{-- <a href ="{{ route('editPernyataan', [date('Y', strtotime($item->periode)), $item->id]) }}" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
                                   
-                                  <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deletePernyataan', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ date('F Y', strtotime($item->periode)) }}"><i class="fa fa-trash"></i></a>
+                                  <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deletePernyataan', $item->id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ date('F Y', strtotime($item->periode)) }}"><i class="fa fa-trash"></i></a> --}}
                                 </div>
                               </div>
                             </td>
@@ -137,11 +126,17 @@
                         @endforeach
                       
                       @else
+                      <tr>
+                        <td colspan="2" class="col-12 text-danger text-center"> .: Data Tidak Ditemukan :.</td>
+                      </tr>
+                      @endif
   
+                      @else
+
                         <tr>
                           <td colspan="2" class="col-12 text-danger text-center"> .: Data Tidak Ditemukan :.</td>
                         </tr>
-  
+
                       @endif
   
                       </tbody>
