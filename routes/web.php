@@ -78,8 +78,15 @@ Route::get('/Home', 'HomeController@index')->middleware('auth')
 Route::get('/Dashboard', 'DashboardController@index')->middleware('auth')
     ->name('dashboard');
 
-Route::post('/Absen', 'AbsenKegiatanController@absensi')->middleware('auth')
-    ->name('absensi');
+Route::prefix('Absen')->group( function() {
+    Route::post('/Checkin', 'AbsenKegiatanController@absensi')->middleware('auth')
+        ->name('absensi');
+
+    Route::post('/Checkout', 'AbsenKegiatanController@absenPulang')->middleware('auth')
+        ->name('absen_pulang');
+
+});
+
 
 Route::prefix('DailyActivity')->group(function(){
     Route::get('/Add/{idabsen}', 'LaporanHarianController@addKegiatanHarian')->middleware('auth')

@@ -9,8 +9,10 @@ use App\Http\Controllers\Admin\InstansiController;
 class DashboardController extends Controller
 {
     public function index(){
-        $idAbsen = new AbsenKegiatanController();
-        $idAbsen = $idAbsen->getIdAbsen(session()->get('nid'));
+
+        $abs = new AbsenKegiatanController();
+        $idAbsen = $abs->getIdAbsen(session()->get('nid'));
+        $absen   = $abs->getAbsenNow(session()->get('nid'));
 
         if ($idAbsen != null ){
             $kegiatan = new LaporanHarianController();
@@ -21,9 +23,10 @@ class DashboardController extends Controller
         $instansi = $instansi->getInstansi(session()->get('id_instansi'));
 
         $data = [
-            'idabsen' => $idAbsen, 
-            'kegiatan' => $kegiatan,
-            'instansi' =>  $instansi
+            'idabsen'   => $idAbsen,
+            'absen'     => $absen,
+            'kegiatan'  => $kegiatan,
+            'instansi'  =>  $instansi
         ];
         return view('dashboard')->with($data);
     }

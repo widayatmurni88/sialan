@@ -17,9 +17,16 @@
   run composer dump-autoload
 */
 
-const bulan = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober', 'november', 'desember'];
+const jammasuk        = '065500';
+const jampulang       = '091400';
+const jammasukjumat   = '080000';
+const jampulangjumat  = '160000';
 
-const hari = ['minggu', 'senin', 'selasa', 'rabu', 'kamis', 'jum`at', 'sabtu'];
+
+const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum`at', 'Sabtu'];
+const day  = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function all_bulan_indo(){
   return bulan;
@@ -49,4 +56,8 @@ function all_hari_indo_3dig(){
     $hr[] = substr(hari[$i], 0, 3);
   }
   return $hr;
+}
+
+function get_hari_from_day($day){
+  return get_hari_indo(array_search($day, array_values(day)));
 }
