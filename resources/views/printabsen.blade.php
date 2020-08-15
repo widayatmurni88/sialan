@@ -10,9 +10,9 @@
       margin:8px;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body{
-      font-family:Arial, Helvetica, sans-serif;
       font-size: .7rem;
     }
     table{
@@ -61,10 +61,9 @@
   @php
     $jmlHari = cal_days_in_month(CAL_GREGORIAN, $data['periode_bln'], $data['periode_thn']);
     $periode = '01-'.$data['periode_bln'].'-'.$data['periode_thn'];
-    const bulan = ['JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEEMBER']
   @endphp
 
-  <h3 class="text-center">LAPORAN KEHADIRAN PEGAWAI BULAN {{ bulan[intval(date('m', strtotime($periode))) - 1 ] }} TA. {{ date('Y', strtotime($periode)) }} </h3>
+  <h3 class="text-center text-uppercase">LAPORAN KEHADIRAN PEGAWAI BULAN {{ bulan[intval(date('m', strtotime($periode))) - 1 ] }} TA. {{ date('Y', strtotime($periode)) }} </h3>
   <p>NAMA INSTANSI : {{ $data['instansi'] }}</p>
   
   
@@ -116,7 +115,7 @@
             @if ($index < count($item['hadir']))
               @if (date('Y-m-d', strtotime($item['hadir'][$index][0])) == date('Y-m-d', strtotime($i+1 .'-'.$data['periode_bln'].'-'.$data['periode_thn'])))
 
-                <td class="text-center">&#10004;</td>
+                <td class="text-center">H</td>
                 
                 @php
                 $index++
@@ -141,10 +140,12 @@
 
   <div class="wrap-box">
     <div class="box">
-      {{$kepala->title}}
-      <br><br><br><br><br>
-      {{ $kepala->name}} <br>
-      {{ $kepala->pangkat.' NIP '. $kepala->id}}
+      @if ($kepala != null)
+        {{$kepala->title}}
+        <br><br><br><br><br>
+        {{ $kepala->name}} <br>
+        {{ $kepala->pangkat.' NIP '. $kepala->id}}
+      @endif
     </div>
   </div>
 

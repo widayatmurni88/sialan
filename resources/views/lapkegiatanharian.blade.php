@@ -32,7 +32,7 @@
             center: 'title',
             right: ''
           },
-
+          locale:'id',
           displayEventTime: false, // don't show the time column in list view
           selectable: true,
           height: 550,

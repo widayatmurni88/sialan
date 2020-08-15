@@ -275,11 +275,15 @@ class LaporanKinerjaController extends Controller
     public function printLaporan($idInstansi, $bulan, $tahun){
         $ref = new TtdReferenceController();
         $person = $ref->cekReference($idInstansi);
-
+        $idkepala = null;
         
+        if($person != null){
+            $idkepala = $person->id;
+        }
+
         $data = [
                 'data'      => $this->getKehadiranPerInstansi($idInstansi, $bulan, $tahun),
-                'kepala'    => $ref->getReference($person->id)
+                'kepala'    => $ref->getReference($idkepala)
             ];
 
 
@@ -297,7 +301,7 @@ class LaporanKinerjaController extends Controller
 
     public function printSurattj($file){
 
-        $pdf = PDF::loadview('printsurattj', ['file' => $file])->setPaper('A4', 'landscape');
+        $pdf = PDF::loadview('printsurattj', ['file' => $file])->setPaper('A4', 'portrait');
         $pdf->setOptions(['dpi' => 120,'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
         return $pdf->stream();
     }

@@ -1,5 +1,4 @@
 @php
-    const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     $curbulan = date('m', strtotime(now()))-1;
     $curtahun = date('Y', strtotime(now()));
 @endphp
