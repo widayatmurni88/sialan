@@ -220,4 +220,13 @@ Route::prefix('Super')->group( function(){
         Route::post('/Search', 'Admin\InstansiController@searchInstansi')->middleware('auth')
             ->name('searchinstansi');
     });
+
+    Route::prefix('Holiday')->group(function(){
+        
+        Route::get('/{thn}/Add', 'Admin\HolidayController@tambahlibur')->middleware('auth')->name('tambahlibur');
+        
+        Route::get('/{thn?}', 'Admin\HolidayController@index')->middleware('auth')->name('getharilibur');
+
+        Route::post('/postHoliday', 'Admin\HolidayController@postHoliday')->middleware('auth')->name('postharilibur');
+    });
 });

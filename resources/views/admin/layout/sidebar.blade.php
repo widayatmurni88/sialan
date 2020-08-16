@@ -40,10 +40,18 @@
               <p>Pangkat PNS</p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="{{ route('instansi')}}" class="nav-link {{ ($menu == 'instansi') ? 'active' : ''}}">
               <i class="nav-icon fa fa-circle-o"></i>
               <p>Instansi Kerja</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{ route('getharilibur') }}" class="nav-link {{ ($menu == 'libur') ? 'active' : '' }}">
+              <i class="nav-icon fa fa-circle-o"></i>
+              <p>Hari Libur</p>
             </a>
           </li>
 
