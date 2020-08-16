@@ -25,6 +25,19 @@
 
     <div class="container-fluid">
       <div class="row">
+
+        @php
+            $liburNasional = $hariLibur['status'];
+        @endphp
+
+        @if ($liburNasional)
+          <div class="col-12">
+            <div class="callout callout-danger text-dark bg-warning">
+              <h3>Libur Nasional : {{ $hariLibur['data']->ket }}</h3>
+            </div>
+          </div>
+        @endif
+
         <div class="col-md-5">
           <!-- Default box -->
           <!-- Widget: user widget style 2 -->
@@ -62,7 +75,7 @@
                     <div class="group-item row pt-3">
 
                         @php
-                          if ( date('His', strtotime(now())) >= date('His', strtotime(jammasuk)) ){
+                          if ( (date('His', strtotime(now())) >= date('His', strtotime(jammasuk))) && (!$liburNasional) ){
                             $waktumasuk = true;
                           }else{
                             $waktumasuk = false;
