@@ -17,6 +17,17 @@ class AbsenKegiatanController extends Controller
         $pangkat_id = $req->pangkat_id;
         $ins_id     = $req->instansi_id;
 
+        //cek hari libur or not
+        // $harilibur = new _cekHariLibur();
+
+        // $harilibur = $harilibur->ceklibur(date('Y-m-d', strtotime(now())));
+
+        // if (!$harilibur['status']){
+        //     dd('bukan hari libur');
+        // }else{
+        //     dd('hari libur');
+        // }
+
         if (date('His', strtotime(now())) >= date('His', strtotime(jammasuk))){
             //try {
                 if ((trim($pangkat_id) == '') || (trim($ins_id)== '')){
@@ -101,4 +112,5 @@ class AbsenKegiatanController extends Controller
             return back()->with($msg);
         }
     }
+
 }

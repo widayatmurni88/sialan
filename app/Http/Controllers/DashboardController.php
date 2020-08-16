@@ -22,11 +22,15 @@ class DashboardController extends Controller
         $instansi = new InstansiController();
         $instansi = $instansi->getInstansi(session()->get('id_instansi'));
 
+        $harilibur = new _cekHariLibur();
+        $harilibur = $harilibur->ceklibur(date('Y-m-d', strtotime(now())));
+
         $data = [
             'idabsen'   => $idAbsen,
             'absen'     => $absen,
             'kegiatan'  => $kegiatan,
-            'instansi'  =>  $instansi
+            'instansi'  => $instansi,
+            'hariLibur' => $harilibur
         ];
         return view('dashboard')->with($data);
     }

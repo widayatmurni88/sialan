@@ -17,7 +17,7 @@
   run composer dump-autoload
 */
 
-const jammasuk        = '065500';
+const jammasuk        = '010000';
 const jampulang       = '091400';
 const jammasukjumat   = '080000';
 const jampulangjumat  = '160000';
