@@ -37,7 +37,7 @@
           selectable: true,
           height: 550,
 
-          events : "{{ route('getReportAbsenPerMonth',session()->get('nid'))}}",
+          events : "{{ route('getReportAbsenPerMonth',session()->get('nid'))}}"
 
         });
         calendar.render();
