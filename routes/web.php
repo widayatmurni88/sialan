@@ -227,6 +227,10 @@ Route::prefix('Super')->group( function(){
         
         Route::get('/{thn?}', 'Admin\HolidayController@index')->middleware('auth')->name('getharilibur');
 
+        Route::post('/','Admin\HolidayController@postSearchHoliday')->middleware('auth')->name('postsearchharilibur');
+
         Route::post('/postHoliday', 'Admin\HolidayController@postHoliday')->middleware('auth')->name('postharilibur');
+
+        Route::get('/Delete/{id}', 'Admin\HolidayController@deleteHoliday')->middleware('auth')->name('deleteharilibur');
     });
 });

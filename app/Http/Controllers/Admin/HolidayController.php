@@ -19,8 +19,12 @@ class HolidayController extends Controller{
 
     public function getLibur($thn){
         $data = [
-            'dataLibur' => Holiday::select('id', 'holi_date as tgl', 'desc as ket')->where('holi_date','like', '%'. $thn. '%')->orderBy('id', 'desc')->get(),
-            'thn'=>$thn
+            'dataLibur' => Holiday::select('id', 'holi_date as tgl', 'desc as ket')
+                                    ->where('holi_date','like', "%$thn%")
+                                    ->orderBy('holi_date', 'asc')
+                                    ->get(),
+            'thn'       =>$thn,
+            'bln'       =>''
         ];
 
         return view('admin.setholiday')->with($data);
@@ -45,6 +49,39 @@ class HolidayController extends Controller{
         $hd->save();
         
         $msg =['success' => 'Hari libur berhasil ditambahkan'];
+
+        return back()->with($msg);
+    }
+
+    public function postSearchHoliday(Request $req){
+        $this->validate($req, ['thn' => 'required']);
+
+        if($req->bln == null){
+            $bln = '';
+        }else{
+            $bln = sprintf("%02d", $req->bln);
+        }
+
+        $data = [
+            'dataLibur' => Holiday::select('id', 'holi_date as tgl', 'desc as ket')
+                                    ->where('holi_date','like', "%$req->thn-$bln%")
+                                    ->orderBy('holi_date', 'asc')
+                                    ->get(),
+            'thn'       =>$req->thn,
+            'bln'       =>$bln
+        ];
+
+        return view('admin.setholiday')->with($data);
+    }
+
+    public function deleteHoliday($id){
+        try {
+            $hd = Holiday::find($id);
+            $hd->delete();
+            $msg = ['success' => 'Data berhasil dihapus'];
+        } catch (\Throwable $th) {
+            $msg = ['error' => 'Gagal menghapus data'];
+        }
 
         return back()->with($msg);
     }
