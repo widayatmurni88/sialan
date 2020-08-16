@@ -35,7 +35,7 @@ class HolidayController extends Controller{
 
     public function postHoliday(Request $req){
         $this->validate($req, [
-            'tgl'   => 'required',
+            'tgl'   => 'required|unique:holidays,holi_date',
             'desc'  => 'required'
         ]);
 
@@ -44,6 +44,8 @@ class HolidayController extends Controller{
         $hd->desc       = $req->desc;
         $hd->save();
         
-        return back();
+        $msg =['success' => 'Hari libur berhasil ditambahkan'];
+
+        return back()->with($msg);
     }
 }

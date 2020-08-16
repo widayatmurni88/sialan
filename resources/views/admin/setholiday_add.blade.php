@@ -31,6 +31,15 @@
               <h3 class="card-title"><i class="fa fa-plus mr-3"></i> Tambah Hari Libur</h3>
             </div>
             <div class="card-body">
+
+              @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ $message }}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              @endif
               
               <form action="{{ route('postharilibur')}}" method="post">
 
@@ -39,14 +48,14 @@
                 <div class="form-group row">
                   <label for="tgl" class="form-label col-md-3">Tanggal</label>
                   <div class="col-md-9">
-                    <input type="date" name="tgl" id="tgl" class="form-control" autofocus>
+                    <input type="date" name="tgl" id="tgl" class="form-control {{ $errors->has('tgl') ? 'is-invalid': ''}}" autofocus>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="desc" class="form-label col-md-3">Keterangan</label>
                   <div class="col-md-9">
-                   <textarea name="desc" id="desc" cols="30" rows="2" class="form-control"></textarea>
+                   <textarea name="desc" id="desc" cols="30" rows="2" class="form-control {{ $errors->has('desc') ? 'is-invalid': ''}}"></textarea>
                   </div>
                 </div>
 
