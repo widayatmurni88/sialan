@@ -45,9 +45,9 @@
           <div class="block">
             <a href="{{ route('forgotPwd') }}"><b>Lupa Password</b></a>
           </div>
-          <div class="block">
+          {{-- <div class="block">
             <a href="{{ route('register')}}"><b>Registrasi Pengguna Baru</b></a>
-          </div>
+          </div> --}}
         </div>
       </div>
       {{-- @if ($errors->any())
