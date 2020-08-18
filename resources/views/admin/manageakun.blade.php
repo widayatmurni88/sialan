@@ -23,7 +23,7 @@
         <div class="col-12">
           <div class="card card-primary card-outline">
             <div class="card-header border-0">
-              <h3 class="card-title">Ini Halaman Manage Akun</h3>
+              <h3 class="card-title">Manage Akun</h3>
             </div>
             <div class="card-body">
               <div class="row">
@@ -48,17 +48,20 @@
                 <!--End Modal delete-->
 
                 <div class="col-md-3">
-                  <form action="" method="post">
+                  <form action="{{ route('cariuserakun')}}" method="post">
+
+                    {{ csrf_field() }}
+
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Cari nama/email">
+                      <input type="text" name="cari" class="form-control {{ $errors->has('cari') ? 'is-invalid' : ''}}" placeholder="Cari nama/email/no id">
                       <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button>
                       </div>
                     </div>
                   </form>
                 </div>
                 <div class="col-md-9">
-                  <button class="btn btn-primary btn-round float-right"><i class="fa fa-plus mr-3"></i> Tambah User</button>
+                  <a href="{{ route('adduserakun')}}" class="btn btn-primary btn-round float-right"><i class="fa fa-plus mr-3"></i> Tambah User</a>
                 </div>
               </div>
 
@@ -100,11 +103,19 @@
                           <td class="col-5">{{  $item->email}}</td>
                           <td class="col-2">
                             <div class="wrap">
-                              {{ $item->lvl}} 
-                              <div class="btn-grub">
-                                <a href ="{{ route('getEditAkun', $item->akun_id)}}" class="btn btn-primary btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
-                                <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deleteAkun', $item->akun_id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->name}}"><i class="fa fa-trash"></i></a>
-                              </div>
+                              {{ $item->lvl}}
+                              @if ($item->lvl == 'super')
+                                  <div class="btn-grub">
+                                    <a href ="" class="btn btn-danger btn-sm btn-act rounded-circle"><i class="fa fa-user-secret"></i></a>
+                                  </div>
+                              @else
+                                <div class="btn-grub">
+                                  <a href ="{{ route('previewakun', $item->akun_id)}}" class="btn btn-info btn-sm btn-act btn_edit rounded-circle"><i class="fa fa-pencil"></i></a>
+
+                                  <a href="" class="btn btn-danger btn-sm btn-act rounded-circle" data-href="{{ route('deleteAkun', $item->akun_id)}}" data-toggle="modal" data-target="#confirm-delete" data-iden="{{ $item->name}}"><i class="fa fa-trash"></i></a>
+                                </div>
+                              @endif
+                              
                             </div>
                           </td>
                         </tr>

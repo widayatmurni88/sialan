@@ -189,9 +189,20 @@ Route::prefix('Super')->group( function(){
 
     Route::prefix('MenageAcounts')->group(function(){
         Route::get('/', 'Admin\AcountsController@index')->middleware('auth')->name('manageAkun');
+        
         Route::get('/Delete/{id}', 'Admin\AcountsController@deleteAkun')->middleware('auth')->name('deleteAkun');
-        Route::get('/EditAccount/{id}', 'Admin\AcountsController@getEditAkun')->middleware('auth')->name('getEditAkun');
-        Route::post('/updateLevel', 'Admin\AcountsController@updateLevel')->middleware('auth')->name('updatelevel');
+
+        Route::get('/PreviewAccount/{id}', 'Admin\AcountsController@previewAccount')->middleware('auth')->name('previewakun');
+
+        Route::get('/Resetpassword/{uid}', 'Admin\AcountsController@resetUserPassword')->middleware('auth')->name('resetuserpassword');
+
+        Route::post('/{uid}/UpdateAccount', 'Admin\AcountsController@postUpdateAccount')->middleware('auth')->name('updateakunuser');
+
+        Route::get('/AddAccount','Admin\AcountsController@addAccount')->middleware('auth')->name('adduserakun');
+
+        Route::post('/PostAddAccount','Admin\AcountsController@postAddAccount')->middleware('auth')->name('postadduserakun');
+
+        Route::post('/SearchAccount','Admin\AcountsController@searchAccount')->middleware('auth')->name('cariuserakun');
     });
 
     Route::prefix('Ranks')->group( function () {
