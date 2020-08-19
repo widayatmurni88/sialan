@@ -186,6 +186,8 @@ Route::post('/postHariLibur', 'AppSettingsController@postHariLibur')
 //Admin Super
 Route::prefix('Super')->group( function(){
     Route::get('/', 'Admin\DashboardController@index')->middleware('auth')->name('superDash');
+    Route::get('/MyProfile', 'Admin\MyProfileController@index')->middleware('auth')->name('myprofile');
+    Route::post('/UpdateMyProfile', 'Admin\MyProfileController@postUpdateMyProfile')->middleware('auth')->name('postupdatemyprofile');
 
     Route::prefix('MenageAcounts')->group(function(){
         Route::get('/', 'Admin\AcountsController@index')->middleware('auth')->name('manageAkun');

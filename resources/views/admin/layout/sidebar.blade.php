@@ -63,6 +63,14 @@
             </a>
           </li>
 
+          <li class="nav-header">PROFIL SAYA</li>
+          <li class="nav-item">
+            <a href="{{ route('myprofile')}}" class="nav-link {{ ($menu == 'myprofile') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-user-secret"></i>
+              <p>Update Akun</p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="{{ route('logout')}}" class="nav-link">
               <i class="nav-icon fa fa-sign-out"></i>
